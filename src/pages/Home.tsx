@@ -22,21 +22,21 @@ const Home = () => {
         <div className="container relative py-20 md:py-32">
           <div className="mx-auto max-w-3xl text-center animate-fade-in-up">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Trade Time. Grow Skills.
+              Trao Đổi Thời Gian. Phát Triển Kỹ Năng.
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Learn what you want. Teach what you're great at. Pay with Edits, not money.
+              Học những gì bạn muốn. Dạy những gì bạn giỏi. Thanh toán bằng Edits, không dùng tiền.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/marketplace">
                 <Button variant="hero" size="lg">
-                  Create Your Skill Profile
+                  Tạo Hồ Sơ Kỹ Năng
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link to="/marketplace">
                 <Button variant="outline" size="lg">
-                  Browse Marketplace
+                  Khám Phá Thị Trường
                 </Button>
               </Link>
             </div>
@@ -47,9 +47,9 @@ const Home = () => {
       {/* How It Works */}
       <section className="container py-16 md:py-24">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">How SWC Works</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">SWC Hoạt Động Như Thế Nào</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Three simple steps to start learning and teaching
+            Ba bước đơn giản để bắt đầu học và dạy
           </p>
         </div>
 
@@ -57,20 +57,20 @@ const Home = () => {
           {[
             {
               step: "1",
-              title: "Create Your Profile",
-              description: "List skills you can teach (Offer) and want to learn (Want). Add your availability.",
+              title: "Tạo Hồ Sơ Của Bạn",
+              description: "Liệt kê các kỹ năng bạn có thể dạy (Cung cấp) và muốn học (Mong muốn). Thêm lịch trình của bạn.",
               icon: Users,
             },
             {
               step: "2",
-              title: "Match & Book",
-              description: "Search by tags, level, or location. Chat to align goals and confirm time slots.",
+              title: "Kết Nối & Đặt Lịch",
+              description: "Tìm kiếm theo thẻ, cấp độ hoặc địa điểm. Trò chuyện để đồng bộ mục tiêu và xác nhận khung giờ.",
               icon: Clock,
             },
             {
               step: "3",
-              title: "Complete & Review",
-              description: "Run your session. System auto-ledgers Edits (10 per hour). Leave peer reviews.",
+              title: "Hoàn Thành & Đánh Giá",
+              description: "Thực hiện buổi học của bạn. Hệ thống tự động ghi nhận Edits (10 mỗi giờ). Để lại đánh giá.",
               icon: CheckCircle,
             },
           ].map((item) => (
@@ -89,10 +89,10 @@ const Home = () => {
           <div className="flex items-start gap-4">
             <div className="text-4xl">💡</div>
             <div>
-              <h4 className="font-semibold mb-2">Time-Banking Fairness</h4>
+              <h4 className="font-semibold mb-2">Công Bằng Ngân Hàng Thời Gian</h4>
               <p className="text-sm text-muted-foreground">
-                <strong>1 hour = 10 Edits</strong> for everyone. Whether you're teaching guitar or coding,
-                your time is valued equally. This creates a balanced, inclusive community where all skills matter.
+                <strong>1 giờ = 10 Edits</strong> cho tất cả mọi người. Dù bạn dạy guitar hay lập trình,
+                thời gian của bạn đều được định giá ngang nhau. Điều này tạo ra một cộng đồng cân bằng, toàn diện, nơi mọi kỹ năng đều có giá trị.
               </p>
             </div>
           </div>
@@ -105,23 +105,23 @@ const Home = () => {
           {[
             {
               icon: CheckCircle,
-              title: "Free at the Core",
-              description: "No subscription fees. Optional Edits packs available.",
+              title: "Miễn Phí Cơ Bản",
+              description: "Không có phí đăng ký. Gói Edits tùy chọn có sẵn.",
             },
             {
               icon: Shield,
-              title: "Time-Banking Fairness",
-              description: "Every hour is worth 10 Edits. All skills valued equally.",
+              title: "Công Bằng Ngân Hàng Thời Gian",
+              description: "Mỗi giờ đều trị giá 10 Edits. Tất cả kỹ năng đều được định giá ngang nhau.",
             },
             {
               icon: Star,
-              title: "Peer Reviews Build Trust",
-              description: "Community ratings keep standards high and safe.",
+              title: "Đánh Giá Đồng Đẳng Xây Dựng Niềm Tin",
+              description: "Xếp hạng cộng đồng giữ tiêu chuẩn cao và an toàn.",
             },
             {
               icon: Clock,
-              title: "Learn Anytime, Anywhere",
-              description: "Online or offline. Your schedule, your choice.",
+              title: "Học Mọi Lúc, Mọi Nơi",
+              description: "Trực tuyến hoặc ngoại tuyến. Lịch trình của bạn, sự lựa chọn của bạn.",
             },
           ].map((item, index) => (
             <Card key={index} className="p-6 text-center shadow-soft">
@@ -136,8 +136,8 @@ const Home = () => {
       {/* Featured Categories */}
       <section className="container py-16 md:py-24">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Skill Categories</h2>
-          <p className="text-lg text-muted-foreground">Explore what you can learn or teach</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Danh Mục Kỹ Năng Nổi Bật</h2>
+          <p className="text-lg text-muted-foreground">Khám phá những gì bạn có thể học hoặc dạy</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -160,7 +160,7 @@ const Home = () => {
       {/* Social Proof */}
       <section className="container py-16 md:py-24 bg-muted/30">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Community Says</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Cộng Đồng Của Chúng Tôi Nói Gì</h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
@@ -189,13 +189,13 @@ const Home = () => {
       {/* Final CTA */}
       <section className="container py-16 md:py-24">
         <div className="rounded-2xl bg-primary/5 border-2 border-primary/20 p-8 md:p-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Start Your Skill Journey Today</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Bắt Đầu Hành Trình Kỹ Năng Của Bạn Hôm Nay</h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join thousands of learners and teachers exchanging skills every day
+            Tham gia cùng hàng nghìn người học và giáo viên trao đổi kỹ năng mỗi ngày
           </p>
           <Link to="/marketplace">
             <Button variant="hero" size="lg">
-              Get Started Now
+              Bắt Đầu Ngay
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>
