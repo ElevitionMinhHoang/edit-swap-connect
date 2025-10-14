@@ -4,7 +4,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
-import Home from "./pages/Home";
+import ScrollToTop from "./components/layout/ScrollToTop";
+import Home from "./pages/HomeNew";
 import Marketplace from "./pages/Marketplace";
 import Profile from "./pages/Profile";
 import Messages from "./pages/Messages";
@@ -25,6 +26,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />

@@ -22,19 +22,36 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2">
-          <img
-            src={logo}
-            alt="Skill Swap Connect"
-            className="h-9 w-9 rounded-lg object-cover"
-          />
-          <span className="hidden font-bold text-xl sm:inline-block tracking-tight">
-            Skill Swap Connect
-          </span>
-          <span className="font-bold text-xl sm:hidden tracking-tight">
-            SWC
-          </span>
-        </Link>
+        <div className="flex items-center space-x-2">
+          <Link
+            to="/"
+            className="flex items-center space-x-2"
+            onClick={(e) => {
+              if (location.pathname === "/") {
+                e.preventDefault();
+                if (window.scrollY === 0) {
+                  // Nếu đang ở đầu trang, reload trang
+                  window.location.reload();
+                } else {
+                  // Nếu không ở đầu trang, scroll lên đầu
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }
+            }}
+          >
+            <img
+              src={logo}
+              alt="Skill Swap Connect"
+              className="h-9 w-9 rounded-lg object-cover"
+            />
+            <span className="hidden font-bold text-xl sm:inline-block tracking-tight">
+              Skill Swap Connect
+            </span>
+            <span className="font-bold text-xl sm:hidden tracking-tight">
+              SWC
+            </span>
+          </Link>
+        </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-1">

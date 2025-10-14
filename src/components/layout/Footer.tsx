@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import logo from "@/assets/logo.jpg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,9 +12,11 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold text-lg">
-                S
-              </div>
+              <img
+                src={logo}
+                alt="Skill Swap Connect"
+                className="h-9 w-9 rounded-lg object-cover"
+              />
               <span className="font-bold text-xl tracking-tight">SWC</span>
             </div>
             <p className="text-sm text-muted-foreground">
