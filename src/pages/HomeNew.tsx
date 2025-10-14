@@ -21,9 +21,11 @@ const HomeNew = () => {
         />
         <div className="container relative py-20 md:py-32">
           <div className="mx-auto max-w-3xl text-center animate-fade-in-up">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-center leading-tight">
-               CHUNG TAY TRAO ĐỔI LẤP ĐẦY KỸ NĂNG
-            </h1>
+           <h1 class="text-5xl font-bold leading-tight sm:text-4xl sm:leading-snug text-center">
+  CHUNG TAY TRAO ĐỔI LẤP ĐẦY KỸ NĂNG
+</h1>
+
+
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Biến kỹ năng thành tài sản. Dùng thời gian đầu tư cho tri thức. Cùng kiến tạo một vòng tròn cho và nhận không ngừng
             </p>
