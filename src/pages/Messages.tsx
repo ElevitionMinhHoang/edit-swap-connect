@@ -37,12 +37,12 @@ const Messages = () => {
 
   return (
     <div className="container py-8">
-      <h1 className="text-3xl font-bold mb-6">Messages</h1>
+      <h1 className="text-3xl font-bold mb-6">Tin Nhắn</h1>
 
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Conversation List */}
         <Card className="lg:col-span-1 p-4 max-h-[600px] overflow-y-auto">
-          <h2 className="font-semibold mb-4">Conversations</h2>
+          <h2 className="font-semibold mb-4">Hội Thoại</h2>
           <div className="space-y-2">
             {conversations.map((conv, idx) => (
               <button
@@ -86,7 +86,7 @@ const Messages = () => {
             </div>
             <Button size="sm" onClick={() => setShowBooking(!showBooking)}>
               <Calendar className="h-4 w-4 mr-2" />
-              Propose Time
+              Đề Xuất Giờ Học
             </Button>
           </div>
 
@@ -118,7 +118,7 @@ const Messages = () => {
           <div className="p-4 border-t border-border">
             <div className="flex gap-2">
               <Input
-                placeholder="Type your message..."
+                placeholder="Nhập tin nhắn..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyDown={(e) => {
@@ -139,85 +139,85 @@ const Messages = () => {
       {/* Booking Pane */}
       {showBooking && (
         <Card className="mt-6 p-6">
-          <h2 className="text-xl font-semibold mb-4">Propose Session Time</h2>
+          <h2 className="text-xl font-semibold mb-4">Đề Xuất Giờ Học</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <div>
-                <label className="text-sm font-medium mb-2 block">Skill</label>
+                <label className="text-sm font-medium mb-2 block">Kỹ Năng</label>
                 <Input value={currentChat.user.offerSkills[0].skill} disabled />
               </div>
 
               <div>
-                <label className="text-sm font-medium mb-2 block">Date & Time</label>
+                <label className="text-sm font-medium mb-2 block">Ngày & Giờ</label>
                 <Input type="datetime-local" />
               </div>
 
               <div>
-                <label className="text-sm font-medium mb-2 block">Duration</label>
+                <label className="text-sm font-medium mb-2 block">Thời Lượng</label>
                 <div className="flex gap-2">
                   {[30, 60, 90].map((duration) => (
                     <Button key={duration} variant="outline" size="sm">
-                      {duration} min
+                      {duration} phút
                     </Button>
                   ))}
                 </div>
               </div>
 
               <div>
-                <label className="text-sm font-medium mb-2 block">Mode</label>
+                <label className="text-sm font-medium mb-2 block">Hình Thức</label>
                 <div className="flex gap-2">
                   <Button variant="outline" size="sm">
                     <Video className="h-4 w-4 mr-1" />
-                    Online
+                    Trực Tuyến
                   </Button>
                   <Button variant="outline" size="sm">
                     <MapPin className="h-4 w-4 mr-1" />
-                    Offline
+                    Trực Tiếp
                   </Button>
                 </div>
               </div>
 
               <div>
-                <label className="text-sm font-medium mb-2 block">Location / Meeting Link</label>
-                <Input placeholder="Enter Zoom link or physical address" />
+                <label className="text-sm font-medium mb-2 block">Địa Điểm / Link Zoom</label>
+                <Input placeholder="Nhập link Zoom hoặc địa chỉ cụ thể" />
               </div>
             </div>
 
             <div>
               <Card className="p-4 bg-muted/30">
-                <h3 className="font-semibold mb-3">Session Summary</h3>
+                <h3 className="font-semibold mb-3">Tóm Tắt Buổi Học</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Duration:</span>
-                    <span className="font-medium">60 minutes</span>
+                    <span className="text-muted-foreground">Thời lượng:</span>
+                    <span className="font-medium">60 phút</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Edits Cost:</span>
+                    <span className="text-muted-foreground">Chi phí Edits:</span>
                     <span className="font-medium text-destructive">-10 Edits</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Your Balance After:</span>
+                    <span className="text-muted-foreground">Số dư sau:</span>
                     <span className="font-medium">140 Edits</span>
                   </div>
                 </div>
 
                 <div className="mt-4 p-3 bg-warning/10 border border-warning/20 rounded-lg text-xs text-muted-foreground">
-                  ⚠️ Canceling less than 2 hours before start time triggers a warning
+                  ⚠️ Hủy trước ít hơn 2 giờ sẽ nhận cảnh báo
                 </div>
               </Card>
 
               <div className="mt-4">
-                <label className="text-sm font-medium mb-2 block">Add a Note (Optional)</label>
+                <label className="text-sm font-medium mb-2 block">Ghi Chú (Tùy Chọn)</label>
                 <Textarea
-                  placeholder="Session goals, topics to cover, etc."
+                  placeholder="Mục tiêu buổi học, nội dung cần học, v.v..."
                   rows={4}
                 />
               </div>
 
               <div className="mt-4 flex gap-2">
-                <Button className="flex-1">Send Proposal</Button>
+                <Button className="flex-1">Gửi Đề Xuất</Button>
                 <Button variant="outline" onClick={() => setShowBooking(false)}>
-                  Cancel
+                  Hủy
                 </Button>
               </div>
             </div>

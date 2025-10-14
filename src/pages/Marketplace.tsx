@@ -38,23 +38,23 @@ const Marketplace = () => {
   return (
     <div className="container py-8">
       <div className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold mb-2">Skill Marketplace</h1>
-        <p className="text-muted-foreground">Find your perfect skill match</p>
+        <h1 className="text-3xl md:text-4xl font-bold mb-2">Chợ Kỹ Năng</h1>
+        <p className="text-muted-foreground">Tìm người dạy hoàn hảo cho bạn</p>
       </div>
 
       <div className="grid lg:grid-cols-4 gap-6">
         {/* Filters Panel */}
         <div className="lg:col-span-1">
           <Card className="p-6 sticky top-20">
-            <h2 className="font-semibold mb-4">Filters</h2>
+            <h2 className="font-semibold mb-4">Bộ Lọc</h2>
 
             {/* Search */}
             <div className="mb-6">
-              <label className="text-sm font-medium mb-2 block">Search</label>
+              <label className="text-sm font-medium mb-2 block">Tìm Kiếm</label>
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
-                  placeholder="Find a skill or mentor..."
+                  placeholder="Tìm kỹ năng hoặc giáo viên..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-9"
@@ -64,17 +64,22 @@ const Marketplace = () => {
 
             {/* Level */}
             <div className="mb-6">
-              <label className="text-sm font-medium mb-2 block">Level</label>
+              <label className="text-sm font-medium mb-2 block">Cấp Độ</label>
               <div className="space-y-2">
-                {["", "Basic", "Intermediate", "Advanced"].map((level) => (
+                {[
+                  { value: "", label: "Tất Cả" },
+                  { value: "Basic", label: "Cơ Bản" },
+                  { value: "Intermediate", label: "Trung Cấp" },
+                  { value: "Advanced", label: "Nâng Cao" }
+                ].map((level) => (
                   <Button
-                    key={level}
-                    variant={selectedLevel === level ? "default" : "outline"}
+                    key={level.value}
+                    variant={selectedLevel === level.value ? "default" : "outline"}
                     size="sm"
                     className="w-full justify-start"
-                    onClick={() => setSelectedLevel(level)}
+                    onClick={() => setSelectedLevel(level.value)}
                   >
-                    {level || "All Levels"}
+                    {level.label}
                   </Button>
                 ))}
               </div>
@@ -82,7 +87,7 @@ const Marketplace = () => {
 
             {/* Tags */}
             <div className="mb-6">
-              <label className="text-sm font-medium mb-2 block">Skills</label>
+              <label className="text-sm font-medium mb-2 block">Kỹ Năng</label>
               <div className="flex flex-wrap gap-2 max-h-64 overflow-y-auto">
                 {skillTags.slice(0, 15).map((tag) => (
                   <Badge
@@ -109,7 +114,7 @@ const Marketplace = () => {
                   setSelectedLevel("");
                 }}
               >
-                Clear All Filters
+                Xóa Tất Cả Bộ Lọc
               </Button>
             )}
           </Card>
@@ -119,14 +124,14 @@ const Marketplace = () => {
         <div className="lg:col-span-3">
           <div className="mb-4 flex items-center justify-between">
             <p className="text-sm text-muted-foreground">
-              {filteredUsers.length} {filteredUsers.length === 1 ? "result" : "results"} found
+              Tìm thấy {filteredUsers.length} kết quả
             </p>
           </div>
 
           {filteredUsers.length === 0 ? (
             <Card className="p-12 text-center">
               <p className="text-muted-foreground mb-4">
-                No exact matches. Try broadening filters or different tags.
+                Không tìm thấy kết quả phù hợp. Thử mở rộng bộ lọc hoặc chọn kỹ năng khác.
               </p>
               <Button
                 variant="outline"
@@ -136,7 +141,7 @@ const Marketplace = () => {
                   setSelectedLevel("");
                 }}
               >
-                Clear Filters
+                Xóa Bộ Lọc
               </Button>
             </Card>
           ) : (
@@ -155,7 +160,7 @@ const Marketplace = () => {
                         <Star className="h-4 w-4 fill-warning text-warning" />
                         <span className="font-semibold text-sm">{user.rating}</span>
                         <span className="text-xs text-muted-foreground">
-                          ({user.totalSessions} sessions)
+                          ({user.totalSessions} buổi)
                         </span>
                       </div>
                     </div>
@@ -164,7 +169,7 @@ const Marketplace = () => {
                   <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{user.bio}</p>
 
                   <div className="mb-4">
-                    <div className="text-xs font-medium text-muted-foreground mb-2">Offers</div>
+                    <div className="text-xs font-medium text-muted-foreground mb-2">Dạy</div>
                     <div className="flex flex-wrap gap-2">
                       {user.offerSkills.slice(0, 3).map((skill, idx) => (
                         <Badge key={idx} variant="default">
@@ -181,13 +186,13 @@ const Marketplace = () => {
                   <div className="flex gap-2">
                     <Link to={`/profile/${user.id}`} className="flex-1">
                       <Button variant="outline" size="sm" className="w-full">
-                        View Profile
+                        Xem Hồ Sơ
                       </Button>
                     </Link>
                     <Link to="/messages" className="flex-1">
                       <Button size="sm" className="w-full">
                         <Send className="h-4 w-4 mr-1" />
-                        Send Invite
+                        Gửi Lời Mời
                       </Button>
                     </Link>
                   </div>

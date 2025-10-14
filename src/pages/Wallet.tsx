@@ -11,7 +11,7 @@ const Wallet = () => {
 
   return (
     <div className="container py-8 max-w-6xl">
-      <h1 className="text-3xl font-bold mb-6">My Wallet</h1>
+      <h1 className="text-3xl font-bold mb-6">Ví Của Tôi</h1>
 
       {/* Balance Cards */}
       <div className="grid md:grid-cols-3 gap-6 mb-8">
@@ -20,11 +20,11 @@ const Wallet = () => {
             <WalletIcon className="h-8 w-8 text-primary" />
             <Button size="sm">
               <Plus className="h-4 w-4 mr-1" />
-              Buy Edits
+              Mua Edits
             </Button>
           </div>
           <div className="text-3xl font-bold mb-1">{currentBalance} Edits</div>
-          <p className="text-sm text-muted-foreground">Current Balance</p>
+          <p className="text-sm text-muted-foreground">Số Dư Hiện Tại</p>
         </Card>
 
         <Card className="p-6 shadow-soft">
@@ -32,7 +32,7 @@ const Wallet = () => {
             <TrendingUp className="h-6 w-6 text-secondary" />
           </div>
           <div className="text-2xl font-bold mb-1 text-secondary">{totalEarned} Edits</div>
-          <p className="text-sm text-muted-foreground">Total Earned</p>
+          <p className="text-sm text-muted-foreground">Tổng Kiếm Được</p>
         </Card>
 
         <Card className="p-6 shadow-soft">
@@ -40,13 +40,13 @@ const Wallet = () => {
             <TrendingDown className="h-6 w-6 text-destructive" />
           </div>
           <div className="text-2xl font-bold mb-1 text-destructive">{totalSpent} Edits</div>
-          <p className="text-sm text-muted-foreground">Total Spent</p>
+          <p className="text-sm text-muted-foreground">Tổng Đã Dùng</p>
         </Card>
       </div>
 
       {/* Transactions */}
       <Card className="p-6 shadow-soft">
-        <h2 className="text-xl font-semibold mb-6">Transaction History</h2>
+        <h2 className="text-xl font-semibold mb-6">Lịch Sử Giao Dịch</h2>
         <div className="space-y-4">
           {mockTransactions.map((transaction) => {
             const transactionDate = new Date(transaction.date);
@@ -85,7 +85,7 @@ const Wallet = () => {
                     </div>
                     {transaction.sessionRef !== "—" && (
                       <Badge variant="outline" className="mt-1 text-xs">
-                        Session: {transaction.sessionRef}
+                        Buổi học: {transaction.sessionRef}
                       </Badge>
                     )}
                   </div>
@@ -100,7 +100,7 @@ const Wallet = () => {
                     {transaction.amount} Edits
                   </div>
                   <div className="text-sm text-muted-foreground">
-                    Balance: {transaction.balanceAfter}
+                    Số dư: {transaction.balanceAfter}
                   </div>
                 </div>
               </div>
@@ -111,19 +111,19 @@ const Wallet = () => {
 
       {/* Activity Chart Placeholder */}
       <Card className="p-6 mt-6 shadow-soft">
-        <h2 className="text-xl font-semibold mb-4">Activity Overview</h2>
+        <h2 className="text-xl font-semibold mb-4">Tổng Quan Hoạt Động</h2>
         <div className="h-64 flex items-center justify-center bg-muted/30 rounded-lg">
           <p className="text-muted-foreground">
-            Chart: Hours taught vs learned over time
+            Biểu đồ: Giờ dạy và giờ học theo thời gian
           </p>
         </div>
       </Card>
 
       {/* Buy Edits Info */}
       <Card className="p-6 mt-6 bg-primary/5 border-primary/20">
-        <h2 className="text-lg font-semibold mb-2">Need More Edits?</h2>
+        <h2 className="text-lg font-semibold mb-2">Cần Thêm Edits?</h2>
         <p className="text-sm text-muted-foreground mb-4">
-          Purchase Edits packs to keep learning without interruption
+          Mua gói Edits để tiếp tục học không bị gián đoạn
         </p>
         <div className="grid md:grid-cols-3 gap-4">
           {[
@@ -133,12 +133,12 @@ const Wallet = () => {
           ].map((pack) => (
             <Card key={pack.amount} className={`p-4 text-center ${pack.popular ? "border-primary shadow-accent" : ""}`}>
               {pack.popular && (
-                <Badge className="mb-2">Most Popular</Badge>
+                <Badge className="mb-2">Phổ Biến Nhất</Badge>
               )}
               <div className="text-2xl font-bold mb-1">{pack.amount} Edits</div>
               <div className="text-muted-foreground mb-3">{pack.price}</div>
               <Button size="sm" className="w-full" variant={pack.popular ? "default" : "outline"}>
-                Purchase
+                Mua Ngay
               </Button>
             </Card>
           ))}

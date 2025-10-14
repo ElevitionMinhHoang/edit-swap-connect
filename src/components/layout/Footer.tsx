@@ -17,27 +17,27 @@ const Footer = () => {
               <span className="font-bold text-xl tracking-tight">SWC</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              Trade time. Grow skills. Build community.
+              Trao đổi thời gian. Nâng tầm kỹ năng. Xây dựng cộng đồng.
             </p>
           </div>
 
           {/* Platform */}
           <div>
-            <h3 className="font-semibold mb-3">Platform</h3>
+            <h3 className="font-semibold mb-3">Nền Tảng</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/marketplace" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Browse Skills
+                  Khám Phá Kỹ Năng
                 </Link>
               </li>
               <li>
                 <Link to="/how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">
-                  How it Works
+                  Cách Hoạt Động
                 </Link>
               </li>
               <li>
                 <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Community Guidelines
+                  Quy Tắc Cộng Đồng
                 </Link>
               </li>
             </ul>
@@ -45,26 +45,26 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h3 className="font-semibold mb-3">Company</h3>
+            <h3 className="font-semibold mb-3">Công Ty</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
-                  About Us
+                  Về Chúng Tôi
                 </Link>
               </li>
               <li>
                 <Link to="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Privacy Policy
+                  Chính Sách Bảo Mật
                 </Link>
               </li>
               <li>
                 <Link to="/terms" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Terms of Service
+                  Điều Khoản Dịch Vụ
                 </Link>
               </li>
               <li>
                 <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Contact
+                  Liên Hệ
                 </Link>
               </li>
             </ul>
@@ -72,7 +72,7 @@ const Footer = () => {
 
           {/* Social */}
           <div>
-            <h3 className="font-semibold mb-3">Connect</h3>
+            <h3 className="font-semibold mb-3">Kết Nối</h3>
             <div className="flex space-x-3">
               <a
                 href="https://facebook.com"

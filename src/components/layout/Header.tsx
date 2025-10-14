@@ -8,12 +8,12 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: "Home", path: "/" },
-    { label: "Marketplace", path: "/marketplace" },
-    { label: "How it Works", path: "/how-it-works" },
-    { label: "My Sessions", path: "/sessions" },
-    { label: "Wallet", path: "/wallet" },
-    { label: "Messages", path: "/messages" },
+    { label: "Trang Chủ", path: "/" },
+    { label: "Chợ Kỹ Năng", path: "/marketplace" },
+    { label: "Cách Hoạt Động", path: "/how-it-works" },
+    { label: "Buổi Học", path: "/sessions" },
+    { label: "Ví", path: "/wallet" },
+    { label: "Tin Nhắn", path: "/messages" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -53,11 +53,11 @@ const Header = () => {
         <div className="flex items-center space-x-2">
           <Link to="/profile/u1" className="hidden sm:block">
             <Button variant="ghost" size="sm">
-              Profile
+              Hồ Sơ
             </Button>
           </Link>
           <Link to="/auth">
-            <Button size="sm">Sign In</Button>
+            <Button size="sm">Đăng Nhập</Button>
           </Link>
 
           {/* Mobile Menu Button */}
@@ -95,7 +95,7 @@ const Header = () => {
               onClick={() => setMobileMenuOpen(false)}
               className="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground rounded-md transition-colors"
             >
-              Profile
+              Hồ Sơ
             </Link>
           </nav>
         </div>

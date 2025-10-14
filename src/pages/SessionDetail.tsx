@@ -31,14 +31,14 @@ const SessionDetail = () => {
     <div className="container py-8 max-w-4xl">
       <div className="mb-6">
         <Link to="/sessions" className="text-sm text-muted-foreground hover:text-foreground">
-          ← Back to Sessions
+          ← Quay Lại Danh Sách Buổi Học
         </Link>
       </div>
 
       <Card className="p-6 md:p-8 mb-6 shadow-elevated">
         <div className="flex items-start justify-between mb-6">
           <div>
-            <h1 className="text-3xl font-bold mb-2">{session.skill} Session</h1>
+            <h1 className="text-3xl font-bold mb-2">Buổi Học {session.skill}</h1>
             <Badge variant={getStatusVariant(session.status)} className="text-sm">
               {session.status}
             </Badge>
@@ -48,7 +48,7 @@ const SessionDetail = () => {
         <div className="grid md:grid-cols-2 gap-6">
           {/* Teacher */}
           <div>
-            <h3 className="text-sm font-medium text-muted-foreground mb-3">Teacher</h3>
+            <h3 className="text-sm font-medium text-muted-foreground mb-3">Giáo Viên</h3>
             <div className="flex items-center gap-3">
               <div className="text-4xl">{session.teacher.avatar}</div>
               <div>
@@ -60,7 +60,7 @@ const SessionDetail = () => {
 
           {/* Learner */}
           <div>
-            <h3 className="text-sm font-medium text-muted-foreground mb-3">Learner</h3>
+            <h3 className="text-sm font-medium text-muted-foreground mb-3">Học Viên</h3>
             <div className="flex items-center gap-3">
               <div className="text-4xl">{session.learner.avatar}</div>
               <div>
@@ -98,21 +98,21 @@ const SessionDetail = () => {
         <div className="mt-6 pt-6 border-t border-border">
           {session.status === "PENDING" && (
             <div className="flex gap-2">
-              <Button className="flex-1">Accept Session</Button>
-              <Button variant="outline" className="flex-1">Decline</Button>
+              <Button className="flex-1">Chấp Nhận</Button>
+              <Button variant="outline" className="flex-1">Từ Chối</Button>
             </div>
           )}
 
           {session.status === "CONFIRMED" && (
             <div className="flex gap-2">
-              <Button className="flex-1">Check In (15 min before)</Button>
-              <Button variant="outline" className="flex-1">Cancel Session</Button>
+              <Button className="flex-1">Check In (Trước 15 phút)</Button>
+              <Button variant="outline" className="flex-1">Hủy Buổi Học</Button>
             </div>
           )}
 
           {session.status === "DONE" && !showReview && (
             <Button className="w-full" onClick={() => setShowReview(true)}>
-              Mark as Completed & Review
+              Đánh Dấu Hoàn Thành & Đánh Giá
             </Button>
           )}
         </div>
@@ -121,18 +121,18 @@ const SessionDetail = () => {
       {/* Ledger Summary (for DONE status) */}
       {session.status === "DONE" && (
         <Card className="p-6 mb-6 bg-secondary/10">
-          <h2 className="text-lg font-semibold mb-4">Ledger Summary</h2>
+          <h2 className="text-lg font-semibold mb-4">Tổng Kết Edits</h2>
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Teacher Credit:</span>
+              <span className="text-muted-foreground">Giáo viên nhận:</span>
               <span className="font-semibold text-secondary">+{session.editsAmount} Edits</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Learner Debit:</span>
+              <span className="text-muted-foreground">Học viên trả:</span>
               <span className="font-semibold text-destructive">-{session.editsAmount} Edits</span>
             </div>
             <div className="text-xs text-muted-foreground mt-3">
-              Auto-ledgered on {new Date().toLocaleString()}
+              Tự động ghi nhận lúc {new Date().toLocaleString("vi-VN")}
             </div>
           </div>
         </Card>
@@ -141,10 +141,10 @@ const SessionDetail = () => {
       {/* Review Form */}
       {showReview && (
         <Card className="p-6">
-          <h2 className="text-lg font-semibold mb-4">Leave a Review</h2>
+          <h2 className="text-lg font-semibold mb-4">Viết Đánh Giá</h2>
           
           <div className="mb-4">
-            <label className="text-sm font-medium mb-2 block">Rating</label>
+            <label className="text-sm font-medium mb-2 block">Xếp Hạng</label>
             <div className="flex gap-2">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
@@ -164,10 +164,10 @@ const SessionDetail = () => {
 
           <div className="mb-4">
             <label className="text-sm font-medium mb-2 block">
-              Comment {rating <= 3 && rating > 0 && "(Required, minimum 20 characters)"}
+              Nhận xét {rating <= 3 && rating > 0 && "(Bắt buộc, tối thiểu 20 ký tự)"}
             </label>
             <Textarea
-              placeholder="Share your experience..."
+              placeholder="Chia sẻ trải nghiệm của bạn..."
               value={review}
               onChange={(e) => setReview(e.target.value)}
               rows={4}
@@ -175,7 +175,7 @@ const SessionDetail = () => {
             />
             {rating <= 3 && rating > 0 && review.length < 20 && (
               <p className="text-xs text-warning mt-1">
-                {20 - review.length} more characters required for ratings ≤3
+                Cần thêm {20 - review.length} ký tự cho đánh giá ≤3 sao
               </p>
             )}
           </div>
@@ -184,7 +184,7 @@ const SessionDetail = () => {
             disabled={rating === 0 || (rating <= 3 && review.length < 20)}
             className="w-full"
           >
-            Submit Review
+            Gửi Đánh Giá
           </Button>
         </Card>
       )}
@@ -193,9 +193,9 @@ const SessionDetail = () => {
       <Card className="p-4 mt-6 bg-muted/30 border-muted">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <AlertCircle className="h-4 w-4" />
-          <span>Had an issue with this session?</span>
+          <span>Gặp vấn đề với buổi học này?</span>
           <Button variant="link" size="sm" className="ml-auto">
-            File a Dispute
+            Khiếu Nại
           </Button>
         </div>
       </Card>

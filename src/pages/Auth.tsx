@@ -12,15 +12,15 @@ const Auth = () => {
   return (
     <div className="container py-16 max-w-md">
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold mb-2">Welcome to SWC</h1>
-        <p className="text-muted-foreground">Sign in or create an account to get started</p>
+        <h1 className="text-3xl font-bold mb-2">Chào Mừng Đến Với SWC</h1>
+        <p className="text-muted-foreground">Đăng nhập hoặc tạo tài khoản để bắt đầu</p>
       </div>
 
       <Card className="p-6 shadow-elevated">
         <Tabs defaultValue="signin" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="signin">Sign In</TabsTrigger>
-            <TabsTrigger value="signup">Sign Up</TabsTrigger>
+            <TabsTrigger value="signin">Đăng Nhập</TabsTrigger>
+            <TabsTrigger value="signup">Đăng Ký</TabsTrigger>
           </TabsList>
 
           <TabsContent value="signin" className="space-y-4 mt-6">
@@ -28,12 +28,12 @@ const Auth = () => {
               <Label htmlFor="email-signin">Email</Label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input id="email-signin" type="email" placeholder="you@example.com" className="pl-9" />
+                <Input id="email-signin" type="email" placeholder="email@example.com" className="pl-9" />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password-signin">Password</Label>
+              <Label htmlFor="password-signin">Mật Khẩu</Label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input id="password-signin" type="password" placeholder="••••••••" className="pl-9" />
@@ -41,7 +41,7 @@ const Auth = () => {
             </div>
 
             <Button className="w-full" onClick={() => setEmailSent(true)}>
-              Sign In
+              Đăng Nhập
             </Button>
 
             <div className="relative">
@@ -49,7 +49,7 @@ const Auth = () => {
                 <span className="w-full border-t border-border" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
+                <span className="bg-card px-2 text-muted-foreground">Hoặc tiếp tục với</span>
               </div>
             </div>
 
@@ -72,22 +72,22 @@ const Auth = () => {
                   d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                 />
               </svg>
-              Sign in with Google
+              Đăng nhập với Google
             </Button>
 
             <div className="text-center text-sm">
               <a href="#" className="text-primary hover:underline">
-                Forgot password?
+                Quên mật khẩu?
               </a>
             </div>
           </TabsContent>
 
           <TabsContent value="signup" className="space-y-4 mt-6">
             <div className="space-y-2">
-              <Label htmlFor="name-signup">Full Name</Label>
+              <Label htmlFor="name-signup">Họ Tên</Label>
               <div className="relative">
                 <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input id="name-signup" type="text" placeholder="John Doe" className="pl-9" />
+                <Input id="name-signup" type="text" placeholder="Nguyễn Văn A" className="pl-9" />
               </div>
             </div>
 
@@ -95,12 +95,12 @@ const Auth = () => {
               <Label htmlFor="email-signup">Email</Label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input id="email-signup" type="email" placeholder="you@example.com" className="pl-9" />
+                <Input id="email-signup" type="email" placeholder="email@example.com" className="pl-9" />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password-signup">Password</Label>
+              <Label htmlFor="password-signup">Mật Khẩu</Label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input id="password-signup" type="password" placeholder="••••••••" className="pl-9" />
@@ -108,7 +108,7 @@ const Auth = () => {
             </div>
 
             <Button className="w-full" onClick={() => setEmailSent(true)}>
-              Create Account
+              Tạo Tài Khoản
             </Button>
 
             <div className="relative">
@@ -139,17 +139,17 @@ const Auth = () => {
                   d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                 />
               </svg>
-              Sign up with Google
+              Đăng ký với Google
             </Button>
 
             <p className="text-xs text-center text-muted-foreground">
-              By creating an account, you agree to our{" "}
+              Bằng việc tạo tài khoản, bạn đồng ý với{" "}
               <a href="/terms" className="text-primary hover:underline">
-                Terms of Service
+                Điều Khoản Dịch Vụ
               </a>{" "}
-              and{" "}
+              và{" "}
               <a href="/privacy" className="text-primary hover:underline">
-                Privacy Policy
+                Chính Sách Bảo Mật
               </a>
             </p>
           </TabsContent>
@@ -158,7 +158,7 @@ const Auth = () => {
         {emailSent && (
           <Card className="mt-4 p-4 bg-secondary/10 border-secondary">
             <p className="text-sm text-center">
-              📧 Verification email sent! Please check your inbox.
+              📧 Email xác nhận đã được gửi! Vui lòng kiểm tra hộp thư.
             </p>
           </Card>
         )}

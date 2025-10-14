@@ -24,20 +24,20 @@ const Sessions = () => {
 
   return (
     <div className="container py-8">
-      <h1 className="text-3xl font-bold mb-6">My Sessions</h1>
+      <h1 className="text-3xl font-bold mb-6">Buổi Học Của Tôi</h1>
 
       <Tabs defaultValue="upcoming" className="w-full">
         <TabsList>
-          <TabsTrigger value="upcoming">Upcoming ({upcomingSessions.length})</TabsTrigger>
-          <TabsTrigger value="past">Past ({pastSessions.length})</TabsTrigger>
+          <TabsTrigger value="upcoming">Sắp Tới ({upcomingSessions.length})</TabsTrigger>
+          <TabsTrigger value="past">Đã Học ({pastSessions.length})</TabsTrigger>
         </TabsList>
 
         <TabsContent value="upcoming" className="mt-6">
           {upcomingSessions.length === 0 ? (
             <Card className="p-12 text-center">
-              <p className="text-muted-foreground mb-4">No upcoming sessions</p>
+              <p className="text-muted-foreground mb-4">Chưa có buổi học nào sắp tới</p>
               <Link to="/marketplace" className="text-primary hover:underline">
-                Browse the marketplace to find skills
+                Khám phá chợ kỹ năng để tìm giáo viên
               </Link>
             </Card>
           ) : (
@@ -61,14 +61,14 @@ const Sessions = () => {
                         <div className="flex items-center gap-3">
                           <div className="text-3xl">{session.teacher.avatar}</div>
                           <div>
-                            <div className="text-sm text-muted-foreground">Teacher</div>
+                            <div className="text-sm text-muted-foreground">Giáo Viên</div>
                             <div className="font-medium">{session.teacher.name}</div>
                           </div>
                         </div>
                         <div className="flex items-center gap-3">
                           <div className="text-3xl">{session.learner.avatar}</div>
                           <div>
-                            <div className="text-sm text-muted-foreground">Learner</div>
+                            <div className="text-sm text-muted-foreground">Học Viên</div>
                             <div className="font-medium">{session.learner.name}</div>
                           </div>
                         </div>
@@ -103,7 +103,7 @@ const Sessions = () => {
         <TabsContent value="past" className="mt-6">
           {pastSessions.length === 0 ? (
             <Card className="p-12 text-center">
-              <p className="text-muted-foreground">No past sessions yet</p>
+              <p className="text-muted-foreground">Chưa có buổi học nào</p>
             </Card>
           ) : (
             <div className="space-y-4">
@@ -126,14 +126,14 @@ const Sessions = () => {
                         <div className="flex items-center gap-3">
                           <div className="text-3xl">{session.teacher.avatar}</div>
                           <div>
-                            <div className="text-sm text-muted-foreground">Teacher</div>
+                            <div className="text-sm text-muted-foreground">Giáo Viên</div>
                             <div className="font-medium">{session.teacher.name}</div>
                           </div>
                         </div>
                         <div className="flex items-center gap-3">
                           <div className="text-3xl">{session.learner.avatar}</div>
                           <div>
-                            <div className="text-sm text-muted-foreground">Learner</div>
+                            <div className="text-sm text-muted-foreground">Học Viên</div>
                             <div className="font-medium">{session.learner.name}</div>
                           </div>
                         </div>
