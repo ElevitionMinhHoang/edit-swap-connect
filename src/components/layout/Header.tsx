@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { useState } from "react";
+import logo from "@/assets/logo.jpg";
 
 const Header = () => {
   const location = useLocation();
@@ -22,9 +23,11 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center space-x-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold text-lg">
-            S
-          </div>
+          <img
+            src={logo}
+            alt="Skill Swap Connect"
+            className="h-9 w-9 rounded-lg object-cover"
+          />
           <span className="hidden font-bold text-xl sm:inline-block tracking-tight">
             Skill Swap Connect
           </span>

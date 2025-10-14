@@ -26,7 +26,7 @@ export interface UserProfile {
   bio: string;
   offerSkills: Array<{
     skill: string;
-    level: "Basic" | "Intermediate" | "Advanced";
+    level: "Cơ Bản" | "Trung Cấp" | "Nâng Cao";
     mode: "Online" | "Offline" | "Both";
   }>;
   wantSkills: string[];
@@ -44,9 +44,9 @@ export const mockUsers: UserProfile[] = [
     totalSessions: 47,
     bio: "Lập trình viên full-stack đam mê giảng dạy công nghệ web. Yêu thích học ngoại ngữ!",
     offerSkills: [
-      { skill: "JavaScript", level: "Advanced", mode: "Both" },
-      { skill: "React", level: "Advanced", mode: "Online" },
-      { skill: "Python", level: "Intermediate", mode: "Online" },
+      { skill: "JavaScript", level: "Nâng Cao", mode: "Both" },
+      { skill: "React", level: "Nâng Cao", mode: "Online" },
+      { skill: "Python", level: "Trung Cấp", mode: "Online" },
     ],
     wantSkills: ["Spanish", "Guitar", "Photography"],
     availability: "Tối thứ 2-6 từ 19h-21h, Thứ 7",
@@ -61,9 +61,9 @@ export const mockUsers: UserProfile[] = [
     totalSessions: 62,
     bio: "Guitarist chuyên nghiệp với 15 năm kinh nghiệm. Thông thạo tiếng Tây Ban Nha và thích giúp mọi người giao tiếp tốt hơn!",
     offerSkills: [
-      { skill: "Guitar", level: "Advanced", mode: "Both" },
-      { skill: "Spanish", level: "Advanced", mode: "Online" },
-      { skill: "Public Speaking", level: "Intermediate", mode: "Online" },
+      { skill: "Guitar", level: "Nâng Cao", mode: "Both" },
+      { skill: "Spanish", level: "Nâng Cao", mode: "Online" },
+      { skill: "Public Speaking", level: "Trung Cấp", mode: "Online" },
     ],
     wantSkills: ["Video Editing", "Marketing", "Web Design"],
     availability: "Linh hoạt trong tuần",
@@ -78,9 +78,9 @@ export const mockUsers: UserProfile[] = [
     totalSessions: 38,
     bio: "Huấn luyện viên yoga được chứng nhận và chuyên gia sức khỏe. Cũng đam mê phân tích dữ liệu và Excel!",
     offerSkills: [
-      { skill: "Yoga", level: "Advanced", mode: "Both" },
-      { skill: "Excel", level: "Advanced", mode: "Online" },
-      { skill: "Data Analysis", level: "Intermediate", mode: "Online" },
+      { skill: "Yoga", level: "Nâng Cao", mode: "Both" },
+      { skill: "Excel", level: "Nâng Cao", mode: "Online" },
+      { skill: "Data Analysis", level: "Trung Cấp", mode: "Online" },
     ],
     wantSkills: ["Photography", "UI Design", "French"],
     availability: "Sáng sớm và cuối tuần",
@@ -95,9 +95,9 @@ export const mockUsers: UserProfile[] = [
     totalSessions: 29,
     bio: "Nhiếp ảnh gia chuyên nghiệp chuyên chụp chân dung. Người bản ngữ tiếng Trung háo hức chia sẻ!",
     offerSkills: [
-      { skill: "Photography", level: "Advanced", mode: "Both" },
-      { skill: "Chinese", level: "Advanced", mode: "Online" },
-      { skill: "Video Editing", level: "Intermediate", mode: "Online" },
+      { skill: "Photography", level: "Nâng Cao", mode: "Both" },
+      { skill: "Chinese", level: "Nâng Cao", mode: "Online" },
+      { skill: "Video Editing", level: "Trung Cấp", mode: "Online" },
     ],
     wantSkills: ["Python", "SEO", "Piano"],
     availability: "Chiều và tối",
@@ -112,9 +112,9 @@ export const mockUsers: UserProfile[] = [
     totalSessions: 54,
     bio: "Nhà thiết kế UI/UX với 8 năm kinh nghiệm. Yêu nấu ăn và chia sẻ công thức từ khắp nơi trên thế giới!",
     offerSkills: [
-      { skill: "UI Design", level: "Advanced", mode: "Online" },
-      { skill: "Web Design", level: "Advanced", mode: "Online" },
-      { skill: "Cooking", level: "Intermediate", mode: "Offline" },
+      { skill: "UI Design", level: "Nâng Cao", mode: "Online" },
+      { skill: "Web Design", level: "Nâng Cao", mode: "Online" },
+      { skill: "Cooking", level: "Trung Cấp", mode: "Offline" },
     ],
     wantSkills: ["JavaScript", "IELTS", "Personal Training"],
     availability: "Tối thứ 2-6 sau 18h",
@@ -129,9 +129,9 @@ export const mockUsers: UserProfile[] = [
     totalSessions: 41,
     bio: "Chuyên gia tư vấn marketing và bậc thầy Excel. Luôn muốn mở rộng kỹ năng ngoại ngữ!",
     offerSkills: [
-      { skill: "Marketing", level: "Advanced", mode: "Online" },
-      { skill: "Excel", level: "Advanced", mode: "Online" },
-      { skill: "SEO", level: "Intermediate", mode: "Online" },
+      { skill: "Marketing", level: "Nâng Cao", mode: "Online" },
+      { skill: "Excel", level: "Nâng Cao", mode: "Online" },
+      { skill: "SEO", level: "Trung Cấp", mode: "Online" },
     ],
     wantSkills: ["French", "Accounting", "Piano"],
     availability: "Cuối tuần và tối thứ 2",
@@ -197,7 +197,7 @@ export const mockReviews: Review[] = [
   },
 ];
 
-export type SessionStatus = "PENDING" | "CONFIRMED" | "CANCELLED" | "DONE" | "DISPUTED";
+export type SessionStatus = "ĐANG CHỜ" | "ĐÃ XÁC NHẬN" | "ĐÃ HỦY" | "ĐÃ HOÀN THÀNH" | "TRANH CHẤP";
 
 export interface Session {
   id: string;
@@ -222,7 +222,7 @@ export const mockSessions: Session[] = [
     duration: 60,
     mode: "Online",
     location: "Zoom",
-    status: "CONFIRMED",
+    status: "ĐÃ XÁC NHẬN",
     editsAmount: 10,
   },
   {
@@ -234,7 +234,7 @@ export const mockSessions: Session[] = [
     duration: 90,
     mode: "Offline",
     location: "Austin Music Studio",
-    status: "PENDING",
+    status: "ĐANG CHỜ",
     editsAmount: 15,
   },
   {
@@ -246,7 +246,7 @@ export const mockSessions: Session[] = [
     duration: 60,
     mode: "Online",
     location: "Google Meet",
-    status: "DONE",
+    status: "ĐÃ HOÀN THÀNH",
     editsAmount: 10,
   },
 ];

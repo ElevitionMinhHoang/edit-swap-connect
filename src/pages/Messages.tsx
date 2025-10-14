@@ -15,19 +15,19 @@ const Messages = () => {
   const conversations = [
     {
       user: mockUsers[1],
-      lastMessage: "Looking forward to our React session!",
+      lastMessage: "Rất mong chờ buổi học React của chúng ta!",
       unread: 2,
       time: "10m ago",
     },
     {
       user: mockUsers[2],
-      lastMessage: "Thanks for the yoga intro!",
+      lastMessage: "Cảm ơn vì buổi giới thiệu yoga!",
       unread: 0,
       time: "2h ago",
     },
     {
       user: mockUsers[3],
-      lastMessage: "Can we schedule for next week?",
+      lastMessage: "Chúng ta có thể lên lịch cho tuần tới không?",
       unread: 1,
       time: "1d ago",
     },
@@ -42,7 +42,7 @@ const Messages = () => {
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Conversation List */}
         <Card className="lg:col-span-1 p-4 max-h-[600px] overflow-y-auto">
-          <h2 className="font-semibold mb-4">Hội Thoại</h2>
+          <h2 className="font-semibold mb-4">Cuộc Trò Chuyện</h2>
           <div className="space-y-2">
             {conversations.map((conv, idx) => (
               <button
@@ -94,16 +94,16 @@ const Messages = () => {
             <div className="flex justify-start">
               <div className="bg-muted rounded-lg p-3 max-w-[70%]">
                 <p className="text-sm">
-                  Hi! I'd love to learn {currentChat.user.offerSkills[0].skill} from you.
+                  Chào! Tôi rất muốn học {currentChat.user.offerSkills[0].skill} từ bạn.
                 </p>
-                <span className="text-xs text-muted-foreground">Yesterday, 3:24 PM</span>
+                <span className="text-xs text-muted-foreground">Hôm qua, 15:24</span>
               </div>
             </div>
 
             <div className="flex justify-end">
               <div className="bg-primary text-primary-foreground rounded-lg p-3 max-w-[70%]">
-                <p className="text-sm">That sounds great! What's your current level?</p>
-                <span className="text-xs opacity-80">Yesterday, 3:45 PM</span>
+                <p className="text-sm">Nghe tuyệt vời! Trình độ hiện tại của bạn là gì?</p>
+                <span className="text-xs opacity-80">Hôm qua, 15:45</span>
               </div>
             </div>
 
@@ -118,7 +118,7 @@ const Messages = () => {
           <div className="p-4 border-t border-border">
             <div className="flex gap-2">
               <Input
-                placeholder="Nhập tin nhắn..."
+                placeholder="Nhập tin nhắn của bạn..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyDown={(e) => {
@@ -207,7 +207,7 @@ const Messages = () => {
               </Card>
 
               <div className="mt-4">
-                <label className="text-sm font-medium mb-2 block">Ghi Chú (Tùy Chọn)</label>
+                <label className="text-sm font-medium mb-2 block">Ghi Chú (Không Bắt Buộc)</label>
                 <Textarea
                   placeholder="Mục tiêu buổi học, nội dung cần học, v.v..."
                   rows={4}

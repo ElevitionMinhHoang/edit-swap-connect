@@ -115,7 +115,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>&copy; {currentYear} Skill Swap Connect. All rights reserved.</p>
+          <p>&copy; {currentYear} Skill Swap Connect. Mọi quyền được bảo lưu.</p>
         </div>
       </div>
     </footer>

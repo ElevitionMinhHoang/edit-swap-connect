@@ -3,95 +3,95 @@ import { Card } from "@/components/ui/card";
 const Privacy = () => {
   return (
     <div className="container py-8 max-w-4xl">
-      <h1 className="text-4xl font-bold mb-2">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-8">Last updated: October 9, 2025</p>
+      <h1 className="text-4xl font-bold mb-2">Chính Sách Bảo Mật</h1>
+      <p className="text-muted-foreground mb-8">Cập nhật lần cuối: 9 tháng 10, 2025</p>
 
       <Card className="p-8">
         <div className="prose prose-sm max-w-none space-y-6">
           <section>
-            <h2 className="text-2xl font-semibold mb-3">1. Introduction</h2>
+            <h2 className="text-2xl font-semibold mb-3">1. Giới Thiệu</h2>
             <p className="text-muted-foreground">
-              Skill Swap Connect ("SWC", "we", "us", or "our") respects your privacy and is committed to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your information when you use our platform.
+              Skill Swap Connect ("SWC", "chúng tôi") tôn trọng quyền riêng tư của bạn và cam kết bảo vệ dữ liệu cá nhân của bạn. Chính sách bảo mật này giải thích cách chúng tôi thu thập, sử dụng và bảo vệ thông tin của bạn khi bạn sử dụng nền tảng của chúng tôi.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">2. Information We Collect</h2>
-            <p className="text-muted-foreground mb-2">We collect the following types of information:</p>
+            <h2 className="text-2xl font-semibold mb-3">2. Thông Tin Chúng Tôi Thu Thập</h2>
+            <p className="text-muted-foreground mb-2">Chúng tôi thu thập các loại thông tin sau:</p>
             <ul className="list-disc list-inside text-muted-foreground space-y-1">
-              <li>Account information (name, email, location)</li>
-              <li>Profile data (skills, bio, availability)</li>
-              <li>Session records (bookings, completions, reviews)</li>
-              <li>Transaction history (Edits earned, spent, purchased)</li>
-              <li>Communications (messages, dispute reports)</li>
-              <li>Usage data (pages visited, features used)</li>
+              <li>Thông tin tài khoản (tên, email, địa điểm)</li>
+              <li>Dữ liệu hồ sơ (kỹ năng, tiểu sử, thời gian rảnh)</li>
+              <li>Hồ sơ buổi học (đặt lịch, hoàn thành, đánh giá)</li>
+              <li>Lịch sử giao dịch (Edits kiếm được, đã dùng, đã mua)</li>
+              <li>Giao tiếp (tin nhắn, báo cáo tranh chấp)</li>
+              <li>Dữ liệu sử dụng (trang đã truy cập, tính năng đã sử dụng)</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">3. How We Use Your Information</h2>
-            <p className="text-muted-foreground mb-2">We use your information to:</p>
+            <h2 className="text-2xl font-semibold mb-3">3. Cách Chúng Tôi Sử Dụng Thông Tin Của Bạn</h2>
+            <p className="text-muted-foreground mb-2">Chúng tôi sử dụng thông tin của bạn để:</p>
             <ul className="list-disc list-inside text-muted-foreground space-y-1">
-              <li>Provide and maintain our service</li>
-              <li>Match users based on skills and preferences</li>
-              <li>Process and record Edits transactions</li>
-              <li>Facilitate communication between users</li>
-              <li>Improve platform features and user experience</li>
-              <li>Enforce our Terms of Service and Community Guidelines</li>
-              <li>Send important notifications about your account and sessions</li>
+              <li>Cung cấp và duy trì dịch vụ của chúng tôi</li>
+              <li>Ghép đôi người dùng dựa trên kỹ năng và sở thích</li>
+              <li>Xử lý và ghi lại giao dịch Edits</li>
+              <li>Tạo điều kiện giao tiếp giữa người dùng</li>
+              <li>Cải thiện tính năng nền tảng và trải nghiệm người dùng</li>
+              <li>Thực thi Điều Khoản Dịch Vụ và Nguyên Tắc Cộng Đồng</li>
+              <li>Gửi thông báo quan trọng về tài khoản và buổi học của bạn</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">4. Data Sharing</h2>
+            <h2 className="text-2xl font-semibold mb-3">4. Chia Sẻ Dữ Liệu</h2>
             <p className="text-muted-foreground">
-              We do not sell your personal information. We may share your data with:
+              Chúng tôi không bán thông tin cá nhân của bạn. Chúng tôi có thể chia sẻ dữ liệu của bạn với:
             </p>
             <ul className="list-disc list-inside text-muted-foreground space-y-1">
-              <li>Other users (profile information, reviews) to facilitate matching</li>
-              <li>Payment processors for Edits purchases (encrypted)</li>
-              <li>Service providers who assist in operating our platform</li>
-              <li>Law enforcement if required by law</li>
+              <li>Người dùng khác (thông tin hồ sơ, đánh giá) để tạo điều kiện ghép đôi</li>
+              <li>Bộ xử lý thanh toán cho việc mua Edits (được mã hóa)</li>
+              <li>Nhà cung cấp dịch vụ hỗ trợ vận hành nền tảng của chúng tôi</li>
+              <li>Cơ quan thực thi pháp luật nếu được yêu cầu bởi pháp luật</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">5. Data Security</h2>
+            <h2 className="text-2xl font-semibold mb-3">5. Bảo Mật Dữ Liệu</h2>
             <p className="text-muted-foreground">
-              We implement industry-standard security measures to protect your data, including encryption, secure servers, and regular security audits. However, no method of transmission over the internet is 100% secure.
+              Chúng tôi triển khai các biện pháp bảo mật tiêu chuẩn ngành để bảo vệ dữ liệu của bạn, bao gồm mã hóa, máy chủ an toàn và kiểm tra bảo mật định kỳ. Tuy nhiên, không có phương pháp truyền tải nào qua internet là 100% an toàn.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">6. Your Rights</h2>
-            <p className="text-muted-foreground mb-2">You have the right to:</p>
+            <h2 className="text-2xl font-semibold mb-3">6. Quyền Của Bạn</h2>
+            <p className="text-muted-foreground mb-2">Bạn có quyền:</p>
             <ul className="list-disc list-inside text-muted-foreground space-y-1">
-              <li>Access your personal data</li>
-              <li>Correct inaccurate information</li>
-              <li>Delete your account and associated data</li>
-              <li>Export your data</li>
-              <li>Opt out of marketing communications</li>
+              <li>Truy cập dữ liệu cá nhân của bạn</li>
+              <li>Sửa thông tin không chính xác</li>
+              <li>Xóa tài khoản và dữ liệu liên quan</li>
+              <li>Xuất dữ liệu của bạn</li>
+              <li>Từ chối nhận thông tin tiếp thị</li>
             </ul>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold mb-3">7. Cookies</h2>
             <p className="text-muted-foreground">
-              We use cookies and similar technologies to enhance your experience, remember preferences, and analyze usage patterns. You can control cookie settings through your browser.
+              Chúng tôi sử dụng cookie và các công nghệ tương tự để nâng cao trải nghiệm của bạn, ghi nhớ tùy chọn và phân tích mẫu sử dụng. Bạn có thể kiểm soát cài đặt cookie thông qua trình duyệt của mình.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">8. Changes to This Policy</h2>
+            <h2 className="text-2xl font-semibold mb-3">8. Thay Đổi Đối Với Chính Sách Này</h2>
             <p className="text-muted-foreground">
-              We may update this privacy policy from time to time. We will notify you of significant changes via email or through the platform.
+              Chúng tôi có thể cập nhật chính sách bảo mật này theo thời gian. Chúng tôi sẽ thông báo cho bạn về những thay đổi quan trọng qua email hoặc thông qua nền tảng.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">9. Contact Us</h2>
+            <h2 className="text-2xl font-semibold mb-3">9. Liên Hệ Với Chúng Tôi</h2>
             <p className="text-muted-foreground">
-              If you have questions about this privacy policy or our data practices, please contact us at:{" "}
+              Nếu bạn có câu hỏi về chính sách bảo mật này hoặc hoạt động dữ liệu của chúng tôi, vui lòng liên hệ với chúng tôi tại:{" "}
               <a href="mailto:privacy@skillswapconnect.com" className="text-primary hover:underline">
                 privacy@skillswapconnect.com
               </a>

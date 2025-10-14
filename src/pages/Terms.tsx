@@ -3,118 +3,118 @@ import { Card } from "@/components/ui/card";
 const Terms = () => {
   return (
     <div className="container py-8 max-w-4xl">
-      <h1 className="text-4xl font-bold mb-2">Terms of Service</h1>
-      <p className="text-muted-foreground mb-8">Last updated: October 9, 2025</p>
+      <h1 className="text-4xl font-bold mb-2">Điều Khoản Dịch Vụ</h1>
+      <p className="text-muted-foreground mb-8">Cập nhật lần cuối: 9 tháng 10, 2025</p>
 
       <Card className="p-8">
         <div className="prose prose-sm max-w-none space-y-6">
           <section>
-            <h2 className="text-2xl font-semibold mb-3">1. Acceptance of Terms</h2>
+            <h2 className="text-2xl font-semibold mb-3">1. Chấp Nhận Điều Khoản</h2>
             <p className="text-muted-foreground">
-              By accessing and using Skill Swap Connect ("SWC"), you agree to be bound by these Terms of Service. If you do not agree, please do not use our platform.
+              Bằng cách truy cập và sử dụng Skill Swap Connect ("SWC"), bạn đồng ý bị ràng buộc bởi các Điều Khoản Dịch Vụ này. Nếu bạn không đồng ý, vui lòng không sử dụng nền tảng của chúng tôi.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">2. Platform Description</h2>
+            <h2 className="text-2xl font-semibold mb-3">2. Mô Tả Nền Tảng</h2>
             <p className="text-muted-foreground">
-              SWC is a peer-to-peer skill exchange platform using a time-banking system called "Edits." One hour of teaching or learning equals 10 Edits. We facilitate connections but do not employ teachers or guarantee learning outcomes.
+              SWC là một nền tảng trao đổi kỹ năng ngang hàng sử dụng hệ thống ngân hàng thời gian gọi là "Edits." Một giờ dạy hoặc học bằng 10 Edits. Chúng tôi tạo điều kiện kết nối nhưng không thuê giáo viên hoặc đảm bảo kết quả học tập.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">3. User Responsibilities</h2>
-            <p className="text-muted-foreground mb-2">As a user, you agree to:</p>
+            <h2 className="text-2xl font-semibold mb-3">3. Trách Nhiệm Của Người Dùng</h2>
+            <p className="text-muted-foreground mb-2">Là một người dùng, bạn đồng ý:</p>
             <ul className="list-disc list-inside text-muted-foreground space-y-1">
-              <li>Provide accurate profile information</li>
-              <li>Maintain the confidentiality of your account</li>
-              <li>Conduct sessions professionally and respectfully</li>
-              <li>Honor confirmed session bookings</li>
-              <li>Provide honest reviews and feedback</li>
-              <li>Report inappropriate behavior or content</li>
-              <li>Not use the platform for commercial purposes without authorization</li>
+              <li>Cung cấp thông tin hồ sơ chính xác</li>
+              <li>Duy trì tính bảo mật của tài khoản của bạn</li>
+              <li>Thực hiện buổi học một cách chuyên nghiệp và tôn trọng</li>
+              <li>Tôn trọng các đặt lịch buổi học đã xác nhận</li>
+              <li>Cung cấp đánh giá và phản hồi trung thực</li>
+              <li>Báo cáo hành vi hoặc nội dung không phù hợp</li>
+              <li>Không sử dụng nền tảng cho mục đích thương mại mà không được ủy quyền</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">4. Edits System</h2>
-            <p className="text-muted-foreground mb-2">The Edits currency works as follows:</p>
+            <h2 className="text-2xl font-semibold mb-3">4. Hệ Thống Edits</h2>
+            <p className="text-muted-foreground mb-2">Tiền tệ Edits hoạt động như sau:</p>
             <ul className="list-disc list-inside text-muted-foreground space-y-1">
-              <li>1 hour of teaching = 10 Edits earned</li>
-              <li>1 hour of learning = 10 Edits spent</li>
-              <li>Edits are automatically ledgered upon session completion</li>
-              <li>Optional Edits packs available for purchase (20/50/100)</li>
-              <li>Edits have no cash value and cannot be redeemed for money</li>
-              <li>Unused Edits do not expire but may be forfeited upon account closure</li>
+              <li>1 giờ dạy = 10 Edits kiếm được</li>
+              <li>1 giờ học = 10 Edits đã dùng</li>
+              <li>Edits được tự động ghi sổ khi buổi học hoàn thành</li>
+              <li>Có gói Edits tùy chọn để mua (20/50/100)</li>
+              <li>Edits không có giá trị tiền mặt và không thể đổi thành tiền</li>
+              <li>Edits chưa sử dụng không hết hạn nhưng có thể bị mất khi đóng tài khoản</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">5. Cancellation Policy</h2>
+            <h2 className="text-2xl font-semibold mb-3">5. Chính Sách Hủy</h2>
             <p className="text-muted-foreground">
-              Sessions may be canceled by either party with notice. Cancellations made less than 2 hours before the scheduled start time will trigger a warning. Repeated late cancellations may result in account restrictions or suspension.
+              Buổi học có thể bị hủy bởi bất kỳ bên nào với thông báo. Việc hủy ít hơn 2 giờ trước thời gian bắt đầu theo lịch sẽ kích hoạt cảnh báo. Việc hủy muộn lặp lại có thể dẫn đến hạn chế hoặc đình chỉ tài khoản.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">6. Reviews and Ratings</h2>
+            <h2 className="text-2xl font-semibold mb-3">6. Đánh Giá và Xếp Hạng</h2>
             <p className="text-muted-foreground">
-              Both teachers and learners must review each session. Ratings of 3 stars or below require a comment of at least 20 characters. Reviews must be honest and constructive. Abuse of the review system may result in account action.
+              Cả giáo viên và người học phải đánh giá mỗi buổi học. Xếp hạng 3 sao trở xuống yêu cầu bình luận ít nhất 20 ký tự. Đánh giá phải trung thực và mang tính xây dựng. Lạm dụng hệ thống đánh giá có thể dẫn đến hành động đối với tài khoản.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">7. Disputes</h2>
+            <h2 className="text-2xl font-semibold mb-3">7. Tranh Chấp</h2>
             <p className="text-muted-foreground">
-              If there is a dispute regarding a session (no-show, quality issues, etc.), users may file a dispute report. Our admin team will review the case and may refund Edits, issue warnings, or take other corrective action.
+              Nếu có tranh chấp về một buổi học (không xuất hiện, vấn đề chất lượng, v.v.), người dùng có thể nộp báo cáo tranh chấp. Đội ngũ quản trị của chúng tôi sẽ xem xét trường hợp và có thể hoàn lại Edits, đưa ra cảnh báo hoặc thực hiện hành động khắc phục khác.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">8. Prohibited Conduct</h2>
-            <p className="text-muted-foreground mb-2">The following behaviors are prohibited:</p>
+            <h2 className="text-2xl font-semibold mb-3">8. Hành Vi Bị Cấm</h2>
+            <p className="text-muted-foreground mb-2">Các hành vi sau bị cấm:</p>
             <ul className="list-disc list-inside text-muted-foreground space-y-1">
-              <li>Harassment, discrimination, or abusive language</li>
-              <li>Sharing false or misleading information</li>
-              <li>Creating multiple accounts to manipulate the system</li>
-              <li>Attempting to bypass the Edits system for direct payment</li>
-              <li>Spamming or soliciting users for external services</li>
-              <li>Violating intellectual property rights</li>
+              <li>Quấy rối, phân biệt đối xử hoặc ngôn ngữ lạm dụng</li>
+              <li>Chia sẻ thông tin sai lệch hoặc gây hiểu lầm</li>
+              <li>Tạo nhiều tài khoản để thao túng hệ thống</li>
+              <li>Cố gắng bỏ qua hệ thống Edits để thanh toán trực tiếp</li>
+              <li>Spam hoặc mời chào người dùng cho dịch vụ bên ngoài</li>
+              <li>Vi phạm quyền sở hữu trí tuệ</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">9. Account Suspension or Termination</h2>
+            <h2 className="text-2xl font-semibold mb-3">9. Đình Chỉ Hoặc Chấm Dứt Tài Khoản</h2>
             <p className="text-muted-foreground">
-              We reserve the right to suspend or terminate accounts that violate these Terms, engage in prohibited conduct, or pose a risk to the community. Refunds for purchased Edits are at our discretion.
+              Chúng tôi bảo lưu quyền đình chỉ hoặc chấm dứt các tài khoản vi phạm các Điều Khoản này, tham gia vào hành vi bị cấm hoặc gây rủi ro cho cộng đồng. Việc hoàn tiền cho Edits đã mua là theo quyết định của chúng tôi.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">10. Limitation of Liability</h2>
+            <h2 className="text-2xl font-semibold mb-3">10. Giới Hạn Trách Nhiệm</h2>
             <p className="text-muted-foreground">
-              SWC is a platform facilitator and is not responsible for the quality, safety, or legality of sessions. We are not liable for any direct, indirect, incidental, or consequential damages arising from platform use. Maximum liability is limited to the amount paid by the user in the past 12 months.
+              SWC là một nền tảng tạo điều kiện và không chịu trách nhiệm về chất lượng, an toàn hoặc tính hợp pháp của các buổi học. Chúng tôi không chịu trách nhiệm về bất kỳ thiệt hại trực tiếp, gián tiếp, ngẫu nhiên hoặc hậu quả nào phát sinh từ việc sử dụng nền tảng. Trách nhiệm tối đa được giới hạn ở số tiền người dùng đã trả trong 12 tháng qua.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">11. Changes to Terms</h2>
+            <h2 className="text-2xl font-semibold mb-3">11. Thay Đổi Đối Với Điều Khoản</h2>
             <p className="text-muted-foreground">
-              We may modify these Terms from time to time. Significant changes will be communicated via email or platform notification. Continued use of the platform after changes constitutes acceptance.
+              Chúng tôi có thể sửa đổi các Điều Khoản này theo thời gian. Những thay đổi quan trọng sẽ được thông báo qua email hoặc thông báo nền tảng. Việc tiếp tục sử dụng nền tảng sau khi thay đổi đồng nghĩa với việc chấp nhận.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">12. Governing Law</h2>
+            <h2 className="text-2xl font-semibold mb-3">12. Luật Điều Chỉnh</h2>
             <p className="text-muted-foreground">
-              These Terms are governed by the laws of [Your Jurisdiction]. Any disputes will be resolved through binding arbitration in [Your Jurisdiction].
+              Các Điều Khoản này được điều chỉnh bởi luật pháp của [Khu vực pháp lý của bạn]. Bất kỳ tranh chấp nào sẽ được giải quyết thông qua trọng tài ràng buộc tại [Khu vực pháp lý của bạn].
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">13. Contact</h2>
+            <h2 className="text-2xl font-semibold mb-3">13. Liên Hệ</h2>
             <p className="text-muted-foreground">
-              For questions about these Terms, contact us at:{" "}
+              Đối với câu hỏi về các Điều Khoản này, hãy liên hệ với chúng tôi tại:{" "}
               <a href="mailto:legal@skillswapconnect.com" className="text-primary hover:underline">
                 legal@skillswapconnect.com
               </a>

@@ -72,13 +72,13 @@ const Wallet = () => {
                   <div>
                     <div className="font-medium">{transaction.description}</div>
                     <div className="text-sm text-muted-foreground">
-                      {transactionDate.toLocaleDateString("en-US", {
-                        month: "short",
+                      {transactionDate.toLocaleDateString("vi-VN", {
                         day: "numeric",
+                        month: "numeric",
                         year: "numeric",
                       })}{" "}
-                      at{" "}
-                      {transactionDate.toLocaleTimeString("en-US", {
+                      lúc{" "}
+                      {transactionDate.toLocaleTimeString("vi-VN", {
                         hour: "2-digit",
                         minute: "2-digit",
                       })}

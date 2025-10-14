@@ -19,22 +19,22 @@ const HowItWorks = () => {
     <div className="container py-8 max-w-6xl">
       {/* Hero */}
       <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">How Skill Swap Connect Works</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">Cách Skill Swap Connect Hoạt Động</h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Learn the ins and outs of our time-banking skill exchange platform
+          Tìm hiểu chi tiết về nền tảng trao đổi kỹ năng ngân hàng thời gian của chúng tôi
         </p>
       </div>
 
       {/* Core Flow */}
       <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-center">The Learning Journey</h2>
+        <h2 className="text-3xl font-bold mb-8 text-center">Hành Trình Học Tập</h2>
         <div className="grid md:grid-cols-5 gap-4">
           {[
-            { icon: Users, title: "Create Profile", desc: "List Offer/Want skills" },
-            { icon: Search, title: "Search & Match", desc: "Find perfect teachers" },
-            { icon: MessageCircle, title: "Chat & Align", desc: "Discuss session goals" },
-            { icon: Calendar, title: "Book Session", desc: "Confirm time & place" },
-            { icon: CheckCircle, title: "Complete & Review", desc: "Auto-ledger Edits" },
+            { icon: Users, title: "Tạo Hồ Sơ", desc: "Liệt kê kỹ năng Có thể dạy/Muốn học" },
+            { icon: Search, title: "Tìm Kiếm & Ghép Đôi", desc: "Tìm giáo viên phù hợp" },
+            { icon: MessageCircle, title: "Trò Chuyện & Thống Nhất", desc: "Thảo luận mục tiêu buổi học" },
+            { icon: Calendar, title: "Đặt Lịch", desc: "Xác nhận thời gian & địa điểm" },
+            { icon: CheckCircle, title: "Hoàn Thành & Đánh Giá", desc: "Tự động tính Edits" },
           ].map((step, idx) => (
             <div key={idx} className="text-center">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 mx-auto mb-3">
@@ -53,30 +53,30 @@ const HowItWorks = () => {
           <div className="flex items-start gap-4">
             <Coins className="h-12 w-12 text-primary flex-shrink-0" />
             <div>
-              <h2 className="text-2xl font-bold mb-3">Understanding Time-Banking</h2>
+              <h2 className="text-2xl font-bold mb-3">Hiểu Về Ngân Hàng Thời Gian</h2>
               <p className="text-muted-foreground mb-4">
-                SWC uses a <strong>time-banking system</strong> where every hour of teaching or learning is valued equally:
+                SWC sử dụng <strong>hệ thống ngân hàng thời gian</strong> nơi mỗi giờ dạy hoặc học đều được định giá như nhau:
               </p>
               <div className="bg-background rounded-lg p-4 mb-4">
                 <div className="text-center text-2xl font-bold text-primary mb-2">
                   1 Hour = 10 Edits
                 </div>
                 <p className="text-sm text-center text-muted-foreground">
-                  Whether you're teaching guitar, coding, or yoga—your time is worth 10 Edits per hour
+                  Dù bạn dạy guitar, lập trình hay yoga—thời gian của bạn đều có giá trị 10 Edits mỗi giờ
                 </p>
               </div>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
-                  <span>All skills valued equally—no hierarchy, just fair exchange</span>
+                  <span>Tất cả kỹ năng đều được định giá như nhau—không phân cấp, chỉ có trao đổi công bằng</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
-                  <span>Teach to earn Edits, spend Edits to learn—balanced ecosystem</span>
+                  <span>Dạy để kiếm Edits, dùng Edits để học—hệ sinh thái cân bằng</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
-                  <span>Optional Edits packs available (20/50/100) if you want a head start</span>
+                  <span>Có gói Edits tùy chọn (20/50/100) nếu bạn muốn bắt đầu nhanh</span>
                 </li>
               </ul>
             </div>
@@ -86,31 +86,31 @@ const HowItWorks = () => {
 
       {/* Session Types */}
       <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-8">Session Formats</h2>
+        <h2 className="text-3xl font-bold mb-8">Hình Thức Buổi Học</h2>
         <div className="grid md:grid-cols-2 gap-6">
           <Card className="p-6">
             <div className="text-4xl mb-3">👤↔️👤</div>
-            <h3 className="text-xl font-semibold mb-2">1-on-1 Sessions</h3>
+            <h3 className="text-xl font-semibold mb-2">Buổi Học 1-1</h3>
             <p className="text-muted-foreground mb-4">
-              Most common format. Direct connection between teacher and learner. Personalized attention and flexible scheduling.
+              Hình thức phổ biến nhất. Kết nối trực tiếp giữa giáo viên và người học. Sự quan tâm cá nhân hóa và lịch trình linh hoạt.
             </p>
             <ul className="text-sm space-y-1 text-muted-foreground">
-              <li>• Ideal for personalized learning</li>
-              <li>• Easy to align schedules</li>
-              <li>• 10 Edits per hour standard</li>
+              <li>• Lý tưởng cho việc học cá nhân hóa</li>
+              <li>• Dễ dàng sắp xếp lịch trình</li>
+              <li>• Tiêu chuẩn 10 Edits mỗi giờ</li>
             </ul>
           </Card>
 
           <Card className="p-6">
             <div className="text-4xl mb-3">👤➡️👥</div>
-            <h3 className="text-xl font-semibold mb-2">1-to-Many (Coming Soon)</h3>
+            <h3 className="text-xl font-semibold mb-2">1-Nhiều (Sắp Ra Mắt)</h3>
             <p className="text-muted-foreground mb-4">
-              Group sessions where one teacher works with multiple learners. Great for workshops and interactive classes.
+              Buổi học nhóm nơi một giáo viên làm việc với nhiều người học. Tuyệt vời cho workshop và lớp học tương tác.
             </p>
             <ul className="text-sm space-y-1 text-muted-foreground">
-              <li>• Share the learning experience</li>
-              <li>• Cost-effective Edits split</li>
-              <li>• Community building</li>
+              <li>• Chia sẻ trải nghiệm học tập</li>
+              <li>• Chia sẻ Edits hiệu quả về chi phí</li>
+              <li>• Xây dựng cộng đồng</li>
             </ul>
           </Card>
         </div>
@@ -118,21 +118,21 @@ const HowItWorks = () => {
 
       {/* Trust & Safety */}
       <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-8">Trust & Safety</h2>
+        <h2 className="text-3xl font-bold mb-8">Tin Cậy & An Toàn</h2>
         <div className="grid md:grid-cols-3 gap-6">
           <Card className="p-6 text-center">
             <Star className="h-10 w-10 mx-auto text-warning mb-3" />
-            <h3 className="font-semibold mb-2">Peer Reviews</h3>
+            <h3 className="font-semibold mb-2">Đánh Giá Đồng Cấp</h3>
             <p className="text-sm text-muted-foreground">
-              Rate every session (1–5 stars). Comments required for ≤3 ratings (min 20 chars) to maintain standards.
+              Đánh giá mỗi buổi học (1–5 sao). Bình luận bắt buộc cho đánh giá ≤3 sao (tối thiểu 20 ký tự) để duy trì tiêu chuẩn.
             </p>
           </Card>
 
           <Card className="p-6 text-center">
             <Shield className="h-10 w-10 mx-auto text-primary mb-3" />
-            <h3 className="font-semibold mb-2">Community Guidelines</h3>
+            <h3 className="font-semibold mb-2">Nguyên Tắc Cộng Đồng</h3>
             <p className="text-sm text-muted-foreground">
-              Clear code of conduct. Report abuse instantly. Admin team reviews disputes fairly and quickly.
+              Quy tắc ứng xử rõ ràng. Báo cáo lạm dụng ngay lập tức. Đội ngũ quản trị xem xét tranh chấp công bằng và nhanh chóng.
             </p>
           </Card>
 
@@ -148,28 +148,28 @@ const HowItWorks = () => {
 
       {/* FAQs */}
       <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-8">Frequently Asked Questions</h2>
+        <h2 className="text-3xl font-bold mb-8">Câu Hỏi Thường Gặp</h2>
         <div className="space-y-4">
           {[
             {
-              q: "Do I need to buy Edits to start?",
-              a: "No! You can start teaching immediately to earn Edits. Optional Edits packs (20/50/100) are available if you want to learn first.",
+              q: "Tôi có cần mua Edits để bắt đầu không?",
+              a: "Không! Bạn có thể bắt đầu dạy ngay để kiếm Edits. Có gói Edits tùy chọn (20/50/100) nếu bạn muốn học trước.",
             },
             {
-              q: "What happens if my teacher or learner doesn't show up?",
-              a: "Both parties must confirm completion. If there's a no-show, you can file a dispute and our admin team will investigate and refund Edits if needed.",
+              q: "Điều gì xảy ra nếu giáo viên hoặc người học của tôi không xuất hiện?",
+              a: "Cả hai bên phải xác nhận hoàn thành. Nếu có người không xuất hiện, bạn có thể khiếu nại và đội ngũ quản trị sẽ điều tra và hoàn lại Edits nếu cần.",
             },
             {
-              q: "Can I teach multiple skills?",
-              a: "Absolutely! List as many Offer and Want skills as you like. The more you offer, the more likely you'll find matches.",
+              q: "Tôi có thể dạy nhiều kỹ năng không?",
+              a: "Chắc chắn rồi! Liệt kê bao nhiêu kỹ năng Có thể dạy và Muốn học tùy thích. Bạn càng cung cấp nhiều, càng dễ tìm được người phù hợp.",
             },
             {
-              q: "Are there any subscription fees?",
-              a: "Core platform is free. You only spend Edits when you book sessions as a learner. Optional Edits packs are available for purchase.",
+              q: "Có phí đăng ký nào không?",
+              a: "Nền tảng cốt lõi miễn phí. Bạn chỉ chi tiêu Edits khi đặt buổi học với tư cách người học. Có gói Edits tùy chọn để mua.",
             },
             {
-              q: "How do reviews work?",
-              a: "After each session, both teacher and learner leave a 1–5 star rating. If you rate ≤3 stars, you must provide a comment (minimum 20 characters) to help maintain quality.",
+              q: "Đánh giá hoạt động như thế nào?",
+              a: "Sau mỗi buổi học, cả giáo viên và người học để lại đánh giá 1–5 sao. Nếu bạn đánh giá ≤3 sao, bạn phải cung cấp bình luận (tối thiểu 20 ký tự) để giúp duy trì chất lượng.",
             },
           ].map((faq, idx) => (
             <Card key={idx} className="p-6">
@@ -182,13 +182,13 @@ const HowItWorks = () => {
 
       {/* CTA */}
       <Card className="p-8 text-center bg-primary/5 border-primary/20">
-        <h2 className="text-2xl font-bold mb-4">Ready to Start Learning?</h2>
+        <h2 className="text-2xl font-bold mb-4">Sẵn Sàng Bắt Đầu Học?</h2>
         <p className="text-muted-foreground mb-6">
-          Join our community of skill sharers today
+          Tham gia cộng đồng chia sẻ kỹ năng của chúng tôi ngay hôm nay
         </p>
         <Link to="/marketplace">
           <Button variant="hero" size="lg">
-            Explore the Marketplace
+            Khám Phá Chợ Kỹ Năng
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </Link>

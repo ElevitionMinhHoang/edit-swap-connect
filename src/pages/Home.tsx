@@ -22,10 +22,14 @@ const Home = () => {
         <div className="container relative py-20 md:py-32">
           <div className="mx-auto max-w-3xl text-center animate-fade-in-up">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Trao Đổi Thời Gian. Nâng Tầm Kỹ Năng.
+            <h1 class="text-5xl font-bold leading-tight sm:text-6xl sm:leading-snug text-center">
+               CHUNG TAY TRAO ĐỔI LẤP ĐẦY KỸ NĂNG
+            </h1>
+
+
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Học những gì bạn muốn. Dạy những gì bạn giỏi. Trả bằng Edits thay vì tiền mặt.
+              Biến kỹ năng thành tài sản. Dùng thời gian đầu tư cho tri thức. Cùng kiến tạo một vòng tròn cho và nhận không ngừng
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/marketplace">
@@ -70,7 +74,7 @@ const Home = () => {
             {
               step: "3",
               title: "Học Xong & Đánh Giá",
-              description: "Hoàn thành buổi học. Hệ thống tự động tính Edits (10 Edits/giờ). Nhận xét đánh giá nhau.",
+              description: "Hoàn thành buổi học, hệ thống tính Edits và đánh giá.",
               icon: CheckCircle,
             },
           ].map((item) => (
@@ -91,8 +95,7 @@ const Home = () => {
             <div>
               <h4 className="font-semibold mb-2">Ngân Hàng Thời Gian - Công Bằng Cho Mọi Người</h4>
               <p className="text-sm text-muted-foreground">
-                <strong>1 giờ = 10 Edits</strong> áp dụng cho tất cả. Dù bạn dạy guitar hay lập trình,
-                thời gian của bạn đều được định giá như nhau. Tạo nên cộng đồng bình đẳng, nơi mọi kỹ năng đều có giá trị.
+                <strong>1 giờ = 10 Edits</strong> Tại Skill Swap Connect , chúng tôi tin rằng thời gian của mỗi người đều quý giá như nhau. Mỗi giờ bạn dành để chia sẻ kỹ năng đều được ghi nhận công bằng, bất kể đó là kỹ năng gì.
               </p>
             </div>
           </div>
