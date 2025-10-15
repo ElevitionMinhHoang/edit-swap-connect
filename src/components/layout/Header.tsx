@@ -20,8 +20,8 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md shadow-md transition-all duration-300 ease-in-out">
+      <div className="container flex h-16 items-center justify-between py-3">
         <div className="flex items-center space-x-2">
           <Link
             to="/"
@@ -44,25 +44,25 @@ const Header = () => {
               alt="Skill Swap Connect"
               className="h-9 w-9 rounded-lg object-cover"
             />
-            <span className="hidden font-bold text-xl sm:inline-block tracking-tight">
+            <span className="hidden font-bold text-xl sm:inline-block tracking-tight hover:text-blue-600 transition-colors duration-300">
               Skill Swap Connect
             </span>
-            <span className="font-bold text-xl sm:hidden tracking-tight">
+            <span className="font-bold text-xl sm:hidden tracking-tight hover:text-blue-600 transition-colors duration-300">
               SWC
             </span>
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-1">
+        <nav className="hidden md:flex items-center gap-x-6">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+              className={`px-3 py-1 text-sm font-medium rounded-lg transition-all duration-300 ease-in-out ${
                 isActive(link.path)
-                  ? "bg-muted text-foreground"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  ? "bg-blue-100 text-blue-600"
+                  : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
               }`}
             >
               {link.label}
@@ -77,7 +77,7 @@ const Header = () => {
             </Button>
           </Link>
           <Link to="/auth">
-            <Button size="sm">Đăng Nhập</Button>
+            <Button size="sm" className="hover:shadow-md hover:brightness-110 transition-all duration-300 ease-in-out">Đăng Nhập</Button>
           </Link>
 
           {/* Mobile Menu Button */}
@@ -101,10 +101,10 @@ const Header = () => {
                 key={link.path}
                 to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                className={`block px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ease-in-out ${
                   isActive(link.path)
-                    ? "bg-muted text-foreground"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    ? "bg-blue-100 text-blue-600"
+                    : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
                 }`}
               >
                 {link.label}
@@ -113,7 +113,7 @@ const Header = () => {
             <Link
               to="/profile/u1"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground rounded-md transition-colors"
+              className="block px-4 py-2 text-sm font-medium text-gray-600 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all duration-300 ease-in-out"
             >
               Hồ Sơ
             </Link>

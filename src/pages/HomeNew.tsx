@@ -21,7 +21,7 @@ const HomeNew = () => {
         />
         <div className="container relative py-20 md:py-32">
           <div className="mx-auto max-w-3xl text-center animate-fade-in-up">
-           <h1 class="text-5xl font-bold leading-tight sm:text-4xl sm:leading-snug text-center">
+           <h1 className="text-5xl font-bold leading-tight sm:text-4xl sm:leading-snug text-center">
   CHUNG TAY TRAO ĐỔI LẤP ĐẦY KỸ NĂNG
 </h1>
 
@@ -61,26 +61,26 @@ const HomeNew = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-center">
             {[
               {
                 step: "1",
-                title: "Tạo Hồ Sơ",
-                description: "Liệt kê kỹ năng bạn có thể dạy và muốn học. Thêm khung giờ rảnh của bạn.",
+                title: "Mục tiêu",
+                description: "Xây dựng một cộng đồng học tập ngang hàng, nơi mọi người có thể sử dụng chính kỹ năng và thời gian của mình làm phương tiện trao đổi để học hỏi lẫn nhau.",
                 icon: Users,
                 delay: "0ms",
               },
               {
                 step: "2",
-                title: "Tìm Người Phù Hợp & Đặt Lịch",
-                description: "Tìm kiếm theo từ khóa, cấp độ hoặc địa điểm. Nhắn tin trao đổi và hẹn giờ học.",
+                title: "Giá trị cốt lõi",
+                description: "Skill Swap Connect được xây dựng dựa trên 3 hệ giá trị cốt lõi chính là Chia sẻ - Kết nối - Vươn xa.",
                 icon: Clock,
                 delay: "100ms",
               },
               {
                 step: "3",
-                title: "Học Xong & Đánh Giá",
-                description: "Hoàn thành buổi học, hệ thống tính Edits và đánh giá.",
+                title: "Tầm nhìn",
+                description: "Skill Swap Connect là 1 trong những đơn vị tiên phong tại Việt Nam xây dựng mô hình trao đổi kỹ năng mà không bị giới hạn bởi rào cản tài chính.",
                 icon: CheckCircle,
                 delay: "200ms",
               },
@@ -107,7 +107,7 @@ const HomeNew = () => {
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-base md:text-lg">
+                <p className="text-gray-600 leading-relaxed text-base md:text-lg text-left">
                   {item.description}
                 </p>
               </Card>

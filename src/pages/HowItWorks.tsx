@@ -20,9 +20,6 @@ const HowItWorks = () => {
       {/* Hero */}
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Cách Skill Swap Connect Hoạt Động</h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Tìm hiểu chi tiết về nền tảng trao đổi kỹ năng ngân hàng thời gian của chúng tôi
-        </p>
       </div>
 
       {/* Core Flow */}
@@ -62,17 +59,17 @@ const HowItWorks = () => {
                   1 Hour = 10 Edits
                 </div>
                 <p className="text-sm text-center text-muted-foreground">
-                  Dù bạn dạy guitar, lập trình hay yoga—thời gian của bạn đều có giá trị 10 Edits mỗi giờ
+                  Dù bạn dạy guitar, lập trình hay yoga thì thời gian của bạn đều có giá trị 10 Edits mỗi giờ
                 </p>
               </div>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
-                  <span>Tất cả kỹ năng đều được định giá như nhau—không phân cấp, chỉ có trao đổi công bằng</span>
+                  <span>Tất cả kỹ năng đều được định giá như nhau-không phân cấp, chỉ có trao đổi công bằng</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
-                  <span>Dạy để kiếm Edits, dùng Edits để học—hệ sinh thái cân bằng</span>
+                  <span>Dạy để kiếm Edits, dùng Edits để học-hệ sinh thái cân bằng</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
