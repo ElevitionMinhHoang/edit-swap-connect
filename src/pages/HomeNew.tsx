@@ -108,11 +108,8 @@ const HomeNew = () => {
         <div className="container relative">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
-              SWC Hoạt Động Ra Sao?
+              Giới thiệu chung về Skill Swap Connect
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Chỉ 3 bước đơn giản để bắt đầu học và dạy
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-center">
