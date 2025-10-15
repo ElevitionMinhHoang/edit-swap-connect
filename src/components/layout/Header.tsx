@@ -17,6 +17,7 @@ const Header = () => {
     { label: "Buổi Học", path: "/sessions" },
     { label: "Ví", path: "/wallet" },
     { label: "Tin Nhắn", path: "/messages" },
+    { label: "Liên Hệ", path: "/contact" },
   ];
 
   const isActive = (path: string) => location.pathname === path;

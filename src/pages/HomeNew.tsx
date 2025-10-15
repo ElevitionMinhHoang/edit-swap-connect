@@ -5,6 +5,60 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight, CheckCircle, Users, Clock, Shield, Star } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 import { skillCategories, mockUsers, mockReviews } from "@/lib/mockData";
+import { useState, useEffect, useRef } from "react";
+
+// Custom animated counter component
+const AnimatedCounter = ({ end, suffix = "", duration = 2000 }) => {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          let start = 0;
+          const increment = end / (duration / 16);
+          
+          const timer = setInterval(() => {
+            start += increment;
+            if (start >= end) {
+              setCount(end);
+              clearInterval(timer);
+            } else {
+              setCount(Math.floor(start));
+            }
+          }, 16);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [end, duration, hasAnimated]);
+
+  return (
+    <div ref={ref} className="text-center">
+      <div className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 leading-tight">
+        {count.toLocaleString()}
+        {suffix && (
+          <span className={`text-orange-500 ${suffix === "%" ? "align-baseline" : "align-super"} text-4xl md:text-5xl lg:text-6xl`}>
+            {suffix}
+          </span>
+        )}
+      </div>
+    </div>
+  );
+};
 
 const HomeNew = () => {
   return (
@@ -127,6 +181,68 @@ const HomeNew = () => {
                 </div>
               </div>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Community Achievements */}
+      <section className="py-20 md:py-28 bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-700">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+              Thành Tựu Cộng Đồng Skill Swap Connect
+            </h2>
+            <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
+              Cùng nhìn lại hành trình phát triển và những con số ấn tượng của chúng tôi
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {[
+              {
+                value: 5000,
+                suffix: "+",
+                label: "Thành viên tích cực",
+                description: "Người dùng đang trao đổi kỹ năng mỗi ngày"
+              },
+              {
+                value: 1200,
+                suffix: "+",
+                label: "Phiên trao đổi kỹ năng",
+                description: "Buổi học đã được thực hiện thành công"
+              },
+              {
+                value: 98,
+                suffix: "%",
+                label: "Mức độ hài lòng",
+                description: "Người dùng hài lòng với trải nghiệm"
+              },
+              {
+                value: 30,
+                suffix: "+",
+                label: "Đối tác & cộng đồng",
+                description: "Tổ chức hợp tác cùng phát triển"
+              }
+            ].map((stat, index) => (
+              <div
+                key={index}
+                className="group flex flex-col items-center justify-center p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:scale-105 hover:brightness-110 transition-all duration-500 cursor-pointer min-h-[200px]"
+              >
+                <div className="flex flex-col items-center justify-center flex-1">
+                  <AnimatedCounter
+                    end={stat.value}
+                    suffix={stat.suffix}
+                    duration={2000}
+                  />
+                  <h3 className="text-lg md:text-xl font-bold text-white mt-4 mb-2 text-center">
+                    {stat.label}
+                  </h3>
+                  <p className="text-gray-200 text-center text-sm leading-relaxed">
+                    {stat.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
