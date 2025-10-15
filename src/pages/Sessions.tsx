@@ -8,19 +8,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const Sessions = () => {
   const getStatusVariant = (status: SessionStatus) => {
     const variants: Record<SessionStatus, "pending" | "confirmed" | "completed" | "cancelled" | "disputed"> = {
-      PENDING: "pending",
-      CONFIRMED: "confirmed",
-      DONE: "completed",
-      CANCELLED: "cancelled",
-      DISPUTED: "disputed",
+      "ĐANG CHỜ": "pending",
+      "ĐÃ XÁC NHẬN": "confirmed",
+      "ĐÃ HOÀN THÀNH": "completed",
+      "ĐÃ HỦY": "cancelled",
+      "TRANH CHẤP": "disputed",
     };
     return variants[status];
   };
 
   const upcomingSessions = mockSessions.filter(
-    (s) => s.status === "CONFIRMED" || s.status === "PENDING"
+    (s) => s.status === "ĐÃ XÁC NHẬN" || s.status === "ĐANG CHỜ"
   );
-  const pastSessions = mockSessions.filter((s) => s.status === "DONE");
+  const pastSessions = mockSessions.filter((s) => s.status === "ĐÃ HOÀN THÀNH");
 
   return (
     <div className="container py-8">

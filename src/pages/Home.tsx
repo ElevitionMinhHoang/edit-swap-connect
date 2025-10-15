@@ -7,6 +7,7 @@ import heroImage from "@/assets/hero-bg.jpg";
 import { skillCategories, mockReviews } from "@/lib/mockData";
 import AnimatedBackground from "@/components/layout/AnimatedBackground";
 import ScrollReveal from "@/components/layout/ScrollReveal";
+import StatCounter from "@/components/home/StatsCounter";
 
 const Home = () => {
   return (
@@ -165,6 +166,36 @@ const Home = () => {
                 </Card>
               </ScrollReveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Community Stats Section */}
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        {/* Gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-700" />
+        
+        {/* Animated blob shapes */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        
+        <div className="container relative z-10">
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+                Thành Tựu Cộng Đồng Skill Swap Connect
+              </h2>
+              <p className="text-xl text-blue-200 max-w-2xl mx-auto">
+                Cộng đồng đang phát triển mạnh mẽ với hàng nghìn thành viên tích cực
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <StatCounter end={5000} suffix="+" label="Thành viên tích cực" />
+            <StatCounter end={1200} suffix="+" label="Phiên trao đổi kỹ năng" />
+            <StatCounter end={98} suffix="%" label="Mức độ hài lòng" />
+            <StatCounter end={30} suffix="+" label="Đối tác học tập" />
           </div>
         </div>
       </section>

@@ -12,7 +12,7 @@ const SessionDetail = () => {
   const session = mockSessions.find((s) => s.id === id) || mockSessions[0];
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState("");
-  const [showReview, setShowReview] = useState(session.status === "DONE");
+  const [showReview, setShowReview] = useState(session.status === "ĐÃ HOÀN THÀNH");
 
   const getStatusVariant = (status: string) => {
     const variants: Record<string, "pending" | "confirmed" | "completed" | "cancelled" | "disputed"> = {
@@ -96,21 +96,21 @@ const SessionDetail = () => {
 
         {/* Actions */}
         <div className="mt-6 pt-6 border-t border-border">
-          {session.status === "PENDING" && (
+          {session.status === "ĐANG CHỜ" && (
             <div className="flex gap-2">
               <Button className="flex-1">Chấp Nhận</Button>
               <Button variant="outline" className="flex-1">Từ Chối</Button>
             </div>
           )}
 
-          {session.status === "CONFIRMED" && (
+          {session.status === "ĐÃ XÁC NHẬN" && (
             <div className="flex gap-2">
               <Button className="flex-1">Check In (Trước 15 phút)</Button>
               <Button variant="outline" className="flex-1">Hủy Buổi Học</Button>
             </div>
           )}
 
-          {session.status === "DONE" && !showReview && (
+          {session.status === "ĐÃ HOÀN THÀNH" && !showReview && (
             <Button className="w-full" onClick={() => setShowReview(true)}>
               Đánh Dấu Hoàn Thành & Đánh Giá
             </Button>
@@ -119,7 +119,7 @@ const SessionDetail = () => {
       </Card>
 
       {/* Ledger Summary (for DONE status) */}
-      {session.status === "DONE" && (
+      {session.status === "ĐÃ HOÀN THÀNH" && (
         <Card className="p-6 mb-6 bg-secondary/10">
           <h2 className="text-lg font-semibold mb-4">Tổng Kết Edits</h2>
           <div className="space-y-2 text-sm">
