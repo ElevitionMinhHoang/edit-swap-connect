@@ -13,6 +13,7 @@ const Marketplace = () => {
   const [selectedLevel, setSelectedLevel] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showInviteTooltip, setShowInviteTooltip] = useState<string | null>(null);
+  const [showResults, setShowResults] = useState(false);
 
   // Popular skills with gradient colors
   const popularSkills = [
@@ -61,6 +62,17 @@ const Marketplace = () => {
     return popularSkill ? popularSkill.color : "from-gray-500 to-gray-600";
   };
 
+  const handleApplyFilters = () => {
+    setShowResults(true);
+  };
+
+  const handleClearFilters = () => {
+    setSearchQuery("");
+    setSelectedTags([]);
+    setSelectedLevel("");
+    setShowResults(false);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
       {/* Optimized Container */}
@@ -89,7 +101,7 @@ const Marketplace = () => {
         {/* Optimized Grid Layout */}
         <div className="flex flex-col lg:grid lg:grid-cols-[280px_1fr] gap-4 sm:gap-6 md:gap-8 items-start">
           {/* Modern Filter Sidebar */}
-         <aside className="w-full max-w-full bg-white rounded-xl sm:rounded-2xl shadow-md p-4 sm:p-6 h-fit lg:sticky lg:top-4 order-2 lg:order-1">
+         <aside className="w-full max-w-full bg-white rounded-xl sm:rounded-2xl shadow-md p-4 sm:p-6 h-fit lg:sticky lg:top-4 order-1">
            <div className="flex items-center gap-2 mb-4 sm:mb-6">
              <Filter className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
              <h2 className="font-bold text-base sm:text-lg">Bộ Lọc</h2>
@@ -168,53 +180,65 @@ const Marketplace = () => {
               </div>
             </div>
 
-            {/* Clear Filters */}
-            {(searchQuery || selectedTags.length > 0 || selectedLevel) && (
+            {/* Apply & Clear Filters */}
+            <div className="space-y-2">
               <Button
-                variant="ghost"
-                size="sm"
-                className="w-full max-w-full text-gray-600 hover:text-gray-800 text-xs sm:text-sm"
-                onClick={() => {
-                  setSearchQuery("");
-                  setSelectedTags([]);
-                  setSelectedLevel("");
-                }}
+                className="w-full max-w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 text-xs sm:text-sm font-semibold"
+                onClick={handleApplyFilters}
               >
-                <X className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
-                Xóa bộ lọc
+                <Search className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                Áp dụng bộ lọc
               </Button>
-            )}
+              
+              {(searchQuery || selectedTags.length > 0 || selectedLevel) && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="w-full max-w-full text-gray-600 hover:text-gray-800 text-xs sm:text-sm"
+                  onClick={handleClearFilters}
+                >
+                  <X className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                  Xóa bộ lọc
+                </Button>
+              )}
+            </div>
           </aside>
 
           {/* Results Grid */}
-          <div className="w-full max-w-full order-1 lg:order-2">
-            <div className="mb-4 sm:mb-6 flex items-center justify-between">
-              <p className="text-xs sm:text-sm text-gray-600">
-                Tìm thấy <span className="font-semibold text-purple-600">{filteredUsers.length}</span> kết quả
-              </p>
-            </div>
-
-            {filteredUsers.length === 0 ? (
+          <div className="w-full max-w-full order-2">
+            {!showResults ? (
               <Card className="p-6 sm:p-8 md:p-12 text-center bg-white/80 backdrop-blur-sm border-0 shadow-lg">
                 <div className="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4">🔍</div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">Không tìm thấy kết quả</h3>
+                <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">Sẵn sàng khám phá</h3>
                 <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6">
-                  Thử mở rộng bộ lọc hoặc chọn kỹ năng khác.
+                  Sử dụng bộ lọc bên trên và ấn "Áp dụng bộ lọc" để tìm kiếm kỹ năng bạn muốn học.
                 </p>
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    setSearchQuery("");
-                    setSelectedTags([]);
-                    setSelectedLevel("");
-                  }}
-                  className="border-purple-200 text-purple-600 hover:bg-purple-50 text-xs sm:text-sm"
-                >
-                  Xóa Bộ Lọc
-                </Button>
               </Card>
             ) : (
-              <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <>
+                <div className="mb-4 sm:mb-6 flex items-center justify-between">
+                  <p className="text-xs sm:text-sm text-gray-600">
+                    Tìm thấy <span className="font-semibold text-purple-600">{filteredUsers.length}</span> kết quả
+                  </p>
+                </div>
+
+                {filteredUsers.length === 0 ? (
+                  <Card className="p-6 sm:p-8 md:p-12 text-center bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+                    <div className="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4">🔍</div>
+                    <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">Không tìm thấy kết quả</h3>
+                    <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6">
+                      Thử mở rộng bộ lọc hoặc chọn kỹ năng khác.
+                    </p>
+                    <Button
+                      variant="outline"
+                      onClick={handleClearFilters}
+                      className="border-purple-200 text-purple-600 hover:bg-purple-50 text-xs sm:text-sm"
+                    >
+                      Xóa Bộ Lọc
+                    </Button>
+                  </Card>
+                ) : (
+                  <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {filteredUsers.map((user, index) => (
                  <div
                    key={user.id}
@@ -311,27 +335,31 @@ const Marketplace = () => {
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
-            )}
+                  ))}
+                </div>
+              )}
 
-            {/* CTA Section */}
-            <Card className="mt-6 sm:mt-8 p-6 sm:p-8 text-center bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white border-0 shadow-xl">
-              <div className="max-w-2xl mx-auto">
-                <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3">
-                  🌟 Không tìm thấy kỹ năng bạn muốn học?
-                </h3>
-                <p className="text-blue-100 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg">
-                  Hãy đăng kỹ năng của bạn để bắt đầu chia sẻ và kiếm Edits!
-                </p>
-                <Button
-                  size="lg"
-                  className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-6 py-2 sm:px-8 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base"
-                >
-                  Đăng Kỹ Năng Ngay
-                </Button>
-              </div>
-            </Card>
+              {/* CTA Section */}
+              {showResults && (
+                <Card className="mt-6 sm:mt-8 p-6 sm:p-8 text-center bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white border-0 shadow-xl">
+                  <div className="max-w-2xl mx-auto">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3">
+                      🌟 Không tìm thấy kỹ năng bạn muốn học?
+                    </h3>
+                    <p className="text-blue-100 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg">
+                      Hãy đăng kỹ năng của bạn để bắt đầu chia sẻ và kiếm Edits!
+                    </p>
+                    <Button
+                      size="lg"
+                      className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-6 py-2 sm:px-8 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+                    >
+                      Đăng Kỹ Năng Ngay
+                    </Button>
+                  </div>
+                </Card>
+              )}
+            </>
+            )}
           </div>
         </div>
       </section>
