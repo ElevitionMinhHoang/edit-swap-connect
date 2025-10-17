@@ -275,7 +275,6 @@ const ProfileCreate = () => {
                       <option value="Cơ Bản">Cơ Bản</option>
                       <option value="Trung Cấp">Trung Cấp</option>
                       <option value="Nâng Cao">Nâng Cao</option>
-                      <option value="Chuyên gia">Chuyên gia</option>
                     </select>
                   </div>
                 </div>
