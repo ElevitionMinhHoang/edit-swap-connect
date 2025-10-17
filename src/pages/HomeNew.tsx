@@ -355,7 +355,7 @@ const HomeNew = () => {
           <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8 max-w-2xl mx-auto">
             Cùng hàng nghìn người đang trao đổi kỹ năng mỗi ngày
           </p>
-          <Link to="/marketplace">
+          <Link to="/profile/create">
             <Button variant="hero" size="lg" className="text-sm md:text-base">
               Đăng Ký Ngay
               <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />

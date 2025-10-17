@@ -24,6 +24,11 @@ interface ProfileData {
   wantSkills: string[];
   learningGoal: string;
   learningMode: string[];
+  availableTimes: Array<{
+    day: string;
+    period: string;
+    selected: boolean;
+  }>;
   email: string;
   phone: string;
 }
@@ -42,6 +47,29 @@ const ProfileCreate = () => {
     wantSkills: [],
     learningGoal: "",
     learningMode: ["Online"],
+    availableTimes: [
+      { day: "Thứ 2", period: "Sáng", selected: false },
+      { day: "Thứ 2", period: "Chiều", selected: false },
+      { day: "Thứ 2", period: "Tối", selected: false },
+      { day: "Thứ 3", period: "Sáng", selected: false },
+      { day: "Thứ 3", period: "Chiều", selected: false },
+      { day: "Thứ 3", period: "Tối", selected: false },
+      { day: "Thứ 4", period: "Sáng", selected: false },
+      { day: "Thứ 4", period: "Chiều", selected: false },
+      { day: "Thứ 4", period: "Tối", selected: false },
+      { day: "Thứ 5", period: "Sáng", selected: false },
+      { day: "Thứ 5", period: "Chiều", selected: false },
+      { day: "Thứ 5", period: "Tối", selected: false },
+      { day: "Thứ 6", period: "Sáng", selected: false },
+      { day: "Thứ 6", period: "Chiều", selected: false },
+      { day: "Thứ 6", period: "Tối", selected: false },
+      { day: "Thứ 7", period: "Sáng", selected: false },
+      { day: "Thứ 7", period: "Chiều", selected: false },
+      { day: "Thứ 7", period: "Tối", selected: false },
+      { day: "Chủ nhật", period: "Sáng", selected: false },
+      { day: "Chủ nhật", period: "Chiều", selected: false },
+      { day: "Chủ nhật", period: "Tối", selected: false },
+    ],
     email: "",
     phone: "",
   });
@@ -130,6 +158,17 @@ const ProfileCreate = () => {
       learningMode: prev.learningMode.includes(mode)
         ? prev.learningMode.filter(m => m !== mode)
         : [...prev.learningMode, mode]
+    }));
+  };
+
+  const toggleAvailableTime = (day: string, period: string) => {
+    setProfileData(prev => ({
+      ...prev,
+      availableTimes: prev.availableTimes.map(time =>
+        time.day === day && time.period === period
+          ? { ...time, selected: !time.selected }
+          : time
+      )
     }));
   };
 
@@ -428,22 +467,104 @@ const ProfileCreate = () => {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">Thời gian rảnh</label>
               <p className="text-sm text-gray-600 mb-4">Chọn các khung giờ bạn có thể dạy/học:</p>
+              
+              {/* Selected Times Summary */}
+              {profileData.availableTimes.filter(time => time.selected).length > 0 && (
+                <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                  <p className="text-sm font-medium text-blue-800 mb-2">Thời gian đã chọn:</p>
+                  <div className="flex flex-wrap gap-1">
+                    {profileData.availableTimes
+                      .filter(time => time.selected)
+                      .map((time, index) => (
+                        <Badge key={index} variant="default" className="bg-blue-500 text-white text-xs">
+                          {time.day} {time.period}
+                        </Badge>
+                      ))}
+                  </div>
+                </div>
+              )}
+              
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"].map((day) => (
                   <div key={day} className="space-y-2">
                     <p className="text-sm font-medium text-gray-700">{day}</p>
-                    {["Sáng", "Chiều", "Tối"].map((period) => (
-                      <Button
-                        key={period}
-                        variant="outline"
-                        size="sm"
-                        className="w-full text-xs"
-                      >
-                        {period}
-                      </Button>
-                    ))}
+                    {["Sáng", "Chiều", "Tối"].map((period) => {
+                      const isSelected = profileData.availableTimes.some(
+                        time => time.day === day && time.period === period && time.selected
+                      );
+                      return (
+                        <Button
+                          key={period}
+                          variant={isSelected ? "default" : "outline"}
+                          size="sm"
+                          className={`w-full text-xs transition-all duration-200 ${
+                            isSelected
+                              ? "bg-gradient-to-r from-green-500 to-blue-500 text-white shadow-md"
+                              : "hover:bg-gray-50"
+                          }`}
+                          onClick={() => toggleAvailableTime(day, period)}
+                        >
+                          {period}
+                          {isSelected && (
+                            <span className="ml-1">✓</span>
+                          )}
+                        </Button>
+                      );
+                    })}
                   </div>
                 ))}
+              </div>
+              
+              {/* Quick Selection Buttons */}
+              <div className="mt-4 flex flex-wrap gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setProfileData(prev => ({
+                      ...prev,
+                      availableTimes: prev.availableTimes.map(time => ({
+                        ...time,
+                        selected: time.period === "Tối"
+                      }))
+                    }));
+                  }}
+                  className="text-xs"
+                >
+                  Chọn tất cả buổi tối
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setProfileData(prev => ({
+                      ...prev,
+                      availableTimes: prev.availableTimes.map(time => ({
+                        ...time,
+                        selected: time.day === "Thứ 7" || time.day === "Chủ nhật"
+                      }))
+                    }));
+                  }}
+                  className="text-xs"
+                >
+                  Chọn cuối tuần
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setProfileData(prev => ({
+                      ...prev,
+                      availableTimes: prev.availableTimes.map(time => ({
+                        ...time,
+                        selected: false
+                      }))
+                    }));
+                  }}
+                  className="text-xs text-red-600 hover:text-red-700"
+                >
+                  Xóa tất cả
+                </Button>
               </div>
             </div>
           </Card>
@@ -614,6 +735,27 @@ const ProfileCreate = () => {
                           {skill}
                         </Badge>
                       ))}
+                    </div>
+                  </div>
+                )}
+
+                {profileData.availableTimes.filter(time => time.selected).length > 0 && (
+                  <div>
+                    <p className="text-sm font-medium text-gray-700 mb-2">Thời gian rảnh:</p>
+                    <div className="flex flex-wrap gap-1">
+                      {profileData.availableTimes
+                        .filter(time => time.selected)
+                        .slice(0, 3)
+                        .map((time, index) => (
+                          <Badge key={index} variant="secondary" className="text-xs">
+                            {time.day} {time.period}
+                          </Badge>
+                        ))}
+                      {profileData.availableTimes.filter(time => time.selected).length > 3 && (
+                        <Badge variant="outline" className="text-xs">
+                          +{profileData.availableTimes.filter(time => time.selected).length - 3} khác
+                        </Badge>
+                      )}
                     </div>
                   </div>
                 )}

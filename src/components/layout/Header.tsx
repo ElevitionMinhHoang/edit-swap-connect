@@ -114,31 +114,40 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-border bg-background/98 backdrop-blur-xl animate-slide-in fixed top-16 left-0 right-0 bottom-0 z-40">
-          <nav className="container py-4 space-y-1 h-full overflow-y-auto">
-            {navLinks.map((link) => (
+        <>
+          {/* Backdrop overlay */}
+          <div
+            className="md:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-40 animate-fade-in"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          
+          {/* Mobile menu */}
+          <div className="md:hidden border-t border-border bg-background/98 backdrop-blur-xl animate-slide-in fixed top-16 left-0 right-0 z-50 shadow-lg">
+            <nav className="container py-4 space-y-2">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block px-4 py-3 text-base font-medium rounded-lg transition-all duration-300 min-h-[44px] flex items-center ${
+                    isActive(link.path)
+                      ? "text-primary font-semibold bg-primary/10 border-l-4 border-primary shadow-sm"
+                      : "text-foreground/80 hover:text-foreground hover:bg-muted/50"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
               <Link
-                key={link.path}
-                to={link.path}
+                to="/profile/u1"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-4 py-3 text-base font-medium rounded-md transition-all duration-300 ${
-                  isActive(link.path)
-                    ? "text-primary font-semibold bg-primary/10 border-l-2 border-primary"
-                    : "text-foreground/80 hover:text-foreground hover:bg-muted/50"
-                }`}
+                className="block px-4 py-3 text-base font-medium text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg transition-all duration-300 min-h-[44px] flex items-center"
               >
-                {link.label}
+                Hồ Sơ
               </Link>
-            ))}
-            <Link
-              to="/profile/u1"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-3 text-base font-medium text-muted-foreground hover:bg-muted hover:text-foreground rounded-md transition-all duration-300"
-            >
-              Hồ Sơ
-            </Link>
-          </nav>
-        </div>
+            </nav>
+          </div>
+        </>
       )}
     </header>
   );
