@@ -24,11 +24,11 @@ const Header = () => {
 
   return (
     <header className={`sticky top-0 z-50 w-full border-b transition-all duration-500 ${
-      isScrolled 
-        ? "bg-background/95 backdrop-blur-xl border-border shadow-lg" 
+      isScrolled
+        ? "bg-background/95 backdrop-blur-xl border-border shadow-lg"
         : "bg-background/60 backdrop-blur-md border-transparent"
     }`}>
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-16 items-center justify-between px-4 sm:px-6">
         <div className="flex items-center space-x-2">
           <Link
             to="/"
@@ -49,12 +49,12 @@ const Header = () => {
             <img
               src={logo}
               alt="Skill Swap Connect"
-              className="h-9 w-9 rounded-lg object-cover"
+              className="h-8 w-8 sm:h-9 sm:w-9 rounded-lg object-cover"
             />
-            <span className="hidden font-bold text-xl sm:inline-block tracking-tight transition-colors duration-300">
+            <span className="hidden font-bold text-lg sm:text-xl sm:inline-block tracking-tight transition-colors duration-300">
               Skill Swap Connect
             </span>
-            <span className="font-bold text-xl sm:hidden tracking-tight transition-colors duration-300">
+            <span className="font-bold text-lg sm:hidden tracking-tight transition-colors duration-300">
               SWC
             </span>
           </Link>
@@ -66,7 +66,7 @@ const Header = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-300 ${
+              className={`px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 ${
                 isActive(link.path)
                   ? "bg-primary/10 text-primary"
                   : "text-muted-foreground hover:bg-muted hover:text-foreground"
@@ -79,12 +79,12 @@ const Header = () => {
 
         <div className="flex items-center space-x-2">
           <Link to="/profile/u1" className="hidden sm:block">
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="sm" className="text-sm">
               Hồ Sơ
             </Button>
           </Link>
           <Link to="/auth">
-            <Button size="sm" className="hover:shadow-accent transition-all duration-300">Đăng Nhập</Button>
+            <Button size="sm" className="text-sm hover:shadow-accent transition-all duration-300">Đăng Nhập</Button>
           </Link>
 
           {/* Mobile Menu Button */}
@@ -101,14 +101,14 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-border bg-background/98 backdrop-blur-xl animate-slide-in">
-          <nav className="container py-4 space-y-1">
+        <div className="md:hidden border-t border-border bg-background/98 backdrop-blur-xl animate-slide-in fixed top-16 left-0 right-0 bottom-0 z-40">
+          <nav className="container py-4 space-y-1 h-full overflow-y-auto">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-4 py-2 text-sm font-medium rounded-md transition-all duration-300 ${
+                className={`block px-4 py-3 text-base font-medium rounded-md transition-all duration-300 ${
                   isActive(link.path)
                     ? "bg-primary/10 text-primary"
                     : "text-muted-foreground hover:bg-muted hover:text-foreground"
@@ -120,7 +120,7 @@ const Header = () => {
             <Link
               to="/profile/u1"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground rounded-md transition-all duration-300"
+              className="block px-4 py-3 text-base font-medium text-muted-foreground hover:bg-muted hover:text-foreground rounded-md transition-all duration-300"
             >
               Hồ Sơ
             </Link>

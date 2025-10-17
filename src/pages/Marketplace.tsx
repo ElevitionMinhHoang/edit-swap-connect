@@ -64,68 +64,66 @@ const Marketplace = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
       {/* Optimized Container */}
-      <section className="max-w-screen-2xl mx-auto px-6 py-10">
+      <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
         {/* Professional Header Section */}
-        <section className="py-20 text-center bg-[#FAF9FE] rounded-3xl mb-12 animate-fade-in">
+        <section className="py-12 sm:py-16 md:py-20 text-center bg-[#FAF9FE] rounded-xl sm:rounded-2xl md:rounded-3xl mb-8 sm:mb-12 animate-fade-in">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5
+          <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1.5
                           bg-gradient-to-r from-indigo-600 to-purple-500 text-white
-                          rounded-full text-sm font-semibold shadow-sm mx-auto mb-4">
-            <Sparkles className="h-4 w-4" />
+                          rounded-full text-xs sm:text-sm font-semibold shadow-sm mx-auto mb-3 sm:mb-4">
+            <Sparkles className="h-3 w-3 sm:h-4 sm:w-4" />
             <span>1.247 kỹ năng đang được chia sẻ</span>
           </div>
 
           {/* Main Title */}
-     
-      
-           <h1 className="text-25xl font-bold leading-tight sm:text-4xl sm:leading-snug text-center">
-  CHỢ KỸ NĂNG
-</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-center mb-4">
+              CHỢ KỸ NĂNG
+            </h1>
 
           {/* Description */}
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             Khám phá cộng đồng chia sẻ kỹ năng – nơi ai cũng có thể dạy, ai cũng có thể học.
           </p>
         </section>
 
         {/* Optimized Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-4 sm:gap-6 md:gap-8 items-start">
           {/* Modern Filter Sidebar */}
-          <aside className="bg-white rounded-2xl shadow-md p-6 h-fit sticky top-4">
-            <div className="flex items-center gap-2 mb-6">
-              <Filter className="h-5 w-5 text-purple-600" />
-              <h2 className="font-bold text-lg">Bộ Lọc</h2>
-            </div>
+         <aside className="bg-white rounded-xl sm:rounded-2xl shadow-md p-4 sm:p-6 h-fit sticky top-4">
+           <div className="flex items-center gap-2 mb-4 sm:mb-6">
+             <Filter className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
+             <h2 className="font-bold text-base sm:text-lg">Bộ Lọc</h2>
+           </div>
 
             {/* Search */}
-            <div className="mb-6">
-              <div className="flex items-center gap-2 mb-3">
-                <Search className="h-4 w-4 text-gray-500" />
-                <label className="text-sm font-semibold">Tìm kiếm kỹ năng</label>
+            <div className="mb-4 sm:mb-6">
+              <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                <Search className="h-3 w-3 sm:h-4 sm:w-4 text-gray-500" />
+                <label className="text-xs sm:text-sm font-semibold">Tìm kiếm kỹ năng</label>
               </div>
               <div className="relative">
                 <Input
                   placeholder="React, IELTS, Guitar..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9 border-gray-300 focus:border-purple-500 transition-colors"
+                  className="pl-8 sm:pl-9 border-gray-300 focus:border-purple-500 transition-colors text-sm"
                 />
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Search className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
                 {isLoading && (
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-purple-600"></div>
+                  <div className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2">
+                    <div className="animate-spin rounded-full h-3 w-3 sm:h-4 sm:w-4 border-b-2 border-purple-600"></div>
                   </div>
                 )}
               </div>
             </div>
 
             {/* Level */}
-            <div className="mb-6">
-              <div className="flex items-center gap-2 mb-3">
-                <TrendingUp className="h-4 w-4 text-gray-500" />
-                <label className="text-sm font-semibold">Cấp độ</label>
+            <div className="mb-4 sm:mb-6">
+              <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4 text-gray-500" />
+                <label className="text-xs sm:text-sm font-semibold">Cấp độ</label>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-1 sm:space-y-2">
                 {[
                   { value: "", label: "Tất Cả", color: "bg-gray-100 hover:bg-gray-200" },
                   { value: "Cơ Bản", label: "Cơ Bản", color: "bg-green-100 hover:bg-green-200 text-green-700" },
@@ -134,9 +132,9 @@ const Marketplace = () => {
                 ].map((level) => (
                   <button
                     key={level.value}
-                    className={`w-full text-left px-3 py-2 rounded-lg transition-all duration-200 font-medium ${
-                      selectedLevel === level.value 
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md' 
+                    className={`w-full text-left px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg transition-all duration-200 font-medium text-xs sm:text-sm ${
+                      selectedLevel === level.value
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md'
                         : level.color
                     }`}
                     onClick={() => setSelectedLevel(level.value)}
@@ -148,17 +146,17 @@ const Marketplace = () => {
             </div>
 
             {/* Popular Skills */}
-            <div className="mb-6">
-              <div className="flex items-center gap-2 mb-3">
-                <Sparkles className="h-4 w-4 text-gray-500" />
-                <label className="text-sm font-semibold">Kỹ năng nổi bật</label>
+            <div className="mb-4 sm:mb-6">
+              <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-gray-500" />
+                <label className="text-xs sm:text-sm font-semibold">Kỹ năng nổi bật</label>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1 sm:gap-2">
                 {popularSkills.map((skill) => (
                   <button
                     key={skill.name}
                     onClick={() => toggleTag(skill.name)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+                    className={`px-2 py-1 sm:px-3 sm:py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                       selectedTags.includes(skill.name)
                         ? `bg-gradient-to-r ${skill.color} text-white shadow-md`
                         : 'bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 hover:shadow-md'
@@ -175,14 +173,14 @@ const Marketplace = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="w-full text-gray-600 hover:text-gray-800"
+                className="w-full text-gray-600 hover:text-gray-800 text-xs sm:text-sm"
                 onClick={() => {
                   setSearchQuery("");
                   setSelectedTags([]);
                   setSelectedLevel("");
                 }}
               >
-                <X className="h-4 w-4 mr-2" />
+                <X className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                 Xóa bộ lọc
               </Button>
             )}
@@ -190,17 +188,17 @@ const Marketplace = () => {
 
           {/* Results Grid */}
           <div>
-            <div className="mb-6 flex items-center justify-between">
-              <p className="text-sm text-gray-600">
+            <div className="mb-4 sm:mb-6 flex items-center justify-between">
+              <p className="text-xs sm:text-sm text-gray-600">
                 Tìm thấy <span className="font-semibold text-purple-600">{filteredUsers.length}</span> kết quả
               </p>
             </div>
 
             {filteredUsers.length === 0 ? (
-              <Card className="p-12 text-center bg-white/80 backdrop-blur-sm border-0 shadow-lg">
-                <div className="text-6xl mb-4">🔍</div>
-                <h3 className="text-xl font-semibold mb-2">Không tìm thấy kết quả</h3>
-                <p className="text-gray-600 mb-6">
+              <Card className="p-6 sm:p-8 md:p-12 text-center bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+                <div className="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4">🔍</div>
+                <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">Không tìm thấy kết quả</h3>
+                <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6">
                   Thử mở rộng bộ lọc hoặc chọn kỹ năng khác.
                 </p>
                 <Button
@@ -210,62 +208,62 @@ const Marketplace = () => {
                     setSelectedTags([]);
                     setSelectedLevel("");
                   }}
-                  className="border-purple-200 text-purple-600 hover:bg-purple-50"
+                  className="border-purple-200 text-purple-600 hover:bg-purple-50 text-xs sm:text-sm"
                 >
                   Xóa Bộ Lọc
                 </Button>
               </Card>
             ) : (
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 [grid-template-columns:repeat(auto-fill,minmax(360px,1fr))]">
+              <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {filteredUsers.map((user, index) => (
-                  <div
-                    key={user.id}
-                    className="bg-white rounded-2xl p-6 shadow-lg flex flex-col justify-between transition-all duration-300 hover:scale-105 hover:shadow-xl group animate-fade-in-up"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    {/* Header with Avatar */}
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="relative">
-                        <div className="text-4xl group-hover:scale-110 transition-transform duration-300">
-                          {user.avatar}
-                        </div>
-                        <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white"></div>
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-bold text-lg text-gray-900">{user.name}</h3>
-                        <div className="flex items-center gap-1 text-sm text-gray-600 mb-1">
-                          <MapPin className="h-3 w-3" />
-                          {user.location}
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                          <span className="font-semibold text-sm text-gray-900">{user.rating}</span>
-                          <span className="text-xs text-gray-500">
-                            ({user.totalSessions} buổi)
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+                 <div
+                   key={user.id}
+                   className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg flex flex-col justify-between transition-all duration-300 hover:scale-105 hover:shadow-xl group animate-fade-in-up"
+                   style={{ animationDelay: `${index * 100}ms` }}
+                 >
+                   {/* Header with Avatar */}
+                   <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                     <div className="relative">
+                       <div className="text-3xl sm:text-4xl group-hover:scale-110 transition-transform duration-300">
+                         {user.avatar}
+                       </div>
+                       <div className="absolute -bottom-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full border-2 border-white"></div>
+                     </div>
+                     <div className="flex-1">
+                       <h3 className="font-bold text-base sm:text-lg text-gray-900">{user.name}</h3>
+                       <div className="flex items-center gap-1 text-xs sm:text-sm text-gray-600 mb-1">
+                         <MapPin className="h-2 w-2 sm:h-3 sm:w-3" />
+                         {user.location}
+                       </div>
+                       <div className="flex items-center gap-1">
+                         <Star className="h-3 w-3 sm:h-4 sm:w-4 fill-yellow-400 text-yellow-400" />
+                         <span className="font-semibold text-xs sm:text-sm text-gray-900">{user.rating}</span>
+                         <span className="text-xs text-gray-500">
+                           ({user.totalSessions} buổi)
+                         </span>
+                       </div>
+                     </div>
+                   </div>
 
                     {/* Bio */}
-                    <p className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4 line-clamp-2 leading-relaxed">
                       {user.bio}
                     </p>
 
                     {/* Skills */}
-                    <div className="mb-4">
-                      <div className="text-xs font-semibold text-gray-700 mb-2">Dạy</div>
-                      <div className="flex flex-wrap gap-2">
+                    <div className="mb-3 sm:mb-4">
+                      <div className="text-xs font-semibold text-gray-700 mb-1 sm:mb-2">Dạy</div>
+                      <div className="flex flex-wrap gap-1 sm:gap-2">
                         {user.offerSkills.slice(0, 3).map((skill, idx) => (
                           <div
                             key={idx}
-                            className={`px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${getSkillColor(skill.skill)} text-white shadow-sm`}
+                            className={`px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-medium bg-gradient-to-r ${getSkillColor(skill.skill)} text-white shadow-sm`}
                           >
                             {skill.skill}
                           </div>
                         ))}
                         {user.offerSkills.length > 3 && (
-                          <div className="px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                          <div className="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
                             +{user.offerSkills.length - 3}
                           </div>
                         )}
@@ -273,39 +271,39 @@ const Marketplace = () => {
                     </div>
 
                     {/* Availability */}
-                    <div className="mb-4 text-xs text-gray-500 flex items-center gap-1">
+                    <div className="mb-3 sm:mb-4 text-xs text-gray-500 flex items-center gap-1">
                       <span>🕒</span>
                       <span>{user.availability}</span>
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-                      <Link to={`/profile/${user.id}`} className="flex-1 min-w-[120px]">
+                    <div className="mt-3 sm:mt-4 flex flex-wrap items-center justify-between gap-2 sm:gap-3">
+                      <Link to={`/profile/${user.id}`} className="flex-1 min-w-[100px] sm:min-w-[120px]">
                         <Button
                           variant="outline"
                           size="sm"
-                          className="w-full border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-colors text-sm font-medium"
+                          className="w-full border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-colors text-xs sm:text-sm font-medium"
                         >
-                          <User className="h-3 w-3 mr-1" />
+                          <User className="h-2 w-2 sm:h-3 sm:w-3 mr-1" />
                           Xem Hồ Sơ
                         </Button>
                       </Link>
-                      <div className="flex-1 min-w-[120px] relative">
+                      <div className="flex-1 min-w-[100px] sm:min-w-[120px] relative">
                         <Link to="/messages">
                           <Button
                             size="sm"
-                            className="w-full bg-gradient-to-r from-[#E54BFF] to-[#9B5CFF] hover:from-[#D43CEF] hover:to-[#8A4CE6] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 text-sm"
+                            className="w-full bg-gradient-to-r from-[#E54BFF] to-[#9B5CFF] hover:from-[#D43CEF] hover:to-[#8A4CE6] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 text-xs sm:text-sm"
                             onMouseEnter={() => setShowInviteTooltip(user.id)}
                             onMouseLeave={() => setShowInviteTooltip(null)}
                           >
-                            <Send className="h-3 w-3 mr-1" />
+                            <Send className="h-2 w-2 sm:h-3 sm:w-3 mr-1" />
                             Gửi Lời Mời
                           </Button>
                         </Link>
                         
                         {/* Tooltip */}
                         {showInviteTooltip === user.id && (
-                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg shadow-lg z-10 whitespace-nowrap">
+                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 sm:px-3 sm:py-2 bg-gray-900 text-white text-xs rounded-lg shadow-lg z-10 whitespace-nowrap">
                             Sẽ trừ 10 Edits để gửi lời mời học 1–1
                             <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
                           </div>
@@ -318,17 +316,17 @@ const Marketplace = () => {
             )}
 
             {/* CTA Section */}
-            <Card className="mt-8 p-8 text-center bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white border-0 shadow-xl">
+            <Card className="mt-6 sm:mt-8 p-6 sm:p-8 text-center bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white border-0 shadow-xl">
               <div className="max-w-2xl mx-auto">
-                <h3 className="text-2xl font-bold mb-3">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3">
                   🌟 Không tìm thấy kỹ năng bạn muốn học?
                 </h3>
-                <p className="text-blue-100 mb-6 text-lg">
+                <p className="text-blue-100 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg">
                   Hãy đăng kỹ năng của bạn để bắt đầu chia sẻ và kiếm Edits!
                 </p>
-                <Button 
-                  size="lg" 
-                  className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                <Button
+                  size="lg"
+                  className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-6 py-2 sm:px-8 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base"
                 >
                   Đăng Kỹ Năng Ngay
                 </Button>

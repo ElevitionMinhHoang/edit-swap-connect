@@ -36,34 +36,34 @@ const Messages = () => {
   const currentChat = conversations[selectedChat];
 
   return (
-    <div className="container py-8">
-      <h1 className="text-3xl font-bold mb-6">Tin Nhắn</h1>
+    <div className="container py-4 sm:py-6 md:py-8 px-4 sm:px-6">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Tin Nhắn</h1>
 
-      <div className="grid lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Conversation List */}
-        <Card className="lg:col-span-1 p-4 max-h-[600px] overflow-y-auto">
-          <h2 className="font-semibold mb-4">Cuộc Trò Chuyện</h2>
-          <div className="space-y-2">
+        <Card className="lg:col-span-1 p-3 sm:p-4 max-h-[400px] sm:max-h-[600px] overflow-y-auto">
+          <h2 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Cuộc Trò Chuyện</h2>
+          <div className="space-y-1 sm:space-y-2">
             {conversations.map((conv, idx) => (
               <button
                 key={idx}
                 onClick={() => setSelectedChat(idx)}
-                className={`w-full text-left p-3 rounded-lg transition-colors ${
+                className={`w-full text-left p-2 sm:p-3 rounded-lg transition-colors ${
                   selectedChat === idx ? "bg-muted" : "hover:bg-muted/50"
                 }`}
               >
-                <div className="flex items-start gap-3">
-                  <div className="text-2xl">{conv.user.avatar}</div>
+                <div className="flex items-start gap-2 sm:gap-3">
+                  <div className="text-xl sm:text-2xl">{conv.user.avatar}</div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-1">
-                      <span className="font-semibold truncate">{conv.user.name}</span>
+                      <span className="font-semibold truncate text-xs sm:text-sm">{conv.user.name}</span>
                       {conv.unread > 0 && (
-                        <Badge variant="default" className="ml-2 h-5 px-1.5 text-xs">
+                        <Badge variant="default" className="ml-1 sm:ml-2 h-4 sm:h-5 px-1 sm:px-1.5 text-xs">
                           {conv.unread}
                         </Badge>
                       )}
                     </div>
-                    <p className="text-sm text-muted-foreground truncate">{conv.lastMessage}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground truncate">{conv.lastMessage}</p>
                     <span className="text-xs text-muted-foreground">{conv.time}</span>
                   </div>
                 </div>
@@ -74,26 +74,26 @@ const Messages = () => {
 
         {/* Chat Thread */}
         <Card className="lg:col-span-2 flex flex-col">
-          <div className="p-4 border-b border-border flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="text-3xl">{currentChat.user.avatar}</div>
+          <div className="p-3 sm:p-4 border-b border-border flex items-center justify-between">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="text-2xl sm:text-3xl">{currentChat.user.avatar}</div>
               <div>
-                <div className="font-semibold">{currentChat.user.name}</div>
-                <div className="text-sm text-muted-foreground">
+                <div className="font-semibold text-sm sm:text-base">{currentChat.user.name}</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">
                   {currentChat.user.offerSkills[0].skill}
                 </div>
               </div>
             </div>
-            <Button size="sm" onClick={() => setShowBooking(!showBooking)}>
-              <Calendar className="h-4 w-4 mr-2" />
+            <Button size="sm" onClick={() => setShowBooking(!showBooking)} className="text-xs sm:text-sm">
+              <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
               Đề Xuất Giờ Học
             </Button>
           </div>
 
-          <div className="flex-1 p-4 space-y-4 min-h-[300px] max-h-[400px] overflow-y-auto">
+          <div className="flex-1 p-3 sm:p-4 space-y-3 sm:space-y-4 min-h-[200px] sm:min-h-[300px] max-h-[300px] sm:max-h-[400px] overflow-y-auto">
             <div className="flex justify-start">
-              <div className="bg-muted rounded-lg p-3 max-w-[70%]">
-                <p className="text-sm">
+              <div className="bg-muted rounded-lg p-2 sm:p-3 max-w-[85%] sm:max-w-[70%]">
+                <p className="text-xs sm:text-sm">
                   Chào! Tôi rất muốn học {currentChat.user.offerSkills[0].skill} từ bạn.
                 </p>
                 <span className="text-xs text-muted-foreground">Hôm qua, 15:24</span>
@@ -101,21 +101,21 @@ const Messages = () => {
             </div>
 
             <div className="flex justify-end">
-              <div className="bg-primary text-primary-foreground rounded-lg p-3 max-w-[70%]">
-                <p className="text-sm">Nghe tuyệt vời! Trình độ hiện tại của bạn là gì?</p>
+              <div className="bg-primary text-primary-foreground rounded-lg p-2 sm:p-3 max-w-[85%] sm:max-w-[70%]">
+                <p className="text-xs sm:text-sm">Nghe tuyệt vời! Trình độ hiện tại của bạn là gì?</p>
                 <span className="text-xs opacity-80">Hôm qua, 15:45</span>
               </div>
             </div>
 
             <div className="flex justify-start">
-              <div className="bg-muted rounded-lg p-3 max-w-[70%]">
-                <p className="text-sm">{currentChat.lastMessage}</p>
+              <div className="bg-muted rounded-lg p-2 sm:p-3 max-w-[85%] sm:max-w-[70%]">
+                <p className="text-xs sm:text-sm">{currentChat.lastMessage}</p>
                 <span className="text-xs text-muted-foreground">Today, {currentChat.time}</span>
               </div>
             </div>
           </div>
 
-          <div className="p-4 border-t border-border">
+          <div className="p-3 sm:p-4 border-t border-border">
             <div className="flex gap-2">
               <Input
                 placeholder="Nhập tin nhắn của bạn..."
@@ -127,9 +127,10 @@ const Messages = () => {
                     setMessage("");
                   }
                 }}
+                className="text-xs sm:text-sm"
               />
-              <Button>
-                <Send className="h-4 w-4" />
+              <Button size="sm" className="text-xs sm:text-sm">
+                <Send className="h-3 w-3 sm:h-4 sm:w-4" />
               </Button>
             </div>
           </div>
@@ -138,25 +139,25 @@ const Messages = () => {
 
       {/* Booking Pane */}
       {showBooking && (
-        <Card className="mt-6 p-6">
-          <h2 className="text-xl font-semibold mb-4">Đề Xuất Giờ Học</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="space-y-4">
+        <Card className="mt-4 sm:mt-6 p-4 sm:p-6">
+          <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Đề Xuất Giờ Học</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <div className="space-y-3 sm:space-y-4">
               <div>
-                <label className="text-sm font-medium mb-2 block">Kỹ Năng</label>
-                <Input value={currentChat.user.offerSkills[0].skill} disabled />
+                <label className="text-xs sm:text-sm font-medium mb-1 sm:mb-2 block">Kỹ Năng</label>
+                <Input value={currentChat.user.offerSkills[0].skill} disabled className="text-xs sm:text-sm" />
               </div>
 
               <div>
-                <label className="text-sm font-medium mb-2 block">Ngày & Giờ</label>
-                <Input type="datetime-local" />
+                <label className="text-xs sm:text-sm font-medium mb-1 sm:mb-2 block">Ngày & Giờ</label>
+                <Input type="datetime-local" className="text-xs sm:text-sm" />
               </div>
 
               <div>
-                <label className="text-sm font-medium mb-2 block">Thời Lượng</label>
-                <div className="flex gap-2">
+                <label className="text-xs sm:text-sm font-medium mb-1 sm:mb-2 block">Thời Lượng</label>
+                <div className="flex gap-1 sm:gap-2">
                   {[30, 60, 90].map((duration) => (
-                    <Button key={duration} variant="outline" size="sm">
+                    <Button key={duration} variant="outline" size="sm" className="text-xs">
                       {duration} phút
                     </Button>
                   ))}
@@ -164,29 +165,29 @@ const Messages = () => {
               </div>
 
               <div>
-                <label className="text-sm font-medium mb-2 block">Hình Thức</label>
-                <div className="flex gap-2">
-                  <Button variant="outline" size="sm">
-                    <Video className="h-4 w-4 mr-1" />
+                <label className="text-xs sm:text-sm font-medium mb-1 sm:mb-2 block">Hình Thức</label>
+                <div className="flex gap-1 sm:gap-2">
+                  <Button variant="outline" size="sm" className="text-xs">
+                    <Video className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
                     Trực Tuyến
                   </Button>
-                  <Button variant="outline" size="sm">
-                    <MapPin className="h-4 w-4 mr-1" />
+                  <Button variant="outline" size="sm" className="text-xs">
+                    <MapPin className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
                     Trực Tiếp
                   </Button>
                 </div>
               </div>
 
               <div>
-                <label className="text-sm font-medium mb-2 block">Địa Điểm / Link Zoom</label>
-                <Input placeholder="Nhập link Zoom hoặc địa chỉ cụ thể" />
+                <label className="text-xs sm:text-sm font-medium mb-1 sm:mb-2 block">Địa Điểm / Link Zoom</label>
+                <Input placeholder="Nhập link Zoom hoặc địa chỉ cụ thể" className="text-xs sm:text-sm" />
               </div>
             </div>
 
             <div>
-              <Card className="p-4 bg-muted/30">
-                <h3 className="font-semibold mb-3">Tóm Tắt Buổi Học</h3>
-                <div className="space-y-2 text-sm">
+              <Card className="p-3 sm:p-4 bg-muted/30">
+                <h3 className="font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Tóm Tắt Buổi Học</h3>
+                <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Thời lượng:</span>
                     <span className="font-medium">60 phút</span>
@@ -201,22 +202,23 @@ const Messages = () => {
                   </div>
                 </div>
 
-                <div className="mt-4 p-3 bg-warning/10 border border-warning/20 rounded-lg text-xs text-muted-foreground">
+                <div className="mt-3 sm:mt-4 p-2 sm:p-3 bg-warning/10 border border-warning/20 rounded-lg text-xs text-muted-foreground">
                   ⚠️ Hủy trước ít hơn 2 giờ sẽ nhận cảnh báo
                 </div>
               </Card>
 
-              <div className="mt-4">
-                <label className="text-sm font-medium mb-2 block">Ghi Chú (Không Bắt Buộc)</label>
+              <div className="mt-3 sm:mt-4">
+                <label className="text-xs sm:text-sm font-medium mb-1 sm:mb-2 block">Ghi Chú (Không Bắt Buộc)</label>
                 <Textarea
                   placeholder="Mục tiêu buổi học, nội dung cần học, v.v..."
-                  rows={4}
+                  rows={3}
+                  className="text-xs sm:text-sm"
                 />
               </div>
 
-              <div className="mt-4 flex gap-2">
-                <Button className="flex-1">Gửi Đề Xuất</Button>
-                <Button variant="outline" onClick={() => setShowBooking(false)}>
+              <div className="mt-3 sm:mt-4 flex gap-2">
+                <Button className="flex-1 text-xs sm:text-sm">Gửi Đề Xuất</Button>
+                <Button variant="outline" onClick={() => setShowBooking(false)} className="text-xs sm:text-sm">
                   Hủy
                 </Button>
               </div>
