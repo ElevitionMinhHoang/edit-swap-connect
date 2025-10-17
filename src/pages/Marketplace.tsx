@@ -64,7 +64,7 @@ const Marketplace = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
       {/* Optimized Container */}
-      <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
+      <section className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
         {/* Professional Header Section */}
         <section className="py-12 sm:py-16 md:py-20 text-center bg-[#FAF9FE] rounded-xl sm:rounded-2xl md:rounded-3xl mb-8 sm:mb-12 animate-fade-in">
           {/* Badge */}
@@ -89,7 +89,7 @@ const Marketplace = () => {
         {/* Optimized Grid Layout */}
         <div className="flex flex-col lg:grid lg:grid-cols-[280px_1fr] gap-4 sm:gap-6 md:gap-8 items-start">
           {/* Modern Filter Sidebar */}
-         <aside className="bg-white rounded-xl sm:rounded-2xl shadow-md p-4 sm:p-6 h-fit lg:sticky lg:top-4 order-2 lg:order-1">
+         <aside className="w-full max-w-full bg-white rounded-xl sm:rounded-2xl shadow-md p-4 sm:p-6 h-fit lg:sticky lg:top-4 order-2 lg:order-1">
            <div className="flex items-center gap-2 mb-4 sm:mb-6">
              <Filter className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
              <h2 className="font-bold text-base sm:text-lg">Bộ Lọc</h2>
@@ -101,12 +101,12 @@ const Marketplace = () => {
                 <Search className="h-3 w-3 sm:h-4 sm:w-4 text-gray-500" />
                 <label className="text-xs sm:text-sm font-semibold">Tìm kiếm kỹ năng</label>
               </div>
-              <div className="relative">
+              <div className="relative w-full max-w-full">
                 <Input
                   placeholder="React, IELTS, Guitar..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-8 sm:pl-9 border-gray-300 focus:border-purple-500 transition-colors text-sm"
+                  className="w-full max-w-full h-12 pl-8 sm:pl-9 border-gray-300 focus:border-purple-500 transition-colors text-sm rounded-lg"
                 />
                 <Search className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
                 {isLoading && (
@@ -123,7 +123,7 @@ const Marketplace = () => {
                 <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4 text-gray-500" />
                 <label className="text-xs sm:text-sm font-semibold">Cấp độ</label>
               </div>
-              <div className="space-y-1 sm:space-y-2">
+              <div className="space-y-2 w-full max-w-full">
                 {[
                   { value: "", label: "Tất Cả", color: "bg-gray-100 hover:bg-gray-200" },
                   { value: "Cơ Bản", label: "Cơ Bản", color: "bg-green-100 hover:bg-green-200 text-green-700" },
@@ -132,7 +132,7 @@ const Marketplace = () => {
                 ].map((level) => (
                   <button
                     key={level.value}
-                    className={`w-full text-left px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg transition-all duration-200 font-medium text-xs sm:text-sm ${
+                    className={`w-full max-w-full min-h-[44px] text-left px-4 py-3 rounded-xl transition-all duration-200 font-medium text-sm ${
                       selectedLevel === level.value
                         ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md'
                         : level.color
@@ -151,12 +151,12 @@ const Marketplace = () => {
                 <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-gray-500" />
                 <label className="text-xs sm:text-sm font-semibold">Kỹ năng nổi bật</label>
               </div>
-              <div className="flex flex-wrap gap-1 sm:gap-2">
+              <div className="flex flex-wrap gap-2 w-full max-w-full">
                 {popularSkills.map((skill) => (
                   <button
                     key={skill.name}
                     onClick={() => toggleTag(skill.name)}
-                    className={`px-2 py-1 sm:px-3 sm:py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                       selectedTags.includes(skill.name)
                         ? `bg-gradient-to-r ${skill.color} text-white shadow-md`
                         : 'bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 hover:shadow-md'
@@ -173,7 +173,7 @@ const Marketplace = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="w-full text-gray-600 hover:text-gray-800 text-xs sm:text-sm"
+                className="w-full max-w-full text-gray-600 hover:text-gray-800 text-xs sm:text-sm"
                 onClick={() => {
                   setSearchQuery("");
                   setSelectedTags([]);
@@ -187,7 +187,7 @@ const Marketplace = () => {
           </aside>
 
           {/* Results Grid */}
-          <div className="order-1 lg:order-2">
+          <div className="w-full max-w-full order-1 lg:order-2">
             <div className="mb-4 sm:mb-6 flex items-center justify-between">
               <p className="text-xs sm:text-sm text-gray-600">
                 Tìm thấy <span className="font-semibold text-purple-600">{filteredUsers.length}</span> kết quả
@@ -218,7 +218,7 @@ const Marketplace = () => {
                 {filteredUsers.map((user, index) => (
                  <div
                    key={user.id}
-                   className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg flex flex-col justify-between transition-all duration-300 hover:shadow-xl group animate-fade-in-up"
+                   className="w-full max-w-full bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg flex flex-col justify-between transition-all duration-300 hover:shadow-xl group animate-fade-in-up"
                    style={{ animationDelay: `${index * 100}ms` }}
                  >
                    {/* Header with Avatar */}
@@ -282,17 +282,17 @@ const Marketplace = () => {
                         <Button
                           variant="outline"
                           size="sm"
-                          className="w-full border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-colors text-xs sm:text-sm font-medium h-9 sm:h-8"
+                          className="w-full max-w-full border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-colors text-xs sm:text-sm font-medium h-9 sm:h-8"
                         >
                           <User className="h-3 w-3 sm:h-3 sm:w-3 mr-1" />
                           Xem Hồ Sơ
                         </Button>
                       </Link>
-                      <div className="flex-1 relative">
+                      <div className="flex-1 relative hidden sm:block">
                         <Link to="/messages">
                           <Button
                             size="sm"
-                            className="w-full bg-gradient-to-r from-[#E54BFF] to-[#9B5CFF] hover:from-[#D43CEF] hover:to-[#8A4CE6] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 text-xs sm:text-sm h-9 sm:h-8"
+                            className="w-full max-w-full bg-gradient-to-r from-[#E54BFF] to-[#9B5CFF] hover:from-[#D43CEF] hover:to-[#8A4CE6] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 text-xs sm:text-sm h-9 sm:h-8"
                             onMouseEnter={() => setShowInviteTooltip(user.id)}
                             onMouseLeave={() => setShowInviteTooltip(null)}
                           >
@@ -335,6 +335,16 @@ const Marketplace = () => {
           </div>
         </div>
       </section>
+
+      {/* Fixed Mobile CTA */}
+      <Link to="/messages" className="sm:hidden">
+        <Button
+          className="fixed bottom-[calc(16px+env(safe-area-inset-bottom))] right-4 z-50 h-12 px-5 rounded-full shadow-lg bg-gradient-to-r from-[#E54BFF] to-[#9B5CFF] hover:from-[#D43CEF] hover:to-[#8A4CE6] text-white font-semibold"
+        >
+          <Send className="h-4 w-4 mr-2" />
+          Gửi Lời Mời
+        </Button>
+      </Link>
     </div>
   );
 };
