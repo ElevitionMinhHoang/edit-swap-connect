@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -34,6 +34,7 @@ interface ProfileData {
 }
 
 const ProfileCreate = () => {
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [profileData, setProfileData] = useState<ProfileData>({
@@ -109,7 +110,7 @@ const ProfileCreate = () => {
     toast.success("🎉 Hồ sơ của bạn đã được tạo thành công!");
     localStorage.removeItem("profileCreationData");
     setTimeout(() => {
-      window.location.href = "/marketplace";
+      navigate("/marketplace");
     }, 1500);
   };
 
