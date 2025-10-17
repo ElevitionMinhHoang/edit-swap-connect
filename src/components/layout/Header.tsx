@@ -25,8 +25,8 @@ const Header = () => {
   return (
     <header className={`sticky top-0 z-50 w-full border-b transition-all duration-500 ${
       isScrolled 
-        ? "bg-background/95 backdrop-blur-xl border-border shadow-lg" 
-        : "bg-background/60 backdrop-blur-md border-transparent"
+        ? "bg-gradient-to-r from-background/98 via-background/95 to-background/98 backdrop-blur-xl border-border/50 shadow-elevated" 
+        : "bg-gradient-to-r from-background/80 via-background/70 to-background/80 backdrop-blur-2xl border-border/20 shadow-glass"
     }`}>
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center space-x-2">
@@ -66,10 +66,10 @@ const Header = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-300 ${
+              className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-300 relative ${
                 isActive(link.path)
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  ? "text-primary font-semibold after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-6 after:h-0.5 after:bg-primary after:rounded-full"
+                  : "text-foreground/80 hover:text-foreground hover:bg-muted/50"
               }`}
             >
               {link.label}
@@ -84,7 +84,12 @@ const Header = () => {
             </Button>
           </Link>
           <Link to="/auth">
-            <Button size="sm" className="hover:shadow-accent transition-all duration-300">Đăng Nhập</Button>
+            <Button 
+              size="sm" 
+              className="bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white font-medium rounded-lg hover:shadow-[0_0_20px_rgba(37,99,235,0.5)] hover:scale-105 transition-all duration-300 border-0"
+            >
+              Đăng Nhập
+            </Button>
           </Link>
 
           {/* Mobile Menu Button */}
@@ -101,7 +106,7 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-border bg-background/98 backdrop-blur-xl animate-slide-in">
+        <div className="md:hidden border-t border-border/50 bg-gradient-to-b from-background/98 to-background/95 backdrop-blur-2xl animate-slide-in shadow-elevated">
           <nav className="container py-4 space-y-1">
             {navLinks.map((link) => (
               <Link
@@ -110,8 +115,8 @@ const Header = () => {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block px-4 py-2 text-sm font-medium rounded-md transition-all duration-300 ${
                   isActive(link.path)
-                    ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    ? "text-primary font-semibold bg-primary/10 border-l-2 border-primary"
+                    : "text-foreground/80 hover:text-foreground hover:bg-muted/50"
                 }`}
               >
                 {link.label}
