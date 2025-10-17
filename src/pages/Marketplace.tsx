@@ -277,26 +277,26 @@ const Marketplace = () => {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="mt-3 sm:mt-4 flex flex-col sm:flex-row gap-2 sm:gap-3">
-                      <Link to={`/profile/${user.id}`} className="flex-1">
+                    <div className="mt-3 sm:mt-4 flex flex-col gap-2">
+                      <Link to={`/profile/${user.id}`} className="w-full">
                         <Button
                           variant="outline"
                           size="sm"
-                          className="w-full max-w-full border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-colors text-xs sm:text-sm font-medium h-9 sm:h-8"
+                          className="w-full max-w-full border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-colors text-xs sm:text-sm font-medium h-9 sm:h-10"
                         >
-                          <User className="h-3 w-3 sm:h-3 sm:w-3 mr-1" />
+                          <User className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                           Xem Hồ Sơ
                         </Button>
                       </Link>
-                      <div className="flex-1 relative hidden sm:block">
-                        <Link to="/messages">
+                      <div className="w-full relative">
+                        <Link to="/messages" className="w-full">
                           <Button
                             size="sm"
-                            className="w-full max-w-full bg-gradient-to-r from-[#E54BFF] to-[#9B5CFF] hover:from-[#D43CEF] hover:to-[#8A4CE6] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 text-xs sm:text-sm h-9 sm:h-8"
+                            className="w-full max-w-full bg-gradient-to-r from-[#E54BFF] to-[#9B5CFF] hover:from-[#D43CEF] hover:to-[#8A4CE6] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 text-xs sm:text-sm h-9 sm:h-10"
                             onMouseEnter={() => setShowInviteTooltip(user.id)}
                             onMouseLeave={() => setShowInviteTooltip(null)}
                           >
-                            <Send className="h-3 w-3 sm:h-3 sm:w-3 mr-1" />
+                            <Send className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                             Gửi Lời Mời
                           </Button>
                         </Link>
@@ -335,16 +335,6 @@ const Marketplace = () => {
           </div>
         </div>
       </section>
-
-      {/* Fixed Mobile CTA */}
-      <Link to="/messages" className="sm:hidden">
-        <Button
-          className="fixed bottom-[calc(16px+env(safe-area-inset-bottom))] right-4 z-50 h-12 px-5 rounded-full shadow-lg bg-gradient-to-r from-[#E54BFF] to-[#9B5CFF] hover:from-[#D43CEF] hover:to-[#8A4CE6] text-white font-semibold"
-        >
-          <Send className="h-4 w-4 mr-2" />
-          Gửi Lời Mời
-        </Button>
-      </Link>
     </div>
   );
 };
