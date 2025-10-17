@@ -87,9 +87,9 @@ const Marketplace = () => {
         </section>
 
         {/* Optimized Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-4 sm:gap-6 md:gap-8 items-start">
+        <div className="flex flex-col lg:grid lg:grid-cols-[280px_1fr] gap-4 sm:gap-6 md:gap-8 items-start">
           {/* Modern Filter Sidebar */}
-         <aside className="bg-white rounded-xl sm:rounded-2xl shadow-md p-4 sm:p-6 h-fit sticky top-4">
+         <aside className="bg-white rounded-xl sm:rounded-2xl shadow-md p-4 sm:p-6 h-fit lg:sticky lg:top-4 order-2 lg:order-1">
            <div className="flex items-center gap-2 mb-4 sm:mb-6">
              <Filter className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
              <h2 className="font-bold text-base sm:text-lg">Bộ Lọc</h2>
@@ -187,7 +187,7 @@ const Marketplace = () => {
           </aside>
 
           {/* Results Grid */}
-          <div>
+          <div className="order-1 lg:order-2">
             <div className="mb-4 sm:mb-6 flex items-center justify-between">
               <p className="text-xs sm:text-sm text-gray-600">
                 Tìm thấy <span className="font-semibold text-purple-600">{filteredUsers.length}</span> kết quả
@@ -214,29 +214,29 @@ const Marketplace = () => {
                 </Button>
               </Card>
             ) : (
-              <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {filteredUsers.map((user, index) => (
                  <div
                    key={user.id}
-                   className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg flex flex-col justify-between transition-all duration-300 hover:scale-105 hover:shadow-xl group animate-fade-in-up"
+                   className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg flex flex-col justify-between transition-all duration-300 hover:shadow-xl group animate-fade-in-up"
                    style={{ animationDelay: `${index * 100}ms` }}
                  >
                    {/* Header with Avatar */}
                    <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
-                     <div className="relative">
-                       <div className="text-3xl sm:text-4xl group-hover:scale-110 transition-transform duration-300">
+                     <div className="relative flex-shrink-0">
+                       <div className="text-2xl sm:text-3xl md:text-4xl">
                          {user.avatar}
                        </div>
-                       <div className="absolute -bottom-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full border-2 border-white"></div>
+                       <div className="absolute -bottom-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 bg-green-500 rounded-full border-2 border-white"></div>
                      </div>
-                     <div className="flex-1">
-                       <h3 className="font-bold text-base sm:text-lg text-gray-900">{user.name}</h3>
-                       <div className="flex items-center gap-1 text-xs sm:text-sm text-gray-600 mb-1">
-                         <MapPin className="h-2 w-2 sm:h-3 sm:w-3" />
-                         {user.location}
+                     <div className="flex-1 min-w-0">
+                       <h3 className="font-bold text-sm sm:text-base md:text-lg text-gray-900 truncate">{user.name}</h3>
+                       <div className="flex items-center gap-1 text-xs text-gray-600 mb-1">
+                         <MapPin className="h-2 w-2 sm:h-3 sm:w-3 flex-shrink-0" />
+                         <span className="truncate">{user.location}</span>
                        </div>
-                       <div className="flex items-center gap-1">
-                         <Star className="h-3 w-3 sm:h-4 sm:w-4 fill-yellow-400 text-yellow-400" />
+                       <div className="flex items-center gap-1 flex-wrap">
+                         <Star className="h-2 w-2 sm:h-3 sm:w-3 md:h-4 md:w-4 fill-yellow-400 text-yellow-400 flex-shrink-0" />
                          <span className="font-semibold text-xs sm:text-sm text-gray-900">{user.rating}</span>
                          <span className="text-xs text-gray-500">
                            ({user.totalSessions} buổi)
@@ -246,7 +246,7 @@ const Marketplace = () => {
                    </div>
 
                     {/* Bio */}
-                    <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4 line-clamp-2 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4 line-clamp-2 leading-relaxed break-words">
                       {user.bio}
                     </p>
 
@@ -257,7 +257,7 @@ const Marketplace = () => {
                         {user.offerSkills.slice(0, 3).map((skill, idx) => (
                           <div
                             key={idx}
-                            className={`px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-medium bg-gradient-to-r ${getSkillColor(skill.skill)} text-white shadow-sm`}
+                            className={`px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-medium bg-gradient-to-r ${getSkillColor(skill.skill)} text-white shadow-sm truncate max-w-[80px] sm:max-w-none`}
                           >
                             {skill.skill}
                           </div>
@@ -277,26 +277,26 @@ const Marketplace = () => {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="mt-3 sm:mt-4 flex flex-wrap items-center justify-between gap-2 sm:gap-3">
-                      <Link to={`/profile/${user.id}`} className="flex-1 min-w-[100px] sm:min-w-[120px]">
+                    <div className="mt-3 sm:mt-4 flex flex-col sm:flex-row gap-2 sm:gap-3">
+                      <Link to={`/profile/${user.id}`} className="flex-1">
                         <Button
                           variant="outline"
                           size="sm"
-                          className="w-full border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-colors text-xs sm:text-sm font-medium"
+                          className="w-full border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-colors text-xs sm:text-sm font-medium h-9 sm:h-8"
                         >
-                          <User className="h-2 w-2 sm:h-3 sm:w-3 mr-1" />
+                          <User className="h-3 w-3 sm:h-3 sm:w-3 mr-1" />
                           Xem Hồ Sơ
                         </Button>
                       </Link>
-                      <div className="flex-1 min-w-[100px] sm:min-w-[120px] relative">
+                      <div className="flex-1 relative">
                         <Link to="/messages">
                           <Button
                             size="sm"
-                            className="w-full bg-gradient-to-r from-[#E54BFF] to-[#9B5CFF] hover:from-[#D43CEF] hover:to-[#8A4CE6] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 text-xs sm:text-sm"
+                            className="w-full bg-gradient-to-r from-[#E54BFF] to-[#9B5CFF] hover:from-[#D43CEF] hover:to-[#8A4CE6] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 text-xs sm:text-sm h-9 sm:h-8"
                             onMouseEnter={() => setShowInviteTooltip(user.id)}
                             onMouseLeave={() => setShowInviteTooltip(null)}
                           >
-                            <Send className="h-2 w-2 sm:h-3 sm:w-3 mr-1" />
+                            <Send className="h-3 w-3 sm:h-3 sm:w-3 mr-1" />
                             Gửi Lời Mời
                           </Button>
                         </Link>

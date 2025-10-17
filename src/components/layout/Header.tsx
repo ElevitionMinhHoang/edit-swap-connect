@@ -68,8 +68,8 @@ const Header = () => {
               to={link.path}
               className={`px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 ${
                 isActive(link.path)
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  ? "text-primary font-semibold after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-6 after:h-0.5 after:bg-primary after:rounded-full"
+                  : "text-foreground/80 hover:text-foreground hover:bg-muted/50"
               }`}
             >
               {link.label}
@@ -110,8 +110,8 @@ const Header = () => {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block px-4 py-3 text-base font-medium rounded-md transition-all duration-300 ${
                   isActive(link.path)
-                    ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    ? "text-primary font-semibold bg-primary/10 border-l-2 border-primary"
+                    : "text-foreground/80 hover:text-foreground hover:bg-muted/50"
                 }`}
               >
                 {link.label}
