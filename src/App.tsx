@@ -8,6 +8,7 @@ import ScrollToTop from "./components/layout/ScrollToTop";
 import Home from "./pages/HomeNew";
 import Marketplace from "./pages/Marketplace";
 import Profile from "./pages/Profile";
+import ProfileCreate from "./pages/ProfileCreate";
 import Messages from "./pages/Messages";
 import Sessions from "./pages/Sessions";
 import SessionDetail from "./pages/SessionDetail";
@@ -33,6 +34,7 @@ const App = () => (
             <Route path="/" element={<Home />} />
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/profile/:id" element={<Profile />} />
+            <Route path="/profile/create" element={<ProfileCreate />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/sessions" element={<Sessions />} />
             <Route path="/session/:id" element={<SessionDetail />} />

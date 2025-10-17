@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Search, MapPin, Star, Send, User, Filter, X, TrendingUp, Sparkles } from "lucide-react";
+import { Search, MapPin, Star, Send, User, Filter, X, TrendingUp, Sparkles, ChevronDown } from "lucide-react";
 import { mockUsers, skillTags, skillCategories } from "@/lib/mockData";
 
 const Marketplace = () => {
@@ -14,6 +14,10 @@ const Marketplace = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showInviteTooltip, setShowInviteTooltip] = useState<string | null>(null);
   const [showResults, setShowResults] = useState(false);
+  const [sortBy, setSortBy] = useState<"rating" | "newest">("rating");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(12);
+  const [loadedProfiles, setLoadedProfiles] = useState<number>(12);
 
   // Popular skills with gradient colors
   const popularSkills = [
@@ -40,22 +44,45 @@ const Marketplace = () => {
     }
   }, [searchQuery]);
 
-  const filteredUsers = mockUsers.filter((user) => {
-    const matchesSearch =
-      !searchQuery ||
-      user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      user.offerSkills.some((s) => s.skill.toLowerCase().includes(searchQuery.toLowerCase()));
+  // Sort and filter users
+  const filteredUsers = mockUsers
+    .filter((user) => {
+      const matchesSearch =
+        !searchQuery ||
+        user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        user.offerSkills.some((s) => s.skill.toLowerCase().includes(searchQuery.toLowerCase()));
 
-    const matchesTags =
-      selectedTags.length === 0 ||
-      user.offerSkills.some((s) => selectedTags.includes(s.skill));
+      const matchesTags =
+        selectedTags.length === 0 ||
+        user.offerSkills.some((s) => selectedTags.includes(s.skill));
 
-    const matchesLevel =
-      !selectedLevel ||
-      user.offerSkills.some((s) => s.level === selectedLevel);
+      const matchesLevel =
+        !selectedLevel ||
+        user.offerSkills.some((s) => s.level === selectedLevel);
 
-    return matchesSearch && matchesTags && matchesLevel;
-  });
+      return matchesSearch && matchesTags && matchesLevel;
+    })
+    .sort((a, b) => {
+      if (sortBy === "rating") {
+        return b.rating - a.rating; // Descending rating
+      } else {
+        return new Date(b.joinedDate).getTime() - new Date(a.joinedDate).getTime(); // Newest first
+      }
+    });
+
+  // Pagination
+  const totalPages = Math.ceil(filteredUsers.length / itemsPerPage);
+  const displayedUsers = filteredUsers.slice(0, loadedProfiles);
+  const hasMoreProfiles = loadedProfiles < filteredUsers.length;
+
+  const loadMoreProfiles = () => {
+    setLoadedProfiles(prev => Math.min(prev + itemsPerPage, filteredUsers.length));
+  };
+
+  const resetPagination = () => {
+    setLoadedProfiles(itemsPerPage);
+    setCurrentPage(1);
+  };
 
   const getSkillColor = (skill: string) => {
     const popularSkill = popularSkills.find(s => s.name === skill);
@@ -64,6 +91,7 @@ const Marketplace = () => {
 
   const handleApplyFilters = () => {
     setShowResults(true);
+    resetPagination();
   };
 
   const handleClearFilters = () => {
@@ -71,6 +99,12 @@ const Marketplace = () => {
     setSelectedTags([]);
     setSelectedLevel("");
     setShowResults(false);
+    resetPagination();
+  };
+
+  const handleSortChange = (value: "rating" | "newest") => {
+    setSortBy(value);
+    resetPagination();
   };
 
   return (
@@ -216,10 +250,25 @@ const Marketplace = () => {
               </Card>
             ) : (
               <>
-                <div className="mb-4 sm:mb-6 flex items-center justify-between">
+                <div className="mb-4 sm:mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                   <p className="text-xs sm:text-sm text-gray-600">
                     Tìm thấy <span className="font-semibold text-purple-600">{filteredUsers.length}</span> kết quả
+                    {sortBy === "rating" && " (sắp xếp theo đánh giá ⭐)"}
+                    {sortBy === "newest" && " (sắp xếp theo mới nhất)"}
                   </p>
+                  
+                  {/* Sorting Dropdown */}
+                  <div className="relative">
+                    <select
+                      value={sortBy}
+                      onChange={(e) => handleSortChange(e.target.value as "rating" | "newest")}
+                      className="appearance-none bg-white border border-gray-300 rounded-lg px-3 py-2 pr-8 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    >
+                      <option value="rating">Đánh giá cao nhất ⭐</option>
+                      <option value="newest">Mới nhất</option>
+                    </select>
+                    <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 h-3 w-3 text-gray-500 pointer-events-none" />
+                  </div>
                 </div>
 
                 {filteredUsers.length === 0 ? (
@@ -238,106 +287,124 @@ const Marketplace = () => {
                     </Button>
                   </Card>
                 ) : (
-                  <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {filteredUsers.map((user, index) => (
-                 <div
-                   key={user.id}
-                   className="w-full max-w-full bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg flex flex-col justify-between transition-all duration-300 hover:shadow-xl group animate-fade-in-up"
-                   style={{ animationDelay: `${index * 100}ms` }}
-                 >
-                   {/* Header with Avatar */}
-                   <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
-                     <div className="relative flex-shrink-0">
-                       <div className="text-2xl sm:text-3xl md:text-4xl">
-                         {user.avatar}
-                       </div>
-                       <div className="absolute -bottom-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 bg-green-500 rounded-full border-2 border-white"></div>
-                     </div>
-                     <div className="flex-1 min-w-0">
-                       <h3 className="font-bold text-sm sm:text-base md:text-lg text-gray-900 truncate">{user.name}</h3>
-                       <div className="flex items-center gap-1 text-xs text-gray-600 mb-1">
-                         <MapPin className="h-2 w-2 sm:h-3 sm:w-3 flex-shrink-0" />
-                         <span className="truncate">{user.location}</span>
-                       </div>
-                       <div className="flex items-center gap-1 flex-wrap">
-                         <Star className="h-2 w-2 sm:h-3 sm:w-3 md:h-4 md:w-4 fill-yellow-400 text-yellow-400 flex-shrink-0" />
-                         <span className="font-semibold text-xs sm:text-sm text-gray-900">{user.rating}</span>
-                         <span className="text-xs text-gray-500">
-                           ({user.totalSessions} buổi)
-                         </span>
-                       </div>
-                     </div>
-                   </div>
-
-                    {/* Bio */}
-                    <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4 line-clamp-2 leading-relaxed break-words">
-                      {user.bio}
-                    </p>
-
-                    {/* Skills */}
-                    <div className="mb-3 sm:mb-4">
-                      <div className="text-xs font-semibold text-gray-700 mb-1 sm:mb-2">Dạy</div>
-                      <div className="flex flex-wrap gap-1 sm:gap-2">
-                        {user.offerSkills.slice(0, 3).map((skill, idx) => (
-                          <div
-                            key={idx}
-                            className={`px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-medium bg-gradient-to-r ${getSkillColor(skill.skill)} text-white shadow-sm truncate max-w-[80px] sm:max-w-none`}
-                          >
-                            {skill.skill}
-                          </div>
-                        ))}
-                        {user.offerSkills.length > 3 && (
-                          <div className="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
-                            +{user.offerSkills.length - 3}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Availability */}
-                    <div className="mb-3 sm:mb-4 text-xs text-gray-500 flex items-center gap-1">
-                      <span>🕒</span>
-                      <span>{user.availability}</span>
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="mt-3 sm:mt-4 flex flex-col gap-2">
-                      <Link to={`/profile/${user.id}`} className="w-full">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="w-full max-w-full border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-colors text-xs sm:text-sm font-medium h-9 sm:h-10"
+                  <>
+                    <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                      {displayedUsers.map((user, index) => (
+                        <div
+                          key={user.id}
+                          className="w-full max-w-full bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg flex flex-col justify-between transition-all duration-300 hover:shadow-xl group animate-fade-in-up"
+                          style={{ animationDelay: `${index * 50}ms` }}
                         >
-                          <User className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
-                          Xem Hồ Sơ
-                        </Button>
-                      </Link>
-                      <div className="w-full relative">
-                        <Link to="/messages" className="w-full">
-                          <Button
-                            size="sm"
-                            className="w-full max-w-full bg-gradient-to-r from-[#E54BFF] to-[#9B5CFF] hover:from-[#D43CEF] hover:to-[#8A4CE6] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 text-xs sm:text-sm h-9 sm:h-10"
-                            onMouseEnter={() => setShowInviteTooltip(user.id)}
-                            onMouseLeave={() => setShowInviteTooltip(null)}
-                          >
-                            <Send className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
-                            Gửi Lời Mời
-                          </Button>
-                        </Link>
-                        
-                        {/* Tooltip */}
-                        {showInviteTooltip === user.id && (
-                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 sm:px-3 sm:py-2 bg-gray-900 text-white text-xs rounded-lg shadow-lg z-10 whitespace-nowrap">
-                            Sẽ trừ 10 Edits để gửi lời mời học 1–1
-                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
+                          {/* Header with Avatar */}
+                          <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                            <div className="relative flex-shrink-0">
+                              <div className="text-2xl sm:text-3xl md:text-4xl">
+                                {user.avatar}
+                              </div>
+                              <div className="absolute -bottom-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 bg-green-500 rounded-full border-2 border-white"></div>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h3 className="font-bold text-sm sm:text-base md:text-lg text-gray-900 truncate">{user.name}</h3>
+                              <div className="flex items-center gap-1 text-xs text-gray-600 mb-1">
+                                <MapPin className="h-2 w-2 sm:h-3 sm:w-3 flex-shrink-0" />
+                                <span className="truncate">{user.location}</span>
+                              </div>
+                              <div className="flex items-center gap-1 flex-wrap">
+                                <Star className="h-2 w-2 sm:h-3 sm:w-3 md:h-4 md:w-4 fill-yellow-400 text-yellow-400 flex-shrink-0" />
+                                <span className="font-semibold text-xs sm:text-sm text-gray-900">{user.rating}</span>
+                                <span className="text-xs text-gray-500">
+                                  ({user.totalSessions} buổi)
+                                </span>
+                              </div>
+                            </div>
                           </div>
-                        )}
-                      </div>
+
+                          {/* Bio */}
+                          <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4 line-clamp-2 leading-relaxed break-words">
+                            {user.bio}
+                          </p>
+
+                          {/* Skills */}
+                          <div className="mb-3 sm:mb-4">
+                            <div className="text-xs font-semibold text-gray-700 mb-1 sm:mb-2">Dạy</div>
+                            <div className="flex flex-wrap gap-1 sm:gap-2">
+                              {user.offerSkills.slice(0, 3).map((skill, idx) => (
+                                <div
+                                  key={idx}
+                                  className={`px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-medium bg-gradient-to-r ${getSkillColor(skill.skill)} text-white shadow-sm truncate max-w-[80px] sm:max-w-none`}
+                                >
+                                  {skill.skill}
+                                </div>
+                              ))}
+                              {user.offerSkills.length > 3 && (
+                                <div className="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                                  +{user.offerSkills.length - 3}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Availability */}
+                          <div className="mb-3 sm:mb-4 text-xs text-gray-500 flex items-center gap-1">
+                            <span>🕒</span>
+                            <span>{user.availability}</span>
+                          </div>
+
+                          {/* Action Buttons */}
+                          <div className="mt-3 sm:mt-4 flex flex-col gap-2">
+                            <Link to={`/profile/${user.id}`} className="w-full">
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                className="w-full max-w-full border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-colors text-xs sm:text-sm font-medium h-9 sm:h-10"
+                              >
+                                <User className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                                Xem Hồ Sơ
+                              </Button>
+                            </Link>
+                            <div className="w-full relative">
+                              <Link to="/messages" className="w-full">
+                                <Button
+                                  size="sm"
+                                  className="w-full max-w-full bg-gradient-to-r from-[#E54BFF] to-[#9B5CFF] hover:from-[#D43CEF] hover:to-[#8A4CE6] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 text-xs sm:text-sm h-9 sm:h-10"
+                                  onMouseEnter={() => setShowInviteTooltip(user.id)}
+                                  onMouseLeave={() => setShowInviteTooltip(null)}
+                                >
+                                  <Send className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                                  Gửi Lời Mời
+                                </Button>
+                              </Link>
+                              
+                              {/* Tooltip */}
+                              {showInviteTooltip === user.id && (
+                                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 sm:px-3 sm:py-2 bg-gray-900 text-white text-xs rounded-lg shadow-lg z-10 whitespace-nowrap">
+                                  Sẽ trừ 10 Edits để gửi lời mời học 1–1
+                                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  </div>
-                  ))}
-                </div>
-              )}
+                    
+                    {/* Load More Button */}
+                    {hasMoreProfiles && (
+                      <div className="mt-8 text-center">
+                        <Button
+                          onClick={loadMoreProfiles}
+                          variant="outline"
+                          className="border-purple-500 text-purple-600 hover:bg-purple-50 hover:text-purple-700 font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105"
+                        >
+                          Xem thêm {Math.min(itemsPerPage, filteredUsers.length - loadedProfiles)} kết quả
+                        </Button>
+                        <p className="text-xs text-gray-500 mt-2">
+                          Đang hiển thị {displayedUsers.length} trong tổng số {filteredUsers.length} kết quả
+                        </p>
+                      </div>
+                    )}
+                  </>
+                )}
 
               {/* CTA Section */}
               {showResults && (

@@ -48,7 +48,7 @@ const SessionDetail = () => {
         <div className="grid md:grid-cols-2 gap-6">
           {/* Teacher */}
           <div>
-            <h3 className="text-sm font-medium text-muted-foreground mb-3">Giáo Viên</h3>
+            <h3 className="text-sm font-medium text-muted-foreground mb-3">Người dạy</h3>
             <div className="flex items-center gap-3">
               <div className="text-4xl">{session.teacher.avatar}</div>
               <div>
@@ -124,7 +124,7 @@ const SessionDetail = () => {
           <h2 className="text-lg font-semibold mb-4">Tổng Kết Edits</h2>
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Giáo viên nhận:</span>
+              <span className="text-muted-foreground">Người dạy nhận:</span>
               <span className="font-semibold text-secondary">+{session.editsAmount} Edits</span>
             </div>
             <div className="flex justify-between">

@@ -37,7 +37,7 @@ const Sessions = () => {
             <Card className="p-12 text-center">
               <p className="text-muted-foreground mb-4">Chưa có buổi học nào sắp tới</p>
               <Link to="/marketplace" className="text-primary hover:underline">
-                Khám phá chợ kỹ năng để tìm giáo viên
+                Khám phá chợ kỹ năng để tìm người dạy
               </Link>
             </Card>
           ) : (
@@ -61,7 +61,7 @@ const Sessions = () => {
                         <div className="flex items-center gap-3">
                           <div className="text-3xl">{session.teacher.avatar}</div>
                           <div>
-                            <div className="text-sm text-muted-foreground">Giáo Viên</div>
+                            <div className="text-sm text-muted-foreground">Người Dạy</div>
                             <div className="font-medium">{session.teacher.name}</div>
                           </div>
                         </div>
@@ -126,7 +126,7 @@ const Sessions = () => {
                         <div className="flex items-center gap-3">
                           <div className="text-3xl">{session.teacher.avatar}</div>
                           <div>
-                            <div className="text-sm text-muted-foreground">Giáo Viên</div>
+                            <div className="text-sm text-muted-foreground">Người Dạy</div>
                             <div className="font-medium">{session.teacher.name}</div>
                           </div>
                         </div>

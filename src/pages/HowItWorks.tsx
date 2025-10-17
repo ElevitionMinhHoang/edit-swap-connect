@@ -28,7 +28,7 @@ const HowItWorks = () => {
         <div className="grid md:grid-cols-5 gap-4">
           {[
             { icon: Users, title: "Tạo Hồ Sơ", desc: "Liệt kê kỹ năng Có thể dạy/Muốn học" },
-            { icon: Search, title: "Tìm Kiếm & Ghép Đôi", desc: "Tìm giáo viên phù hợp" },
+            { icon: Search, title: "Tìm Kiếm & Ghép Đôi", desc: "Tìm người dạy phù hợp" },
             { icon: MessageCircle, title: "Trò Chuyện & Thống Nhất", desc: "Thảo luận mục tiêu buổi học" },
             { icon: Calendar, title: "Đặt Lịch", desc: "Xác nhận thời gian & địa điểm" },
             { icon: CheckCircle, title: "Hoàn Thành & Đánh Giá", desc: "Tự động tính Edits" },
@@ -89,7 +89,7 @@ const HowItWorks = () => {
             <div className="text-4xl mb-3">👤↔️👤</div>
             <h3 className="text-xl font-semibold mb-2">Buổi Học 1-1</h3>
             <p className="text-muted-foreground mb-4">
-              Hình thức phổ biến nhất. Kết nối trực tiếp giữa giáo viên và người học. Sự quan tâm cá nhân hóa và lịch trình linh hoạt.
+              Hình thức phổ biến nhất. Kết nối trực tiếp giữa người dạy và người học. Sự quan tâm cá nhân hóa và lịch trình linh hoạt.
             </p>
             <ul className="text-sm space-y-1 text-muted-foreground">
               <li>• Lý tưởng cho việc học cá nhân hóa</li>
@@ -102,7 +102,7 @@ const HowItWorks = () => {
             <div className="text-4xl mb-3">👤➡️👥</div>
             <h3 className="text-xl font-semibold mb-2">1-Nhiều (Sắp Ra Mắt)</h3>
             <p className="text-muted-foreground mb-4">
-              Buổi học nhóm nơi một giáo viên làm việc với nhiều người học. Tuyệt vời cho workshop và lớp học tương tác.
+              Buổi học nhóm nơi một người dạy truyền tải kiến thức cho nhiều người học. Tuyệt vời cho workshop và lớp học tương tác.
             </p>
             <ul className="text-sm space-y-1 text-muted-foreground">
               <li>• Chia sẻ trải nghiệm học tập</li>
@@ -153,7 +153,7 @@ const HowItWorks = () => {
               a: "Không! Bạn có thể bắt đầu dạy ngay để kiếm Edits. Có gói Edits tùy chọn (20/50/100) nếu bạn muốn học trước.",
             },
             {
-              q: "Điều gì xảy ra nếu giáo viên hoặc người học của tôi không xuất hiện?",
+              q: "Điều gì xảy ra nếu người dạy hoặc người học của tôi không xuất hiện?",
               a: "Cả hai bên phải xác nhận hoàn thành. Nếu có người không xuất hiện, bạn có thể khiếu nại và đội ngũ quản trị sẽ điều tra và hoàn lại Edits nếu cần.",
             },
             {
@@ -166,7 +166,7 @@ const HowItWorks = () => {
             },
             {
               q: "Đánh giá hoạt động như thế nào?",
-              a: "Sau mỗi buổi học, cả giáo viên và người học để lại đánh giá 1–5 sao. Nếu bạn đánh giá ≤3 sao, bạn phải cung cấp bình luận (tối thiểu 20 ký tự) để giúp duy trì chất lượng.",
+              a: "Sau mỗi buổi học, người dạy và người học để lại đánh giá 1–5 sao. Nếu bạn đánh giá ≤3 sao, bạn phải cung cấp bình luận (tối thiểu 20 ký tự) để giúp duy trì chất lượng.",
             },
           ].map((faq, idx) => (
             <Card key={idx} className="p-6">

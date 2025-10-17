@@ -83,7 +83,7 @@ const HomeNew = () => {
               Biến kỹ năng thành tài sản. Dùng thời gian đầu tư cho tri thức. Cùng kiến tạo một vòng tròn cho và nhận không ngừng
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Link to="/marketplace">
+              <Link to="/profile/create">
                 <Button variant="hero" size="lg" className="w-full sm:w-auto text-sm sm:text-base">
                   Tạo Hồ Sơ Ngay
                   <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
@@ -142,7 +142,8 @@ const HomeNew = () => {
              >
                {/* Circular Gradient Number Badge */}
                <div className="relative mb-4 md:mb-6">
-                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full blur-sm opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
+                 <div className="absolute inset-0 rounded-full bg-white/10 backdrop-blur-sm border border-white/20" />
+
                  <div className="relative flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white font-bold text-lg md:text-xl shadow-lg mx-auto">
                    {item.step}
                  </div>
