@@ -109,7 +109,7 @@ const ProfileCreate = () => {
     toast.success("🎉 Hồ sơ của bạn đã được tạo thành công!");
     localStorage.removeItem("profileCreationData");
     setTimeout(() => {
-      window.location.href = "/profile/preview";
+      window.location.href = "/marketplace";
     }, 1500);
   };
 
