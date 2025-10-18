@@ -544,6 +544,77 @@ All colors MUST be HSL.
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
   }
+  
+  /* Fix for gradient + border-radius + transparency rendering issues in Safari iOS */
+  /* This is the standard fix for Safari's gradient rendering bug */
+  .rounded-lg,
+  .rounded-xl,
+  .rounded-2xl,
+  .rounded-3xl,
+  .rounded-full {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for gradient backgrounds with rounded corners */
+  [class*="bg-gradient-to-"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for transparent elements with rounded corners */
+  [class*="bg-white/"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for glass morphism effects */
+  .glass,
+  .glass-card {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+    background: rgba(255, 255, 255, 0.98) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  }
+  
+  /* Fix for StatsCounter gradient cards */
+  .group.flex.flex-col.items-center.justify-center {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for gradient text with rounded elements */
+  .bg-clip-text {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  
+  /* Fix for animated gradients */
+  .animate-gradient {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Additional Safari iOS specific fixes */
+  /* Fix for cards with gradients and rounded corners */
+  .card,
+  [class*="card"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for buttons with gradients and rounded corners */
+  button,
+  .btn {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for badges with gradients and rounded corners */
+  .badge {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
 }
 
 /* Mobile navbar conflict resolution */
