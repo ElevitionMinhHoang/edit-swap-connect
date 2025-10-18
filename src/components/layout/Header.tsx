@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import logo from "@/assets/logo.jpg";
 import { useScrollPosition } from "@/hooks/useScrollPosition";
 
@@ -9,6 +9,8 @@ const Header = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isScrolled } = useScrollPosition();
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   const navLinks = [
     { label: "Trang Chủ", path: "/" },
@@ -27,13 +29,58 @@ const Header = () => {
     return location.pathname === path || location.pathname.startsWith(path + "/");
   };
 
+  // Close mobile menu when clicking outside or pressing escape
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (mobileMenuOpen &&
+          mobileMenuRef.current &&
+          !mobileMenuRef.current.contains(event.target as Node) &&
+          menuButtonRef.current &&
+          !menuButtonRef.current.contains(event.target as Node)) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    // Prevent body scroll when mobile menu is open
+    if (mobileMenuOpen) {
+      document.body.classList.add('no-scroll');
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+      document.addEventListener('keydown', handleEscape);
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [mobileMenuOpen]);
+
+  // Focus management for accessibility
+  useEffect(() => {
+    if (mobileMenuOpen && mobileMenuRef.current) {
+      const firstLink = mobileMenuRef.current.querySelector('a') as HTMLAnchorElement;
+      firstLink?.focus();
+    }
+  }, [mobileMenuOpen]);
+
   return (
     <header className={`sticky top-0 z-50 w-full border-b transition-all duration-500 ${
       isScrolled
         ? "bg-background/95 backdrop-blur-xl border-border shadow-lg"
         : "bg-background/60 backdrop-blur-md border-transparent"
-    }`}>
-      <div className="container flex h-16 items-center justify-between px-4 sm:px-6">
+    } safe-area-inset-top`}>
+      <div className="container flex h-16 items-center justify-between px-4 sm:px-6 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]">
         <div className="flex items-center space-x-2">
           <Link
             to="/"
@@ -54,7 +101,9 @@ const Header = () => {
             <img
               src={logo}
               alt="Skill Swap Connect"
-              className="h-8 w-8 sm:h-9 sm:w-9 rounded-lg object-cover"
+              className="h-8 w-8 sm:h-9 sm:w-9 rounded-lg object-cover touch-manipulation"
+              loading="eager"
+              decoding="async"
             />
             <span className="hidden font-bold text-lg sm:text-xl sm:inline-block tracking-tight transition-colors duration-300">
               Skill Swap Connect
@@ -71,10 +120,10 @@ const Header = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`relative px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 ${
+              className={`relative px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 min-h-[44px] flex items-center touch-manipulation active:scale-95 ${
                 isActive(link.path)
                   ? "text-primary font-semibold"
-                  : "text-foreground/80 hover:text-foreground hover:bg-muted/50"
+                  : "text-foreground/80 hover:text-foreground hover:bg-muted/50 active:bg-muted"
               }`}
             >
               {link.label}
@@ -92,20 +141,24 @@ const Header = () => {
 
         <div className="flex items-center space-x-2">
           <Link to="/profile/u1" className="hidden sm:block">
-            <Button variant="ghost" size="sm" className="text-sm">
+            <Button variant="ghost" size="sm" className="text-sm min-h-[44px] min-w-[44px] touch-manipulation active:scale-95">
               Hồ Sơ
             </Button>
           </Link>
           <Link to="/auth">
-            <Button size="sm" className="text-sm hover:shadow-accent transition-all duration-300">Đăng Nhập</Button>
+            <Button size="sm" className="text-sm hover:shadow-accent transition-all duration-300 min-h-[44px] min-w-[44px] touch-manipulation active:scale-95">Đăng Nhập</Button>
           </Link>
 
           {/* Mobile Menu Button */}
           <Button
+            ref={menuButtonRef}
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden min-h-[44px] min-w-[44px] touch-manipulation btn-mobile"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-label={mobileMenuOpen ? "Đóng menu" : "Mở menu"}
+            aria-controls="mobile-menu"
           >
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
@@ -117,23 +170,35 @@ const Header = () => {
         <>
           {/* Backdrop overlay */}
           <div
-            className="md:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-40 animate-fade-in"
+            className="md:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-40 animate-fade-in touch-none"
             onClick={() => setMobileMenuOpen(false)}
+            onTouchStart={(e) => e.preventDefault()}
           />
           
           {/* Mobile menu */}
-          <div className="md:hidden border-t border-border bg-background/98 backdrop-blur-xl animate-slide-in fixed top-16 left-0 right-0 z-50 shadow-lg">
-            <nav className="container py-4 space-y-2">
-              {navLinks.map((link) => (
+          <div
+            ref={mobileMenuRef}
+            id="mobile-menu"
+            className="md:hidden border-t border-border bg-background/98 backdrop-blur-ios animate-slide-in fixed top-16 left-0 right-0 z-50 shadow-lg pb-[env(safe-area-inset-bottom)] mobile-menu-enter-active"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu di động"
+          >
+            <nav className="container py-4 space-y-2 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]">
+              {navLinks.map((link, index) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 text-base font-medium rounded-lg transition-all duration-300 min-h-[44px] flex items-center ${
+                  className={`block px-4 py-3 text-base font-medium rounded-lg transition-all duration-300 min-h-[44px] flex items-center touch-manipulation active:scale-95 select-none touch-target ${
                     isActive(link.path)
                       ? "text-primary font-semibold bg-primary/10 border-l-4 border-primary shadow-sm"
-                      : "text-foreground/80 hover:text-foreground hover:bg-muted/50"
+                      : "text-foreground/80 hover:text-foreground hover:bg-muted/50 active:bg-muted"
                   }`}
+                  onTouchStart={(e) => e.currentTarget.classList.add('active')}
+                  onTouchEnd={(e) => e.currentTarget.classList.remove('active')}
+                  tabIndex={mobileMenuOpen ? 0 : -1}
+                  aria-current={isActive(link.path) ? "page" : undefined}
                 >
                   {link.label}
                 </Link>
@@ -141,7 +206,10 @@ const Header = () => {
               <Link
                 to="/profile/u1"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-3 text-base font-medium text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg transition-all duration-300 min-h-[44px] flex items-center"
+                className="block px-4 py-3 text-base font-medium text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg transition-all duration-300 min-h-[44px] flex items-center touch-manipulation active:scale-95 active:bg-muted select-none touch-target"
+                onTouchStart={(e) => e.currentTarget.classList.add('active')}
+                onTouchEnd={(e) => e.currentTarget.classList.remove('active')}
+                tabIndex={mobileMenuOpen ? 0 : -1}
               >
                 Hồ Sơ
               </Link>

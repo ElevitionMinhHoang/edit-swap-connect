@@ -1,25 +1,57 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export const useScrollPosition = () => {
   const [scrollY, setScrollY] = useState(0);
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down");
+  const rafId = useRef<number | null>(null);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-
     const updateScrollPosition = () => {
       const currentScrollY = window.scrollY;
-      setScrollDirection(currentScrollY > lastScrollY ? "down" : "up");
-      setScrollY(currentScrollY);
-      lastScrollY = currentScrollY;
+      
+      // Use requestAnimationFrame for smoother performance on mobile
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
+      
+      rafId.current = requestAnimationFrame(() => {
+        setScrollDirection(currentScrollY > lastScrollY.current ? "down" : "up");
+        setScrollY(currentScrollY);
+        lastScrollY.current = currentScrollY;
+      });
     };
 
-    window.addEventListener("scroll", updateScrollPosition, { passive: true });
+    // Throttle scroll events for better mobile performance
+    const throttledUpdate = () => {
+      updateScrollPosition();
+    };
 
+    // Use passive listeners for better scroll performance
+    const options: AddEventListenerOptions = {
+      passive: true,
+      capture: false
+    };
+
+    window.addEventListener("scroll", throttledUpdate, options);
+
+    // Cleanup function
     return () => {
-      window.removeEventListener("scroll", updateScrollPosition);
+      window.removeEventListener("scroll", throttledUpdate);
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
     };
   }, []);
 
-  return { scrollY, scrollDirection, isScrolled: scrollY > 50 };
+  // Mobile-specific threshold for better UX
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const scrollThreshold = isMobile ? 30 : 50;
+
+  return {
+    scrollY,
+    scrollDirection,
+    isScrolled: scrollY > scrollThreshold,
+    isMobile
+  };
 };
