@@ -519,8 +519,247 @@ All colors MUST be HSL.
   }
 }
 
-/* iOS Safari text rendering fixes */
+/* iOS Safari text rendering fixes - Comprehensive solution for white grid artifacts */
 @supports (-webkit-touch-callout: none) {
+  /* Nuclear option: Apply mask to ALL elements to fix Safari iOS gradient rendering bug */
+  /* This is the most aggressive fix for the white grid artifacts */
+  * {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Reset mask for text elements to maintain text readability */
+  h1, h2, h3, h4, h5, h6, p, span, a, li, button, input, textarea, select, label, strong, em, i, b, u, code, pre, blockquote, cite, figcaption, caption, th, td {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  
+  /* Reset mask for form elements */
+  input, textarea, select, option, optgroup, fieldset, legend, datalist, output, meter, progress {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  
+  /* Reset mask for interactive elements */
+  button, [role="button"], [type="button"], [type="submit"], [type="reset"], [type="image"] {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  
+  /* Reset mask for media elements */
+  img, picture, video, canvas, svg, iframe, embed, object, audio, track, source, map, area {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  
+  /* Reset mask for table elements */
+  table, thead, tbody, tfoot, tr, th, td, col, colgroup, caption {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  
+  /* Reset mask for list elements */
+  ul, ol, li, dl, dt, dd, menu, dir {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  
+  /* Reset mask for semantic elements */
+  header, footer, main, section, article, aside, nav, figure, figcaption, details, summary, mark, time, ruby, rt, rp, bdi, bdo, wbr {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  
+  /* Reset mask for form control elements */
+  [contenteditable], [draggable], [spellcheck] {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  /* Apply mask fix to ALL elements to prevent white grid artifacts */
+  /* This is the nuclear option for Safari iOS gradient rendering bugs */
+  * {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Reset mask for text elements to prevent text rendering issues */
+  h1, h2, h3, h4, h5, h6, p, span, a, li, button, input, textarea, select, label {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  
+  /* Additional aggressive fixes for Safari iOS rendering bugs */
+  /* Disable hardware acceleration for problematic elements */
+  .bg-gradient-to-r,
+  .bg-gradient-to-br,
+  .bg-gradient-to-bl,
+  .bg-gradient-to-t,
+  .bg-gradient-to-tl,
+  .bg-gradient-to-tr,
+  [class*="bg-white/"],
+  [class*="rounded-"],
+  .glass,
+  .glass-card,
+  .card,
+  .shadow-soft,
+  .shadow-elevated,
+  .shadow-accent,
+  .shadow-glow {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+  }
+  
+  /* Force software rendering for gradient elements */
+  [class*="bg-gradient-"] {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* Fix for background transparency artifacts */
+  [class*="bg-"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for border radius artifacts */
+  [class*="rounded-"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for shadow artifacts */
+  [class*="shadow-"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for opacity artifacts */
+  [class*="opacity-"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for all container elements */
+  .container,
+  .flex,
+  .grid,
+  .block,
+  .inline-block,
+  .inline,
+  .inline-flex {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for all position elements */
+  .absolute,
+  .relative,
+  .fixed,
+  .sticky {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for all padding/margin elements */
+  [class*="p-"],
+  [class*="m-"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for all width/height elements */
+  [class*="w-"],
+  [class*="h-"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for all z-index elements */
+  [class*="z-"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for all transition elements */
+  [class*="transition-"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for all animation elements */
+  [class*="animate-"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for all hover elements */
+  [class*="hover:"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for all focus elements */
+  [class*="focus:"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for all active elements */
+  [class*="active:"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for all group elements */
+  [class*="group"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for all peer elements */
+  [class*="peer"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for all dark mode elements */
+  [class*="dark:"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for all responsive elements */
+  [class*="sm:"],
+  [class*="md:"],
+  [class*="lg:"],
+  [class*="xl:"],
+  [class*="2xl:"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Force GPU rendering for the entire page */
+  body {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for root element */
+  #root {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Fix for html element */
+  html {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
   .ios-text-fix {
     -webkit-background-clip: initial !important;
     background-clip: initial !important;
@@ -612,6 +851,169 @@ All colors MUST be HSL.
   
   /* Fix for badges with gradients and rounded corners */
   .badge {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all div elements */
+  div {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all section elements */
+  section {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all container elements */
+  .container {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all flex elements */
+  .flex {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all grid elements */
+  .grid {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all background elements */
+  [class*="bg-"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all border elements */
+  [class*="border-"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all shadow elements */
+  [class*="shadow-"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all text elements */
+  [class*="text-"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all padding elements */
+  [class*="p-"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all margin elements */
+  [class*="m-"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all gap elements */
+  [class*="gap-"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all width elements */
+  [class*="w-"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all height elements */
+  [class*="h-"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all position elements */
+  [class*="absolute"],
+  [class*="relative"],
+  [class*="fixed"],
+  [class*="sticky"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all z-index elements */
+  [class*="z-"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all opacity elements */
+  [class*="opacity-"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all transition elements */
+  [class*="transition-"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all animation elements */
+  [class*="animate-"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all hover elements */
+  [class*="hover:"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all focus elements */
+  [class*="focus:"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all active elements */
+  [class*="active:"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all group elements */
+  [class*="group"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all peer elements */
+  [class*="peer"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all dark mode elements */
+  [class*="dark:"] {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  
+  /* Fix for all responsive elements */
+  [class*="sm:"],
+  [class*="md:"],
+  [class*="lg:"],
+  [class*="xl:"],
+  [class*="2xl:"] {
     -webkit-mask-image: -webkit-radial-gradient(white, black);
     mask-image: radial-gradient(white, black);
   }
