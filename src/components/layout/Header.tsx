@@ -32,8 +32,8 @@ const Header = () => {
   // Close mobile menu when clicking outside or pressing escape
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (mobileMenuOpen &&
-          mobileMenuRef.current &&
+      if (mobileMenuOpen && 
+          mobileMenuRef.current && 
           !mobileMenuRef.current.contains(event.target as Node) &&
           menuButtonRef.current &&
           !menuButtonRef.current.contains(event.target as Node)) {
@@ -51,24 +51,15 @@ const Header = () => {
     // Prevent body scroll when mobile menu is open
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-      document.body.style.height = '100%';
       document.addEventListener('mousedown', handleClickOutside);
       document.addEventListener('touchstart', handleClickOutside);
       document.addEventListener('keydown', handleEscape);
     } else {
       document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
-      document.body.style.height = '';
     }
 
     return () => {
       document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
-      document.body.style.height = '';
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('touchstart', handleClickOutside);
       document.removeEventListener('keydown', handleEscape);
@@ -88,8 +79,8 @@ const Header = () => {
       isScrolled
         ? "bg-background/95 backdrop-blur-xl border-border shadow-lg"
         : "bg-background/60 backdrop-blur-md border-transparent"
-    } safe-area-inset-top`}>
-      <div className="container flex h-16 items-center justify-between px-4 sm:px-6 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]">
+    }`}>
+      <div className="container flex h-16 items-center justify-between px-4 sm:px-6">
         <div className="flex items-center space-x-2">
           <Link
             to="/"
@@ -110,7 +101,7 @@ const Header = () => {
             <img
               src={logo}
               alt="Skill Swap Connect"
-              className="h-8 w-8 sm:h-9 sm:w-9 rounded-lg object-cover touch-manipulation"
+              className="h-8 w-8 sm:h-9 sm:w-9 rounded-lg object-cover"
               loading="eager"
               decoding="async"
             />
@@ -129,10 +120,10 @@ const Header = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`relative px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 min-h-[44px] flex items-center touch-manipulation active:scale-95 ${
+              className={`relative px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 min-h-[44px] flex items-center ${
                 isActive(link.path)
                   ? "text-primary font-semibold"
-                  : "text-foreground/80 hover:text-foreground hover:bg-muted/50 active:bg-muted"
+                  : "text-foreground/80 hover:text-foreground hover:bg-muted/50"
               }`}
             >
               {link.label}
@@ -150,12 +141,12 @@ const Header = () => {
 
         <div className="flex items-center space-x-2">
           <Link to="/profile/u1" className="hidden sm:block">
-            <Button variant="ghost" size="sm" className="text-sm min-h-[44px] min-w-[44px] touch-manipulation active:scale-95">
+            <Button variant="ghost" size="sm" className="text-sm min-h-[44px] min-w-[44px]">
               Hồ Sơ
             </Button>
           </Link>
           <Link to="/auth">
-            <Button size="sm" className="text-sm hover:shadow-accent transition-all duration-300 min-h-[44px] min-w-[44px] touch-manipulation active:scale-95">Đăng Nhập</Button>
+            <Button size="sm" className="text-sm hover:shadow-accent transition-all duration-300 min-h-[44px] min-w-[44px]">Đăng Nhập</Button>
           </Link>
 
           {/* Mobile Menu Button */}
@@ -163,7 +154,7 @@ const Header = () => {
             ref={menuButtonRef}
             variant="ghost"
             size="icon"
-            className="md:hidden min-h-[44px] min-w-[44px] touch-manipulation btn-mobile"
+            className="md:hidden min-h-[44px] min-w-[44px]"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? "Đóng menu" : "Mở menu"}
@@ -177,82 +168,62 @@ const Header = () => {
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
         <>
-          {/* Backdrop overlay - fixed inset-0 z-[9998] */}
+          {/* Backdrop overlay */}
           <div
-            className="md:hidden fixed inset-0 bg-black/40 z-[9998] animate-fade-in touch-none"
+            className="md:hidden fixed inset-0 bg-black/50 z-40"
             onClick={() => setMobileMenuOpen(false)}
-            onTouchStart={(e) => e.preventDefault()}
-            style={{
-              WebkitBackdropFilter: 'blur(12px)',
-              backdropFilter: 'blur(12px)'
-            }}
           />
           
-          {/* Mobile menu - fixed top-0 left-0 w-full h-full z-[9999] */}
-          <div
+          {/* Mobile menu */}
+          <div 
             ref={mobileMenuRef}
             id="mobile-menu"
-            className="md:hidden fixed top-0 left-0 w-full h-full z-[9999] overflow-y-auto"
+            className="md:hidden fixed top-0 left-0 w-80 h-full z-50 bg-white shadow-xl"
             role="dialog"
             aria-modal="true"
             aria-label="Menu di động"
-            style={{
-              paddingTop: 'env(safe-area-inset-top)',
-              paddingBottom: 'env(safe-area-inset-bottom)'
-            }}
           >
-            {/* Menu content container */}
-            <div className="min-h-full bg-background/95 backdrop-blur-xl border-r border-border shadow-xl animate-slide-in-from-left"
-                 style={{
-                   WebkitBackdropFilter: 'blur(12px)',
-                   backdropFilter: 'blur(12px)'
-                 }}>
-              <div className="pt-16 pb-8 px-4 sm:px-6">
-                {/* Close button */}
-                <div className="flex justify-end mb-6">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="h-10 w-10 rounded-full touch-manipulation btn-mobile"
-                    onClick={() => setMobileMenuOpen(false)}
-                    aria-label="Đóng menu"
-                  >
-                    <X className="h-5 w-5" />
-                  </Button>
-                </div>
-                
-                {/* Navigation links */}
-                <nav className="space-y-2">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.path}
-                      to={link.path}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={`block px-4 py-4 text-base font-medium rounded-lg transition-all duration-300 min-h-[52px] flex items-center touch-manipulation active:scale-95 select-none touch-target ${
-                        isActive(link.path)
-                          ? "text-primary font-semibold bg-primary/10 border-l-4 border-primary shadow-sm"
-                          : "text-foreground/80 hover:text-foreground hover:bg-muted/50 active:bg-muted"
-                      }`}
-                      onTouchStart={(e) => e.currentTarget.classList.add('active')}
-                      onTouchEnd={(e) => e.currentTarget.classList.remove('active')}
-                      tabIndex={mobileMenuOpen ? 0 : -1}
-                      aria-current={isActive(link.path) ? "page" : undefined}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                  <Link
-                    to="/profile/u1"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block px-4 py-4 text-base font-medium text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg transition-all duration-300 min-h-[52px] flex items-center touch-manipulation active:scale-95 active:bg-muted select-none touch-target"
-                    onTouchStart={(e) => e.currentTarget.classList.add('active')}
-                    onTouchEnd={(e) => e.currentTarget.classList.remove('active')}
-                    tabIndex={mobileMenuOpen ? 0 : -1}
-                  >
-                    Hồ Sơ
-                  </Link>
-                </nav>
+            <div className="h-full flex flex-col pt-4 pb-8 px-4">
+              {/* Close button */}
+              <div className="flex justify-end mb-6">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-10 w-10 rounded-full"
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-label="Đóng menu"
+                >
+                  <X className="h-5 w-5" />
+                </Button>
               </div>
+              
+              {/* Navigation links */}
+              <nav className="flex-1 space-y-2">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`block px-4 py-3 text-base font-medium rounded-lg min-h-[44px] flex items-center ${
+                      isActive(link.path)
+                        ? "text-primary font-semibold bg-primary/10 border-l-4 border-primary"
+                        : "text-foreground/80 hover:bg-muted/50"
+                    }`}
+                    tabIndex={mobileMenuOpen ? 0 : -1}
+                    aria-current={isActive(link.path) ? "page" : undefined}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                <Link
+                  to="/profile/u1"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-4 py-3 text-base font-medium text-muted-foreground hover:bg-muted rounded-lg min-h-[44px] flex items-center"
+                  tabIndex={mobileMenuOpen ? 0 : -1}
+                >
+                  Hồ Sơ
+                </Link>
+              </nav>
             </div>
           </div>
         </>
