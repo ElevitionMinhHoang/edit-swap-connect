@@ -315,6 +315,21 @@ All colors MUST be HSL.
     }
   }
 
+  @keyframes slideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in-from-left {
+    animation: slideInFromLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
   /* Floating shapes animation */
   @keyframes floatShape {
     0%, 100% { 
