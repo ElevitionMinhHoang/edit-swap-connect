@@ -48,7 +48,7 @@ const AnimatedCounter = ({ end, suffix = "", duration = 2000 }) => {
 
   return (
     <div ref={ref} className="text-center">
-      <div className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 leading-tight">
+      <div className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-blue-400 leading-tight ios-text-fix">
         {count.toLocaleString()}
         {suffix && (
           <span className={`text-orange-500 ${suffix === "%" ? "align-baseline" : "align-super"} text-4xl md:text-5xl lg:text-6xl`}>
@@ -183,13 +183,13 @@ const HomeNew = () => {
       </section>
 
       {/* Community Achievements */}
-      <section className="py-16 md:py-28 bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-700">
+      <section className="py-16 md:py-28 bg-gradient-to-r from-[#1e3a8a] via-[#3730a3] to-[#6d28d9]">
         <div className="container px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-white ios-text-fix">
               Thành Tựu Cộng Đồng Skill Swap Connect
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed ios-text-fix">
               Cùng nhìn lại hành trình phát triển và những con số ấn tượng của chúng tôi
             </p>
           </div>
@@ -223,7 +223,7 @@ const HomeNew = () => {
             ].map((stat, index) => (
               <div
                key={index}
-               className="group flex flex-col items-center justify-center p-4 md:p-6 lg:p-8 rounded-xl md:rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:scale-105 hover:brightness-110 transition-all duration-500 cursor-pointer min-h-[120px] md:min-h-[160px] lg:min-h-[200px]"
+               className="group flex flex-col items-center justify-center p-4 md:p-6 lg:p-8 rounded-xl md:rounded-2xl bg-white/10 border border-white/20 hover:scale-105 hover:brightness-110 transition-all duration-500 cursor-pointer min-h-[120px] md:min-h-[160px] lg:min-h-[200px] ios-text-fix"
              >
                <div className="flex flex-col items-center justify-center flex-1">
                  <AnimatedCounter
@@ -231,10 +231,10 @@ const HomeNew = () => {
                    suffix={stat.suffix}
                    duration={2000}
                  />
-                 <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mt-2 md:mt-4 mb-1 md:mb-2 text-center">
+                 <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mt-2 md:mt-4 mb-1 md:mb-2 text-center ios-text-fix">
                    {stat.label}
                  </h3>
-                 <p className="text-gray-200 text-center text-xs md:text-sm leading-relaxed">
+                 <p className="text-gray-200 text-center text-xs md:text-sm leading-relaxed ios-text-fix">
                    {stat.description}
                  </p>
                </div>
