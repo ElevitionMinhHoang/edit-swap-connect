@@ -170,15 +170,15 @@ const Header = () => {
         <>
           {/* Backdrop overlay */}
           <div
-            className="md:hidden fixed inset-0 bg-black/50 z-40"
+            className="header-backdrop md:hidden"
             onClick={() => setMobileMenuOpen(false)}
           />
           
           {/* Mobile menu */}
-          <div 
+          <div
             ref={mobileMenuRef}
             id="mobile-menu"
-            className="md:hidden fixed top-0 left-0 w-80 h-full z-50 bg-white shadow-xl"
+            className="header-mobile-menu open md:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Menu di động"
