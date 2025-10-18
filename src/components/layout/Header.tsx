@@ -88,25 +88,20 @@ const Header = () => {
       isScrolled
         ? "bg-background/95 backdrop-blur-xl border-border shadow-lg"
         : "bg-background/60 backdrop-blur-md border-transparent"
-    }`}
-    style={{
-      paddingTop: 'env(safe-area-inset-top)',
-    }}>
-      <div className="container flex h-14 sm:h-16 items-center justify-between px-3 sm:px-6"
-        style={{
-          paddingLeft: 'max(0.75rem, env(safe-area-inset-left))',
-          paddingRight: 'max(0.75rem, env(safe-area-inset-right))',
-        }}>
-        <div className="flex items-center gap-2 min-w-0">
+    } safe-area-inset-top`}>
+      <div className="container flex h-16 items-center justify-between px-4 sm:px-6 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]">
+        <div className="flex items-center space-x-2">
           <Link
             to="/"
-            className="flex items-center gap-2 min-w-0 flex-shrink-0"
+            className="flex items-center space-x-2"
             onClick={(e) => {
               if (location.pathname === "/") {
                 e.preventDefault();
                 if (window.scrollY === 0) {
+                  // Nếu đang ở đầu trang, reload trang
                   window.location.reload();
                 } else {
+                  // Nếu không ở đầu trang, scroll lên đầu
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
               }
@@ -115,14 +110,14 @@ const Header = () => {
             <img
               src={logo}
               alt="Skill Swap Connect"
-              className="h-9 w-9 sm:h-10 sm:w-10 rounded-lg object-cover touch-manipulation flex-shrink-0"
+              className="h-8 w-8 sm:h-9 sm:w-9 rounded-lg object-cover touch-manipulation"
               loading="eager"
               decoding="async"
             />
-            <span className="hidden md:inline-block font-bold text-base sm:text-lg tracking-tight whitespace-nowrap">
+            <span className="hidden font-bold text-lg sm:text-xl sm:inline-block tracking-tight transition-colors duration-300">
               Skill Swap Connect
             </span>
-            <span className="md:hidden font-bold text-base tracking-tight whitespace-nowrap">
+            <span className="font-bold text-lg sm:hidden tracking-tight transition-colors duration-300">
               SWC
             </span>
           </Link>
@@ -153,16 +148,14 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+        <div className="flex items-center space-x-2">
           <Link to="/profile/u1" className="hidden sm:block">
-            <Button variant="ghost" size="sm" className="text-xs sm:text-sm h-9 sm:h-10 px-3 sm:px-4 touch-manipulation active:scale-95">
+            <Button variant="ghost" size="sm" className="text-sm min-h-[44px] min-w-[44px] touch-manipulation active:scale-95">
               Hồ Sơ
             </Button>
           </Link>
           <Link to="/auth">
-            <Button size="sm" className="text-xs sm:text-sm h-9 sm:h-10 px-3 sm:px-4 hover:shadow-accent transition-all duration-300 touch-manipulation active:scale-95">
-              Đăng Nhập
-            </Button>
+            <Button size="sm" className="text-sm hover:shadow-accent transition-all duration-300 min-h-[44px] min-w-[44px] touch-manipulation active:scale-95">Đăng Nhập</Button>
           </Link>
 
           {/* Mobile Menu Button */}
@@ -170,7 +163,7 @@ const Header = () => {
             ref={menuButtonRef}
             variant="ghost"
             size="icon"
-            className="md:hidden h-9 w-9 sm:h-10 sm:w-10 touch-manipulation active:scale-95"
+            className="md:hidden min-h-[44px] min-w-[44px] touch-manipulation btn-mobile"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? "Đóng menu" : "Mở menu"}
@@ -184,63 +177,64 @@ const Header = () => {
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
         <>
-          {/* Backdrop overlay */}
+          {/* Backdrop overlay - fixed inset-0 z-[9998] */}
           <div
-            className="md:hidden fixed inset-0 bg-black/50 z-[9998] animate-fade-in"
+            className="md:hidden fixed inset-0 bg-black/40 z-[9998] animate-fade-in touch-none"
             onClick={() => setMobileMenuOpen(false)}
+            onTouchStart={(e) => e.preventDefault()}
             style={{
-              WebkitBackdropFilter: 'blur(8px)',
-              backdropFilter: 'blur(8px)'
+              WebkitBackdropFilter: 'blur(12px)',
+              backdropFilter: 'blur(12px)'
             }}
           />
           
-          {/* Mobile menu */}
+          {/* Mobile menu - fixed top-0 left-0 w-full h-full z-[9999] */}
           <div
             ref={mobileMenuRef}
             id="mobile-menu"
-            className="md:hidden fixed top-0 left-0 w-full h-full z-[9999] overflow-y-auto overscroll-contain"
+            className="md:hidden fixed top-0 left-0 w-full h-full z-[9999] overflow-y-auto"
             role="dialog"
             aria-modal="true"
             aria-label="Menu di động"
             style={{
-              height: '100dvh',
               paddingTop: 'env(safe-area-inset-top)',
-              paddingBottom: 'env(safe-area-inset-bottom)',
-              paddingLeft: 'env(safe-area-inset-left)',
-              paddingRight: 'env(safe-area-inset-right)',
+              paddingBottom: 'env(safe-area-inset-bottom)'
             }}
           >
-            <div className="min-h-full bg-background/98 backdrop-blur-xl border-r border-border shadow-2xl animate-slide-in-from-left"
+            {/* Menu content container */}
+            <div className="min-h-full bg-background/95 backdrop-blur-xl border-r border-border shadow-xl animate-slide-in-from-left"
                  style={{
-                   WebkitBackdropFilter: 'blur(16px)',
-                   backdropFilter: 'blur(16px)'
+                   WebkitBackdropFilter: 'blur(12px)',
+                   backdropFilter: 'blur(12px)'
                  }}>
-              <div className="pt-14 pb-6 px-4">
+              <div className="pt-16 pb-8 px-4 sm:px-6">
                 {/* Close button */}
-                <div className="flex justify-end mb-8">
+                <div className="flex justify-end mb-6">
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="h-10 w-10 rounded-full touch-manipulation active:scale-95"
+                    className="h-10 w-10 rounded-full touch-manipulation btn-mobile"
                     onClick={() => setMobileMenuOpen(false)}
                     aria-label="Đóng menu"
                   >
-                    <X className="h-6 w-6" />
+                    <X className="h-5 w-5" />
                   </Button>
                 </div>
                 
                 {/* Navigation links */}
-                <nav className="space-y-1.5">
+                <nav className="space-y-2">
                   {navLinks.map((link) => (
                     <Link
                       key={link.path}
                       to={link.path}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block px-4 py-3.5 text-base font-medium rounded-xl transition-all duration-300 touch-manipulation active:scale-[0.98] select-none ${
+                      className={`block px-4 py-4 text-base font-medium rounded-lg transition-all duration-300 min-h-[52px] flex items-center touch-manipulation active:scale-95 select-none touch-target ${
                         isActive(link.path)
                           ? "text-primary font-semibold bg-primary/10 border-l-4 border-primary shadow-sm"
                           : "text-foreground/80 hover:text-foreground hover:bg-muted/50 active:bg-muted"
                       }`}
+                      onTouchStart={(e) => e.currentTarget.classList.add('active')}
+                      onTouchEnd={(e) => e.currentTarget.classList.remove('active')}
                       tabIndex={mobileMenuOpen ? 0 : -1}
                       aria-current={isActive(link.path) ? "page" : undefined}
                     >
@@ -250,7 +244,9 @@ const Header = () => {
                   <Link
                     to="/profile/u1"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block px-4 py-3.5 text-base font-medium text-foreground/80 hover:bg-muted/50 hover:text-foreground rounded-xl transition-all duration-300 touch-manipulation active:scale-[0.98] active:bg-muted select-none"
+                    className="block px-4 py-4 text-base font-medium text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg transition-all duration-300 min-h-[52px] flex items-center touch-manipulation active:scale-95 active:bg-muted select-none touch-target"
+                    onTouchStart={(e) => e.currentTarget.classList.add('active')}
+                    onTouchEnd={(e) => e.currentTarget.classList.remove('active')}
                     tabIndex={mobileMenuOpen ? 0 : -1}
                   >
                     Hồ Sơ
