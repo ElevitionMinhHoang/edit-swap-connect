@@ -564,7 +564,7 @@ const Wallet = () => {
           </div>
           
           {/* Edit Packs - Elevated Layout */}
-          <div className="grid md:grid-cols-3 gap-6 mb-8 justify-center items-start">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 justify-center items-start">
             {editPacks.map((pack, index) => (
               <div key={pack.id} className="relative">
                 {/* Popular Badge - Only for middle card, placed outside card */}
@@ -577,7 +577,7 @@ const Wallet = () => {
                 )}
                 
                 <Card
-                  className={`bg-white rounded-2xl p-8 pt-14 text-center relative overflow-visible border-2 transition-all duration-300 animate-fade-in-up hover:-translate-y-1 hover:shadow-xl ${
+                  className={`bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 pt-10 sm:pt-14 text-center relative overflow-visible border-2 transition-all duration-300 animate-fade-in-up hover:-translate-y-1 hover:shadow-xl ${
                     pack.popular
                       ? 'shadow-lg border-purple-300'
                       : 'shadow-md hover:shadow-lg'
@@ -591,36 +591,36 @@ const Wallet = () => {
                   
                   <div className="relative z-10">
                     {/* Elevated Icon */}
-                    <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${pack.color} flex items-center justify-center text-white mx-auto mb-4 shadow-lg relative -mt-6`}>
+                    <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r ${pack.color} flex items-center justify-center text-white mx-auto mb-3 sm:mb-4 shadow-lg relative -mt-6`}>
                       {pack.icon}
                     </div>
                     
                     {/* Package Name */}
-                    <h3 className="text-xl font-bold mb-2">{pack.name}</h3>
+                    <h3 className="text-lg sm:text-xl font-bold mb-2">{pack.name}</h3>
                     
                     {/* Edits Amount */}
-                    <div className="text-3xl font-bold mb-1">{pack.amount} Edits</div>
-                    <div className="text-muted-foreground mb-2">{pack.hours}</div>
+                    <div className="text-2xl sm:text-3xl font-bold mb-1">{pack.amount} Edits</div>
+                    <div className="text-muted-foreground text-sm sm:text-base mb-2">{pack.hours}</div>
                     
                     {/* Price */}
-                    <div className="flex items-center justify-center gap-2 mb-4">
-                      <div className="text-2xl font-bold text-primary">{pack.price}</div>
+                    <div className="flex items-center justify-center gap-2 mb-3 sm:mb-4">
+                      <div className="text-xl sm:text-2xl font-bold text-primary">{pack.price}</div>
                       {pack.originalPrice && (
-                        <div className="text-sm text-muted-foreground line-through">{pack.originalPrice}</div>
+                        <div className="text-xs sm:text-sm text-muted-foreground line-through">{pack.originalPrice}</div>
                       )}
                     </div>
                     
                     {/* Discount */}
                     {pack.discount && (
-                      <div className="bg-green-100 text-green-700 text-sm font-medium px-3 py-1 rounded-full mb-4 inline-block">
+                      <div className="bg-green-100 text-green-700 text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full mb-3 sm:mb-4 inline-block">
                         Tiết kiệm {pack.discount}
                       </div>
                     )}
                     
                     {/* Buy Button */}
                     <Button
-                      className={`w-full bg-gradient-to-r ${pack.color} hover:opacity-90 transition-all duration-300 rounded-full font-medium`}
-                      size="lg"
+                      className={`w-full bg-gradient-to-r ${pack.color} hover:opacity-90 transition-all duration-300 rounded-full font-medium text-sm sm:text-base`}
+                      size="sm"
                       onClick={() => handleBuyClick(pack)}
                     >
                       Mua Ngay
@@ -632,16 +632,16 @@ const Wallet = () => {
           </div>
           
           {/* Benefits Section */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {[
               { icon: "⚡", text: "Học ngay mà không cần dạy" },
               { icon: "💰", text: "Nhận ưu đãi khi mua gói lớn" },
               { icon: "🎯", text: "Giữ vị trí ưu tiên khi đặt lịch" },
               { icon: "🏆", text: "Nhận huy hiệu 'Người học tích cực'" }
             ].map((benefit, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/20">
-                <div className="text-2xl mb-2">{benefit.icon}</div>
-                <p className="text-white text-sm">{benefit.text}</p>
+              <div key={index} className="bg-white/10 rounded-xl p-3 sm:p-4 text-center border border-white/20">
+                <div className="text-xl sm:text-2xl mb-2">{benefit.icon}</div>
+                <p className="text-white text-xs sm:text-sm">{benefit.text}</p>
               </div>
             ))}
           </div>

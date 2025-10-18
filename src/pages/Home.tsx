@@ -21,7 +21,7 @@ const Home = () => {
             backgroundImage: `url(${heroImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            filter: "blur(2px)",
+            filter: "none",
           }}
         />
         
@@ -32,8 +32,8 @@ const Home = () => {
         <AnimatedBackground />
         
         {/* Floating blob shapes */}
-        <div className="absolute top-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-20 left-10 w-64 h-64 bg-primary/10 rounded-full animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-72 h-72 bg-accent/10 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
         
         <div className="container relative z-10 py-20">
           <div className="mx-auto max-w-4xl text-center">
@@ -176,8 +176,8 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-700" />
         
         {/* Animated blob shapes */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500/20 rounded-full animate-pulse" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
         
         <div className="container relative z-10">
           <ScrollReveal>
@@ -278,8 +278,8 @@ const Home = () => {
           <div className="rounded-[3rem] glass-card border-primary/20 p-12 md:p-20 text-center relative overflow-hidden group">
             {/* Animated background */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/10 animate-gradient" />
-            <div className="absolute top-0 right-0 w-96 h-96 bg-accent/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-accent/20 rounded-full group-hover:scale-150 transition-transform duration-1000" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/20 rounded-full group-hover:scale-150 transition-transform duration-1000" />
             
             <div className="relative z-10">
               <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">

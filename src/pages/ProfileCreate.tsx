@@ -179,7 +179,7 @@ const ProfileCreate = () => {
     switch (currentStep) {
       case 1:
         return (
-          <Card className="p-6 bg-white/80 backdrop-blur-sm border border-gray-200/60 rounded-2xl shadow-md">
+          <Card className="p-4 sm:p-6 bg-white/80 border border-gray-200/60 rounded-xl sm:rounded-2xl shadow-md">
             <div className="flex items-center gap-3 mb-6">
               <User className="h-6 w-6 text-blue-600" />
               <h2 className="text-xl font-bold text-gray-900">Thông tin cơ bản</h2>
@@ -225,7 +225,7 @@ const ProfileCreate = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Họ và tên *</label>
                 <Input
@@ -286,7 +286,7 @@ const ProfileCreate = () => {
 
       case 2:
         return (
-          <Card className="p-6 bg-white/80 backdrop-blur-sm border-l-4 border-l-blue-500 rounded-2xl shadow-md">
+          <Card className="p-4 sm:p-6 bg-white/80 border-l-4 border-l-blue-500 rounded-xl sm:rounded-2xl shadow-md">
             <div className="flex items-center gap-3 mb-6">
               <GraduationCap className="h-6 w-6 text-blue-600" />
               <h2 className="text-xl font-bold text-gray-900">Kỹ năng bạn có thể dạy</h2>
@@ -294,7 +294,7 @@ const ProfileCreate = () => {
 
             {profileData.offerSkills.map((skill, index) => (
               <div key={index} className="mb-6 p-4 border border-gray-200 rounded-xl bg-gray-50">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Kỹ năng</label>
                     <Input
@@ -351,7 +351,7 @@ const ProfileCreate = () => {
 
       case 3:
         return (
-          <Card className="p-6 bg-white/80 backdrop-blur-sm border-l-4 border-l-purple-500 rounded-2xl shadow-md">
+          <Card className="p-4 sm:p-6 bg-white/80 border-l-4 border-l-purple-500 rounded-xl sm:rounded-2xl shadow-md">
             <div className="flex items-center gap-3 mb-6">
               <BookOpen className="h-6 w-6 text-purple-600" />
               <h2 className="text-xl font-bold text-gray-900">Kỹ năng bạn muốn học</h2>
@@ -439,7 +439,7 @@ const ProfileCreate = () => {
 
       case 4:
         return (
-          <Card className="p-6 bg-white/80 backdrop-blur-sm border-l-4 border-l-green-500 rounded-2xl shadow-md">
+          <Card className="p-4 sm:p-6 bg-white/80 border-l-4 border-l-green-500 rounded-xl sm:rounded-2xl shadow-md">
             <div className="flex items-center gap-3 mb-6">
               <Clock className="h-6 w-6 text-green-600" />
               <h2 className="text-xl font-bold text-gray-900">Thời gian rảnh & hình thức học</h2>
@@ -485,7 +485,7 @@ const ProfileCreate = () => {
                 </div>
               )}
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
                 {["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"].map((day) => (
                   <div key={day} className="space-y-2">
                     <p className="text-sm font-medium text-gray-700">{day}</p>
@@ -573,7 +573,7 @@ const ProfileCreate = () => {
 
       case 5:
         return (
-          <Card className="p-6 bg-white/80 backdrop-blur-sm border-l-4 border-l-orange-500 rounded-2xl shadow-md">
+          <Card className="p-4 sm:p-6 bg-white/80 border-l-4 border-l-orange-500 rounded-xl sm:rounded-2xl shadow-md">
             <div className="flex items-center gap-3 mb-6">
               <Wallet className="h-6 w-6 text-orange-600" />
               <h2 className="text-xl font-bold text-gray-900">Ví Edits & Liên hệ</h2>
@@ -594,7 +594,7 @@ const ProfileCreate = () => {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   <Mail className="h-4 w-4 inline mr-2" />
@@ -629,10 +629,10 @@ const ProfileCreate = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-8">
-      <div className="container max-w-6xl mx-auto px-4 sm:px-6">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-4 sm:py-8">
+      <div className="container max-w-6xl mx-auto px-3 sm:px-6">
         {/* Progress Bar */}
-        <Card className="mb-8 p-6 bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+        <Card className="mb-8 p-4 sm:p-6 bg-white/80 border-0 shadow-lg">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <User className="h-5 w-5 text-primary" />
@@ -651,13 +651,13 @@ const ProfileCreate = () => {
           </div>
         </Card>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Main Form Content */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             {renderStepContent()}
 
             {/* Navigation Buttons */}
-            <div className="flex justify-between items-center pt-6">
+            <div className="flex justify-between items-center pt-4 sm:pt-6">
               <Button
                 variant="outline"
                 onClick={handleBack}
@@ -690,7 +690,7 @@ const ProfileCreate = () => {
 
           {/* Preview Panel */}
           <div className="lg:col-span-1">
-            <Card className="p-6 bg-white/80 backdrop-blur-sm border-0 shadow-lg sticky top-8">
+            <Card className="p-4 sm:p-6 bg-white/80 border-0 shadow-lg sticky top-8">
               <h3 className="text-lg font-bold text-gray-900 mb-4">Xem trước hồ sơ</h3>
               
               <div className="space-y-4">

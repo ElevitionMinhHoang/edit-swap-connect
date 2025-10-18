@@ -703,7 +703,7 @@ All colors MUST be HSL.
     
     /* Smoother gradients */
     .hero-gradient::before {
-      filter: blur(1px);
+      filter: none;
     }
   }
 

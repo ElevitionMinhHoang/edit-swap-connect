@@ -241,10 +241,10 @@ const Marketplace = () => {
           {/* Results Grid */}
           <div className="w-full max-w-full order-2">
             {!showResults ? (
-              <Card className="p-6 sm:p-8 md:p-12 text-center bg-white/80 backdrop-blur-sm border-0 shadow-lg">
-                <div className="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4">🔍</div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">Sẵn sàng khám phá</h3>
-                <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6">
+              <Card className="p-4 sm:p-6 md:p-8 text-center bg-white/80 border-0 shadow-lg">
+                <div className="text-3xl sm:text-4xl md:text-5xl mb-2 sm:mb-3">🔍</div>
+                <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2">Sẵn sàng khám phá</h3>
+                <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">
                   Sử dụng bộ lọc bên trên và ấn "Áp dụng bộ lọc" để tìm kiếm kỹ năng bạn muốn học.
                 </p>
               </Card>
@@ -272,10 +272,10 @@ const Marketplace = () => {
                 </div>
 
                 {filteredUsers.length === 0 ? (
-                  <Card className="p-6 sm:p-8 md:p-12 text-center bg-white/80 backdrop-blur-sm border-0 shadow-lg">
-                    <div className="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4">🔍</div>
-                    <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">Không tìm thấy kết quả</h3>
-                    <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6">
+                  <Card className="p-4 sm:p-6 md:p-8 text-center bg-white/80 border-0 shadow-lg">
+                    <div className="text-3xl sm:text-4xl md:text-5xl mb-2 sm:mb-3">🔍</div>
+                    <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2">Không tìm thấy kết quả</h3>
+                    <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">
                       Thử mở rộng bộ lọc hoặc chọn kỹ năng khác.
                     </p>
                     <Button
@@ -288,23 +288,23 @@ const Marketplace = () => {
                   </Card>
                 ) : (
                   <>
-                    <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    <div className="grid gap-3 sm:gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                       {displayedUsers.map((user, index) => (
                         <div
                           key={user.id}
-                          className="w-full max-w-full bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg flex flex-col justify-between transition-all duration-300 hover:shadow-xl group animate-fade-in-up"
+                          className="w-full max-w-full bg-white rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 shadow-lg flex flex-col justify-between transition-all duration-300 hover:shadow-xl group animate-fade-in-up"
                           style={{ animationDelay: `${index * 50}ms` }}
                         >
                           {/* Header with Avatar */}
-                          <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                          <div className="flex items-start gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-3 md:mb-4">
                             <div className="relative flex-shrink-0">
-                              <div className="text-2xl sm:text-3xl md:text-4xl">
+                              <div className="text-xl sm:text-2xl md:text-3xl">
                                 {user.avatar}
                               </div>
                               <div className="absolute -bottom-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 bg-green-500 rounded-full border-2 border-white"></div>
                             </div>
                             <div className="flex-1 min-w-0">
-                              <h3 className="font-bold text-sm sm:text-base md:text-lg text-gray-900 truncate">{user.name}</h3>
+                              <h3 className="font-bold text-xs sm:text-sm md:text-base text-gray-900 truncate">{user.name}</h3>
                               <div className="flex items-center gap-1 text-xs text-gray-600 mb-1">
                                 <MapPin className="h-2 w-2 sm:h-3 sm:w-3 flex-shrink-0" />
                                 <span className="truncate">{user.location}</span>
@@ -320,18 +320,18 @@ const Marketplace = () => {
                           </div>
 
                           {/* Bio */}
-                          <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4 line-clamp-2 leading-relaxed break-words">
+                          <p className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3 md:mb-4 line-clamp-2 leading-relaxed break-words">
                             {user.bio}
                           </p>
 
                           {/* Skills */}
-                          <div className="mb-3 sm:mb-4">
+                          <div className="mb-2 sm:mb-3 md:mb-4">
                             <div className="text-xs font-semibold text-gray-700 mb-1 sm:mb-2">Dạy</div>
                             <div className="flex flex-wrap gap-1 sm:gap-2">
                               {user.offerSkills.slice(0, 3).map((skill, idx) => (
                                 <div
                                   key={idx}
-                                  className={`px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-medium bg-gradient-to-r ${getSkillColor(skill.skill)} text-white shadow-sm truncate max-w-[80px] sm:max-w-none`}
+                                  className={`px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-medium bg-gradient-to-r ${getSkillColor(skill.skill)} text-white shadow-sm truncate max-w-[70px] sm:max-w-[80px] md:max-w-none`}
                                 >
                                   {skill.skill}
                                 </div>
@@ -345,18 +345,18 @@ const Marketplace = () => {
                           </div>
 
                           {/* Availability */}
-                          <div className="mb-3 sm:mb-4 text-xs text-gray-500 flex items-center gap-1">
+                          <div className="mb-2 sm:mb-3 md:mb-4 text-xs text-gray-500 flex items-center gap-1">
                             <span>🕒</span>
                             <span>{user.availability}</span>
                           </div>
 
                           {/* Action Buttons */}
-                          <div className="mt-3 sm:mt-4 flex flex-col gap-2">
+                          <div className="mt-2 sm:mt-3 md:mt-4 flex flex-col gap-2">
                             <Link to={`/profile/${user.id}`} className="w-full">
                               <Button
                                 variant="outline"
                                 size="sm"
-                                className="w-full max-w-full border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-colors text-xs sm:text-sm font-medium h-9 sm:h-10"
+                                className="w-full max-w-full border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-colors text-xs sm:text-sm font-medium h-8 sm:h-9 md:h-10"
                               >
                                 <User className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                                 Xem Hồ Sơ
@@ -366,7 +366,7 @@ const Marketplace = () => {
                               <Link to="/messages" className="w-full">
                                 <Button
                                   size="sm"
-                                  className="w-full max-w-full bg-gradient-to-r from-[#E54BFF] to-[#9B5CFF] hover:from-[#D43CEF] hover:to-[#8A4CE6] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 text-xs sm:text-sm h-9 sm:h-10"
+                                  className="w-full max-w-full bg-gradient-to-r from-[#E54BFF] to-[#9B5CFF] hover:from-[#D43CEF] hover:to-[#8A4CE6] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 text-xs sm:text-sm h-8 sm:h-9 md:h-10"
                                   onMouseEnter={() => setShowInviteTooltip(user.id)}
                                   onMouseLeave={() => setShowInviteTooltip(null)}
                                 >
@@ -408,17 +408,17 @@ const Marketplace = () => {
 
               {/* CTA Section */}
               {showResults && (
-                <Card className="mt-6 sm:mt-8 p-6 sm:p-8 text-center bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white border-0 shadow-xl">
+                <Card className="mt-4 sm:mt-6 md:mt-8 p-4 sm:p-6 md:p-8 text-center bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white border-0 shadow-xl">
                   <div className="max-w-2xl mx-auto">
-                    <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3">
                       🌟 Không tìm thấy kỹ năng bạn muốn học?
                     </h3>
-                    <p className="text-blue-100 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg">
+                    <p className="text-blue-100 mb-3 sm:mb-4 md:mb-6 text-xs sm:text-sm md:text-base">
                       Hãy đăng kỹ năng của bạn để bắt đầu chia sẻ và kiếm Edits!
                     </p>
                     <Button
                       size="lg"
-                      className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-6 py-2 sm:px-8 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+                      className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-4 py-2 sm:px-6 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-xs sm:text-sm md:text-base"
                     >
                       Đăng Kỹ Năng Ngay
                     </Button>
