@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -445,780 +446,96 @@ All colors MUST be HSL.
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 50;
     background: rgba(255, 255, 255, 0.98);
+    z-index: 50;
+    padding: 1rem;
   }
   
-  /* Mobile menu slide down animation */
-  .animate-slide-in {
-    animation: slideDown 0.3s ease-out forwards;
-  }
-  
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Improve mobile button sizes */
-  .btn-sm {
-    min-height: 36px;
-    padding: 0.5rem 0.75rem;
-  }
-  
-  .btn-lg {
-    min-height: 48px;
-    padding: 0.75rem 1.5rem;
+  /* Improve mobile navigation touch targets */
+  .mobile-nav-item {
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
   }
 }
 
-/* Improve typography for mobile */
-@media (max-width: 640px) {
-  h1 {
-    font-size: 1.75rem;
-    line-height: 2rem;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-  
-  h3 {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-  
-  p, li {
-    font-size: 0.875rem;
-    line-height: 1.5rem;
-  }
-}
-
-/* Safe area insets for modern mobile devices */
-@supports (padding: max(0px)) {
-  .safe-area-top {
-    padding-top: max(1rem, env(safe-area-inset-top));
-  }
-  
-  .safe-area-bottom {
-    padding-bottom: max(1rem, env(safe-area-inset-bottom));
-  }
-  
-  .safe-area-left {
-    padding-left: max(1rem, env(safe-area-inset-left));
-  }
-  
-  .safe-area-right {
-    padding-right: max(1rem, env(safe-area-inset-right));
-  }
-}
-
-/* iOS Safari text rendering fixes - Comprehensive solution for white grid artifacts */
+/* Safari iOS specific fixes for gradient + border-radius + transparency rendering bug */
 @supports (-webkit-touch-callout: none) {
-  /* Nuclear option: Apply mask to ALL elements to fix Safari iOS gradient rendering bug */
-  /* This is the most aggressive fix for the white grid artifacts */
-  * {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
+  /* Fix for gradient backgrounds with border-radius on iOS Safari */
+  [class*="bg-gradient-to-"],
+  [class*="gradient"] {
+    background-clip: padding-box !important;
+    -webkit-background-clip: padding-box !important;
+    overflow: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
   
-  /* Reset mask for text elements to maintain text readability */
-  h1, h2, h3, h4, h5, h6, p, span, a, li, button, input, textarea, select, label, strong, em, i, b, u, code, pre, blockquote, cite, figcaption, caption, th, td {
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-  }
-  
-  /* Reset mask for form elements */
-  input, textarea, select, option, optgroup, fieldset, legend, datalist, output, meter, progress {
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-  }
-  
-  /* Reset mask for interactive elements */
-  button, [role="button"], [type="button"], [type="submit"], [type="reset"], [type="image"] {
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-  }
-  
-  /* Reset mask for media elements */
-  img, picture, video, canvas, svg, iframe, embed, object, audio, track, source, map, area {
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-  }
-  
-  /* Reset mask for table elements */
-  table, thead, tbody, tfoot, tr, th, td, col, colgroup, caption {
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-  }
-  
-  /* Reset mask for list elements */
-  ul, ol, li, dl, dt, dd, menu, dir {
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-  }
-  
-  /* Reset mask for semantic elements */
-  header, footer, main, section, article, aside, nav, figure, figcaption, details, summary, mark, time, ruby, rt, rp, bdi, bdo, wbr {
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-  }
-  
-  /* Reset mask for form control elements */
-  [contenteditable], [draggable], [spellcheck] {
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-  }
-  /* Apply mask fix to ALL elements to prevent white grid artifacts */
-  /* This is the nuclear option for Safari iOS gradient rendering bugs */
-  * {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Reset mask for text elements to prevent text rendering issues */
-  h1, h2, h3, h4, h5, h6, p, span, a, li, button, input, textarea, select, label {
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-  }
-  
-  /* Additional aggressive fixes for Safari iOS rendering bugs */
-  /* Disable hardware acceleration for problematic elements */
-  .bg-gradient-to-r,
-  .bg-gradient-to-br,
-  .bg-gradient-to-bl,
-  .bg-gradient-to-t,
-  .bg-gradient-to-tl,
-  .bg-gradient-to-tr,
-  [class*="bg-white/"],
-  [class*="rounded-"],
-  .glass,
-  .glass-card,
+  /* Additional fix for white grid artifacts */
   .card,
-  .shadow-soft,
-  .shadow-elevated,
-  .shadow-accent,
-  .shadow-glow {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    perspective: 1000;
-  }
-  
-  /* Force software rendering for gradient elements */
-  [class*="bg-gradient-"] {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  
-  /* Fix for background transparency artifacts */
-  [class*="bg-"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for border radius artifacts */
-  [class*="rounded-"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for shadow artifacts */
-  [class*="shadow-"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for opacity artifacts */
-  [class*="opacity-"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for all container elements */
-  .container,
-  .flex,
-  .grid,
-  .block,
-  .inline-block,
-  .inline,
-  .inline-flex {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for all position elements */
-  .absolute,
-  .relative,
-  .fixed,
-  .sticky {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for all padding/margin elements */
-  [class*="p-"],
-  [class*="m-"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for all width/height elements */
-  [class*="w-"],
-  [class*="h-"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for all z-index elements */
-  [class*="z-"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for all transition elements */
-  [class*="transition-"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for all animation elements */
-  [class*="animate-"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for all hover elements */
-  [class*="hover:"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for all focus elements */
-  [class*="focus:"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for all active elements */
-  [class*="active:"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for all group elements */
-  [class*="group"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for all peer elements */
-  [class*="peer"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for all dark mode elements */
-  [class*="dark:"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for all responsive elements */
-  [class*="sm:"],
-  [class*="md:"],
-  [class*="lg:"],
-  [class*="xl:"],
-  [class*="2xl:"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Force GPU rendering for the entire page */
-  body {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for root element */
-  #root {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Fix for html element */
-  html {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  .ios-text-fix {
-    -webkit-background-clip: initial !important;
-    background-clip: initial !important;
-    -webkit-text-fill-color: inherit !important;
-    mix-blend-mode: normal !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-  
-  /* Fix for gradient text artifacts */
-  .text-transparent {
-    -webkit-background-clip: initial !important;
-    background-clip: initial !important;
-  }
-  
-  /* Fix for backdrop blur artifacts */
-  .backdrop-blur-sm,
-  .backdrop-blur-md,
-  .backdrop-blur-lg,
-  .backdrop-blur-xl {
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
-  }
-  
-  /* Fix for gradient + border-radius + transparency rendering issues in Safari iOS */
-  /* This is the standard fix for Safari's gradient rendering bug */
-  .rounded-lg,
-  .rounded-xl,
-  .rounded-2xl,
-  .rounded-3xl,
-  .rounded-full {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for gradient backgrounds with rounded corners */
-  [class*="bg-gradient-to-"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for transparent elements with rounded corners */
-  [class*="bg-white/"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for glass morphism effects */
   .glass,
   .glass-card {
     -webkit-mask-image: -webkit-radial-gradient(white, black);
     mask-image: radial-gradient(white, black);
-    background: rgba(255, 255, 255, 0.98) !important;
-    border: 1px solid rgba(255, 255, 255, 0.25) !important;
   }
   
-  /* Fix for StatsCounter gradient cards */
-  .group.flex.flex-col.items-center.justify-center {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
+  /* Fix for buttons with gradients */
+  button[class*="bg-gradient-to-"] {
+    background-clip: padding-box !important;
+    -webkit-background-clip: padding-box !important;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 480px) {
+  /* Extra small screen optimizations */
+  body {
+    font-size: 14px;
   }
   
-  /* Fix for gradient text with rounded elements */
-  .bg-clip-text {
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
+  h1 {
+    font-size: 1.75rem;
   }
   
-  /* Fix for animated gradients */
-  .animate-gradient {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
+  h2 {
+    font-size: 1.5rem;
   }
   
-  /* Additional Safari iOS specific fixes */
-  /* Fix for cards with gradients and rounded corners */
-  .card,
-  [class*="card"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for buttons with gradients and rounded corners */
+  /* Improve button sizes for very small screens */
   button,
   .btn {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for badges with gradients and rounded corners */
-  .badge {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all div elements */
-  div {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all section elements */
-  section {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all container elements */
-  .container {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all flex elements */
-  .flex {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all grid elements */
-  .grid {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all background elements */
-  [class*="bg-"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all border elements */
-  [class*="border-"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all shadow elements */
-  [class*="shadow-"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all text elements */
-  [class*="text-"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all padding elements */
-  [class*="p-"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all margin elements */
-  [class*="m-"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all gap elements */
-  [class*="gap-"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all width elements */
-  [class*="w-"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all height elements */
-  [class*="h-"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all position elements */
-  [class*="absolute"],
-  [class*="relative"],
-  [class*="fixed"],
-  [class*="sticky"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all z-index elements */
-  [class*="z-"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all opacity elements */
-  [class*="opacity-"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all transition elements */
-  [class*="transition-"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all animation elements */
-  [class*="animate-"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all hover elements */
-  [class*="hover:"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all focus elements */
-  [class*="focus:"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all active elements */
-  [class*="active:"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all group elements */
-  [class*="group"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all peer elements */
-  [class*="peer"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all dark mode elements */
-  [class*="dark:"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-  }
-  
-  /* Fix for all responsive elements */
-  [class*="sm:"],
-  [class*="md:"],
-  [class*="lg:"],
-  [class*="xl:"],
-  [class*="2xl:"] {
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
+    padding: 0.75rem 1rem;
+    font-size: 14px;
   }
 }
 
-/* Mobile navbar conflict resolution */
-.header-mobile-menu {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 320px !important;
-  height: 100vh !important;
-  background: white !important;
-  z-index: 1000 !important;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1) !important;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-}
-
-.header-mobile-menu.open {
-  transform: translateX(0);
-}
-
-.header-backdrop {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  background: rgba(0, 0, 0, 0.5) !important;
-  z-index: 999 !important;
-}
-
-/* Enhanced mobile navbar improvements */
-@layer components {
-  /* Safe area insets for modern mobile devices */
-  .safe-area-inset-top {
-    padding-top: env(safe-area-inset-top);
-  }
-  
-  .safe-area-inset-bottom {
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-  
-  .safe-area-inset-left {
-    padding-left: env(safe-area-inset-left);
-  }
-  
-  .safe-area-inset-right {
-    padding-right: env(safe-area-inset-right);
-  }
-
-  /* iOS Safari specific fixes */
-  @supports (-webkit-touch-callout: none) {
-    /* Prevent elastic scrolling on iOS */
-    body {
-      -webkit-overflow-scrolling: touch;
-    }
-    
-    /* Fix for iOS Safari 100vh issue */
-    .min-h-screen {
-      min-height: -webkit-fill-available;
-    }
-    
-    /* Improve button tap feedback on iOS */
-    button,
-    [role="button"] {
-      -webkit-tap-highlight-color: transparent;
-    }
-  }
-
-  /* Android Chrome specific fixes */
-  @supports not (-webkit-touch-callout: none) {
-    /* Android specific optimizations */
-    body {
-      scroll-behavior: smooth;
-    }
-  }
-
-  /* Enhanced touch targets for mobile navigation */
-  .touch-target {
-    min-height: 44px;
-    min-width: 44px;
-    touch-action: manipulation;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
-  }
-
-  /* Improved mobile menu animations */
-  .mobile-menu-enter {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-
-  .mobile-menu-enter-active {
-    transform: translateY(0);
-    opacity: 1;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .mobile-menu-exit {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  .mobile-menu-exit-active {
-    transform: translateY(-100%);
-    opacity: 0;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Prevent body scroll when mobile menu is open */
-  .no-scroll {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-  }
-
-  /* Enhanced backdrop blur for iOS - disabled for compatibility */
-  .backdrop-blur-ios {
-    background: rgba(255, 255, 255, 0.95);
-  }
-
-  /* Improved button active states for mobile */
-  .btn-mobile:active {
-    transform: scale(0.95);
-    transition: transform 0.1s ease;
-  }
-
-  /* Fix for older Android devices */
-  @media (max-width: 480px) {
-    /* Optimize for small screens */
-    .container {
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
-    }
-    
-    /* Improve text readability on small screens */
-    body {
-      font-size: 14px;
-      line-height: 1.4;
-    }
-    
-    /* Better spacing for older Android */
-    .space-y-2 > * + * {
-      margin-top: 0.5rem;
-    }
-  }
-
-  /* High DPI mobile device optimizations */
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    /* Crisper borders and shadows */
-    .border-border {
-      border-width: 0.5px;
-    }
-    
-    /* Smoother gradients */
-    .hero-gradient::before {
-      filter: none;
-    }
-  }
-
-  /* Fix for iPhone X and newer notch devices */
-  @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3),
-         only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3),
-         only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3),
-         only screen and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) {
-    .header-notch-safe {
-      padding-top: env(safe-area-inset-top);
-    }
-  }
-
-  /* Performance optimizations for older devices */
-  @media (max-width: 768px) {
-    /* Reduce animations on older devices */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-    
-    /* Optimize images for mobile */
-    img {
-      max-width: 100%;
-      height: auto;
-    }
+/* High DPI screen optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Ensure crisp rendering on high DPI screens */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* Legacy browser support */
-@supports not (backdrop-filter: blur(20px)) {
-  .backdrop-blur-xl {
-    background-color: rgba(255, 255, 255, 0.95);
-  }
-}
-
-/* Print styles for mobile debugging */
+/* Print styles */
 @media print {
-  .no-print {
-    display: none !important;
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  a, a:visited {
+    text-decoration: underline;
   }
 }
