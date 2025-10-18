@@ -84,7 +84,7 @@ const Header = () => {
   }, [mobileMenuOpen]);
 
   return (
-    <header className={`sticky top-0 z-[100] w-full border-b transition-all duration-500 ${
+    <header className={`sticky top-0 z-50 w-full border-b transition-all duration-500 ${
       isScrolled
         ? "bg-background/95 backdrop-blur-xl border-border shadow-lg"
         : "bg-background/60 backdrop-blur-md border-transparent"
@@ -186,11 +186,11 @@ const Header = () => {
         <>
           {/* Backdrop overlay */}
           <div
-            className="md:hidden fixed inset-0 bg-black/40 z-[150] animate-fade-in transition-opacity duration-300"
+            className="md:hidden fixed inset-0 bg-black/50 z-[9998] animate-fade-in"
             onClick={() => setMobileMenuOpen(false)}
             style={{
-              WebkitBackdropFilter: 'blur(4px)',
-              backdropFilter: 'blur(4px)'
+              WebkitBackdropFilter: 'blur(8px)',
+              backdropFilter: 'blur(8px)'
             }}
           />
           
@@ -198,35 +198,30 @@ const Header = () => {
           <div
             ref={mobileMenuRef}
             id="mobile-menu"
-            className="md:hidden fixed inset-0 z-[200] overflow-hidden"
+            className="md:hidden fixed top-0 left-0 w-full h-full z-[9999] overflow-y-auto overscroll-contain"
             role="dialog"
             aria-modal="true"
             aria-label="Menu di động"
+            style={{
+              height: '100dvh',
+              paddingTop: 'env(safe-area-inset-top)',
+              paddingBottom: 'env(safe-area-inset-bottom)',
+              paddingLeft: 'env(safe-area-inset-left)',
+              paddingRight: 'env(safe-area-inset-right)',
+            }}
           >
-            <div 
-              className="absolute inset-0 bg-background shadow-2xl animate-slide-in-from-left overflow-y-auto overscroll-contain"
-              style={{
-                paddingTop: 'calc(env(safe-area-inset-top) + 0.75rem)',
-                paddingBottom: 'calc(env(safe-area-inset-bottom) + 1.5rem)',
-                paddingLeft: 'max(1rem, env(safe-area-inset-left))',
-                paddingRight: 'max(1rem, env(safe-area-inset-right))',
-              }}
-            >
-              <div className="min-h-full flex flex-col">
-                {/* Header with close button */}
-                <div className="flex items-center justify-between mb-8 px-2">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={logo}
-                      alt="Skill Swap Connect"
-                      className="h-10 w-10 rounded-lg object-cover"
-                    />
-                    <span className="font-bold text-lg">SWC</span>
-                  </div>
+            <div className="min-h-full bg-background/98 backdrop-blur-xl border-r border-border shadow-2xl animate-slide-in-from-left"
+                 style={{
+                   WebkitBackdropFilter: 'blur(16px)',
+                   backdropFilter: 'blur(16px)'
+                 }}>
+              <div className="pt-14 pb-6 px-4">
+                {/* Close button */}
+                <div className="flex justify-end mb-8">
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="h-11 w-11 rounded-full bg-muted/50 hover:bg-muted touch-manipulation active:scale-95"
+                    className="h-10 w-10 rounded-full touch-manipulation active:scale-95"
                     onClick={() => setMobileMenuOpen(false)}
                     aria-label="Đóng menu"
                   >
@@ -235,16 +230,16 @@ const Header = () => {
                 </div>
                 
                 {/* Navigation links */}
-                <nav className="flex-1 space-y-2 px-2">
+                <nav className="space-y-1.5">
                   {navLinks.map((link) => (
                     <Link
                       key={link.path}
                       to={link.path}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block px-5 py-4 text-lg font-medium rounded-2xl transition-all duration-300 touch-manipulation active:scale-[0.98] select-none ${
+                      className={`block px-4 py-3.5 text-base font-medium rounded-xl transition-all duration-300 touch-manipulation active:scale-[0.98] select-none ${
                         isActive(link.path)
-                          ? "text-primary font-semibold bg-primary/15 shadow-sm"
-                          : "text-foreground hover:bg-muted/60 active:bg-muted"
+                          ? "text-primary font-semibold bg-primary/10 border-l-4 border-primary shadow-sm"
+                          : "text-foreground/80 hover:text-foreground hover:bg-muted/50 active:bg-muted"
                       }`}
                       tabIndex={mobileMenuOpen ? 0 : -1}
                       aria-current={isActive(link.path) ? "page" : undefined}
@@ -252,36 +247,15 @@ const Header = () => {
                       {link.label}
                     </Link>
                   ))}
-                </nav>
-
-                {/* Bottom actions */}
-                <div className="mt-auto pt-6 px-2 space-y-3 border-t border-border/50">
                   <Link
                     to="/profile/u1"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block"
+                    className="block px-4 py-3.5 text-base font-medium text-foreground/80 hover:bg-muted/50 hover:text-foreground rounded-xl transition-all duration-300 touch-manipulation active:scale-[0.98] active:bg-muted select-none"
                     tabIndex={mobileMenuOpen ? 0 : -1}
                   >
-                    <Button 
-                      variant="outline" 
-                      className="w-full h-12 text-base font-medium rounded-xl touch-manipulation active:scale-[0.98]"
-                    >
-                      Hồ Sơ
-                    </Button>
+                    Hồ Sơ
                   </Link>
-                  <Link
-                    to="/auth"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block"
-                    tabIndex={mobileMenuOpen ? 0 : -1}
-                  >
-                    <Button 
-                      className="w-full h-12 text-base font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 touch-manipulation active:scale-[0.98]"
-                    >
-                      Đăng Nhập
-                    </Button>
-                  </Link>
-                </div>
+                </nav>
               </div>
             </div>
           </div>
