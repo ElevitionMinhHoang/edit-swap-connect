@@ -75,10 +75,10 @@ const Header = () => {
   }, [mobileMenuOpen]);
 
   return (
-    <header className={`sticky top-0 z-50 w-full border-b transition-all duration-500 ${
+    <header className={`sticky top-0 z-50 w-full border-b transition-all duration-500 ios-text-fix ${
       isScrolled
-        ? "bg-background/95 backdrop-blur-xl border-border shadow-lg"
-        : "bg-background/60 backdrop-blur-md border-transparent"
+        ? "bg-background/95 border-border shadow-lg"
+        : "bg-background/60 border-transparent"
     }`}>
       <div className="container flex h-16 items-center justify-between px-4 sm:px-6">
         <div className="flex items-center space-x-2">

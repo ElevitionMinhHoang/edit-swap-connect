@@ -137,14 +137,14 @@ const HomeNew = () => {
             ].map((item) => (
               <Card
                key={item.step}
-               className="group p-6 md:p-8 text-center bg-white/80 backdrop-blur-sm border border-gray-200/60 rounded-xl md:rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 md:hover:-translate-y-2 animate-fade-in-up"
+               className="group p-6 md:p-8 text-center bg-white/80 border border-gray-200/60 rounded-xl md:rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 md:hover:-translate-y-2 animate-fade-in-up ios-text-fix"
                style={{ animationDelay: item.delay }}
              >
                {/* Circular Gradient Number Badge */}
                <div className="relative mb-4 md:mb-6">
-                 <div className="absolute inset-0 rounded-full bg-white/10 backdrop-blur-sm border border-white/20" />
+                 <div className="absolute inset-0 rounded-full bg-white/10 border border-white/20 ios-text-fix" />
 
-                 <div className="relative flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white font-bold text-lg md:text-xl shadow-lg mx-auto">
+                 <div className="relative flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white font-bold text-lg md:text-xl shadow-lg mx-auto ios-text-fix">
                    {item.step}
                  </div>
                </div>
